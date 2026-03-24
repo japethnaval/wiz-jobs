@@ -6,9 +6,9 @@ import WizLogo from "@/assets/WizLogo.svg";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "For Employers", href: "#employers" },
-  { label: "For Candidates", href: "#candidates" },
-  { label: "About", href: "#about" },
+  { label: "For Employers", href: "/employer" },
+  { label: "For Candidates", href: "/candidate" },
+  { label: "About", href: "/about-us" },
   { label: "Contact", href: "#contact" },
 ] as const;
 
@@ -58,13 +58,13 @@ export function Navigation() {
           </Link>
           <div className="flex shrink-0 items-center gap-3">
             <Link
-              href="#recruiter"
+              href="/employer"
               className="inline-flex min-h-11 min-w-[7.5rem] items-center justify-center rounded-full border border-white bg-transparent px-5 text-[15px] font-extrabold italic text-white transition-colors hover:bg-white/10"
             >
               Recruiter
             </Link>
             <Link
-              href="#candidate"
+              href="/candidate"
               className="inline-flex min-h-11 min-w-[7.5rem] items-center justify-center rounded-full border border-white bg-transparent px-5 text-[15px] font-extrabold italic text-white transition-colors hover:bg-white/10"
             >
               Candidate
@@ -121,14 +121,14 @@ export function Navigation() {
           ))}
           <div className="flex flex-col gap-3 pt-4">
             <Link
-              href="#recruiter"
+              href="/employer"
               className="inline-flex min-h-11 items-center justify-center rounded-full border border-white bg-transparent px-5 text-[15px] font-medium italic text-white hover:bg-white/10"
               onClick={() => setMenuOpen(false)}
             >
               Recruiter
             </Link>
             <Link
-              href="#candidate"
+              href="/candidate"
               className="inline-flex min-h-11 items-center justify-center rounded-full border border-white bg-transparent px-5 text-[15px] font-medium italic text-white hover:bg-white/10"
               onClick={() => setMenuOpen(false)}
             >

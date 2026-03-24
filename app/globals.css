@@ -3,13 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-sans: "area", "area-normal";
+  --font-sans: var(--font-area-normal), "area-normal", "area";
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "area", "area-normal";
+  --font-sans: var(--font-area-normal), "area-normal", "area";
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -19,4 +19,14 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   font-weight: 300;
   line-height: 1.5;
+}
+
+.font-area-normal-medium {
+  font-family: var(--font-area-normal), "area-normal", "area", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+.font-area-normal-black {
+  font-family: var(--font-area-normal), "area-normal", "area", Arial, Helvetica, sans-serif;
+  font-weight: 900;
 }

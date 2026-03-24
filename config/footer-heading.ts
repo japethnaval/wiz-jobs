@@ -32,17 +32,16 @@ export const defaultFooterHeading: FooterHeadingContent = {
 
 /** Exact path → content (highest priority). */
 export const footerHeadingByPath: Record<string, FooterHeadingContent> = {
-  // Example overrides — customize as you add pages:
-  // "/for-employers": {
-  //   ...defaultFooterHeading,
-  //   titleLine1: "Hire verified talent",
-  //   titleLine2: "faster",
-  //   subtitle: "Post a role in minutes.",
-  //   ctas: [
-  //     { text: "Post a job - Get started", href: "/post" },
-  //     { text: "Talk to sales - Book a call", href: "/contact" },
-  //   ],
-  // },
+  "/candidate": {
+    ...defaultFooterHeading,
+    titleLine1: "Your Next Job is Waiting,",
+    titleLine2: "",
+    subtitle: "Are You Verified?",
+    ctas: [
+      { text: "Create Your Verified Free Profile", href: "#create-profile" },
+      { text: "Talk to our team", href: "#contact" },
+    ],
+  },
 };
 
 /** Longest matching prefix wins (after exact match fails). Skip "/" here; it is handled by default. */

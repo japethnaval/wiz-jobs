@@ -3,15 +3,15 @@ import WizLogo from "@/assets/WizLogo.svg";
 import BotIcon from "@/assets/BotIcon.svg";
 
 const productLinks = [
-  { label: "For Employers", href: "#employers" },
-  { label: "For Candidates", href: "#candidates" },
-  { label: "How It Works", href: "#how-it-works" },
+  { label: "For Employers", href: "/employer" },
+  { label: "For Candidates", href: "/candidate" },
+  { label: "How It Works", href: "/candidate#how-it-works" },
 ] as const;
 
 const resourceLinks = [{ label: "Help Center", href: "#help" }] as const;
 
 const companyLinks = [
-  { label: "About Us", href: "#about" },
+  { label: "About Us", href: "/about-us" },
   { label: "Privacy Policy", href: "#privacy" },
   { label: "Terms of Service", href: "#terms" },
 ] as const;
