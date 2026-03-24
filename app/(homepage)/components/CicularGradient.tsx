@@ -18,7 +18,7 @@ export function CircularGradient({ children, className }: CircularGradientProps)
         .join(" ")}
     >
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[min(180vw,130rem)] w-[min(200vw,140rem)] max-w-none -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(90deg,#6f82ff_0%,rgba(255,255,255,0)_100%)] opacity-65 mix-blend-multiply"
+        className="pointer-events-none absolute left-1/2 top-[80%] z-0 aspect-square w-[min(160vw,95rem)] max-w-none -translate-x-1/2 -translate-y-1/2 rounded-full bg-[linear-gradient(180deg,#455FF6_-5.59%,#E6E8F5_18%,#EAEBF6_100%)] opacity-[0.8117] mix-blend-multiply sm:w-[min(185vw,120rem)] lg:aspect-auto lg:h-[min(180vw,180rem)] lg:w-[min(240vw,180rem)]"
         aria-hidden
       />
       <div className="relative z-10">{children}</div>

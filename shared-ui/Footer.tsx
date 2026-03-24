@@ -56,13 +56,13 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <p className="text-sm font-bold text-[#4f46e5]">{title}</p>
+      <p className="text-sm font-extrabold text-black">{title}</p>
       <ul className="mt-4 space-y-3">
         {links.map(({ label, href }) => (
           <li key={label}>
             <Link
               href={href}
-              className="text-sm text-zinc-700 transition-colors hover:text-[#4f46e5]"
+              className="size-sm text-black font-regular transition-colors hover:text-[#4f46e5]"
             >
               {label}
             </Link>
@@ -77,7 +77,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative text-zinc-900 bg-[#f2f3fb]">
+    <footer className="relative text-zinc-900 bg-[#F0F2F9]">
       
       <div className="mx-auto max-w-[120rem] px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">

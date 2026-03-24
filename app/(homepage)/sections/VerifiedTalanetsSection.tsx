@@ -32,17 +32,17 @@ export function VerifiedTalanetsSection() {
         aria-hidden
       /> */}
       <div
-        className="pointer-events-none absolute left-0 top-[42%] z-11 w-[min(60vw,44rem)] -translate-x-[32%] -translate-y-1/2 select-none sm:top-1/2 sm:w-[min(55vw,48rem)] sm:-translate-x-[22%] lg:w-[min(50vw,56rem)] lg:-translate-x-[35%]"
+        className="opacity-45 pointer-events-none absolute left-0 top-[42%] z-0  -translate-x-[45%] -translate-y-1/2 select-none sm:top-1/2  sm:-translate-x-[35%] lg:w-[min(50vw,56rem)] lg:-translate-x-[5%]"
         aria-hidden
       >
-        <WizJobGrey className="h-auto w-[90%]" />
+        <WizJobGrey className="h-auto" />
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-[min(100%,96rem)] flex-col items-center px-4 sm:px-6 lg:px-8">
         <FadeUp className="mb-8 max-w-4xl text-center sm:mb-12 lg:mb-16">
           <h1
             id="hero-heading"
-            className="text-balance font-bold tracking-tight text-neutral-900 text-[80px]"
+            className="text-balance font-extrabold tracking-tight text-black text-[80px]"
           >
             <span className="block text-[clamp(1.75rem,5vw,3.25rem)] leading-[1.1]">
               Verified Talents
@@ -55,8 +55,8 @@ export function VerifiedTalanetsSection() {
               </span>
             </span>
           </h1>
-          <p className="relative z-10 mt-4 text-pretty text-2xl font-medium text-blue-600 sm:mt-8">
-            The first recruitment platform built on truth, not volume.
+          <p className="relative z-10 mt-4 text-pretty text-2xl font-extrabold text-[#455ff6] sm:mt-8">
+            The first recruitment platform <br /> built on truth, not volume.
           </p>
         </FadeUp>
         <FadeInScale delay={0.08}>

@@ -20,11 +20,11 @@ export const defaultFooterHeading: FooterHeadingContent = {
   subtitle: "Create your profile now!",
   ctas: [
     {
-      text: "I'm Hiring - Get Early Access",
+      text: "I'm Hiring Get Early Access",
       href: "#early-access",
     },
     {
-      text: "I'm Job Searching - Get Verified",
+      text: "I'm Job Searching Get Verified",
       href: "#get-verified",
     },
   ],

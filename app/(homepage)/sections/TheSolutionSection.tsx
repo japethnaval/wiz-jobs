@@ -15,27 +15,27 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    title: "Blockchain-Verified Credentials",
+    title: "Blockchain-Verified \n Credentials",
     body: "Every work experience, skill, and certificate is verified through multiple sources, layers and secured on blockchain. No more resume fiction.",
     highlight: "Just verified truth.",
     icon: ShieldIcon,
   },
   {
-    title: "AI-Powered Qualification Matching",
+    title: "AI-Powered \n Qualification Matching",
     body: "Our AI doesn’t just match keywords—it understands context, evaluates true skill levels, and scores candidates on actual job fit.",
-    highlight: "90% accuracy vs. the industry’s 30%.",
+    highlight: "90% accuracy vs. \n the industry’s 30%.",
     icon: AtomicIcon,
   },
   {
-    title: "Complete Transparency",
+    title: "Complete \n Transparency",
     body: "Candidates see their qualification scores. Employers see verification status on every claim. No black boxes.",
-    highlight: "No bias. Just data-driven decisions.",
+    highlight: "No bias. Just data-\ndriven decisions.",
     icon: PeopleIcon,
   },
   {
-    title: "Pay for Results, Not Resume Volume",
+    title: "Pay for Results, \n Not Resume Volume",
     body: "At WizJobs, our pricing is built around what actually matters: verified, qualified candidates who match your requirements. You’re investing in precision, not spam.",
-    highlight: "That’s recruiting done right.",
+    highlight: "That’s recruiting \n done right.",
     icon: BarChartIcon,
   },
 ];
@@ -66,7 +66,7 @@ export function TheSolutionSection() {
           <FadeUp>
             <h2
               id="solution-heading"
-              className="mb-12 text-center text-balance text-3xl font-bold tracking-tight text-white sm:mb-16 sm:text-4xl lg:mb-16 lg:text-5xl"
+              className="font-extrabold text-pretty mb-12 text-center text-2xl leading-[1.1] text-white sm:mb-16 sm:text-3xl lg:text-5xl"
             >
               The solution?
             </h2>
@@ -92,13 +92,13 @@ export function TheSolutionSection() {
                     className="h-12 w-12 shrink-0 object-contain"
                   />
                 </div>
-                <h3 className="mb-3 text-lg font-bold leading-snug text-neutral-900 sm:text-xl">
+                <h3 className="mb-3 whitespace-pre-line text-lg font-extrabold leading-snug text-black sm:text-xl">
                   {item.title}
                 </h3>
-                <p className="text-pretty text-[15px] leading-relaxed text-neutral-800 sm:text-[0.9375rem]">
+                <p className="text-pretty whitespace-pre-line text-[15px] leading-relaxed text-black sm:text-[0.9375rem] font-semibold">
                   {item.body}
                 </p>
-                <p className="mt-auto pt-4 text-pretty text-sm font-semibold text-blue-600 sm:text-base">
+                <p className="mt-auto whitespace-pre-line pt-4 text-pretty text-sm font-extrabold text-[#455ff6] sm:text-base">
                   {item.highlight}
                 </p>
               </motion.li>

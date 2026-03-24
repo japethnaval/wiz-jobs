@@ -62,16 +62,16 @@ export function CircularTornadoCard({
           )}
           aria-hidden
         >
-          <Image src={TornadoArt} alt="Tornado" className="h-auto w-full" />
+          <Image src={TornadoArt} alt="Tornado" className="mx-auto h-auto w-[90%]" />
         </div>
 
         <div
           className={mergeClass(
-            "relative z-10 h-full w-full overflow-hidden rounded-full border-[5px] border-cyan-400 shadow-sm sm:border-[6px]",
+            "relative z-10 h-full w-full overflow-hidden rounded-full border-[5px] border-[#49FBDF] shadow-sm sm:border-[6px]",
           )}
         >
           <div className="absolute inset-2 flex flex-col items-center justify-center overflow-y-auto rounded-full bg-white px-5 py-8 text-center sm:px-7 sm:py-10">
-            <p className="text-pretty text-sm font-medium text-blue-600 sm:text-base">
+            <p className="text-pretty text-sm font-medium text-[#455ff6] sm:text-base">
               {eyebrow}
             </p>
             <h2 className="mt-0.5 text-pretty text-2xl font-bold tracking-tight text-indigo-600 sm:text-3xl">

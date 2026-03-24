@@ -18,8 +18,8 @@ export function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="relative z-50 min-h-20 border-b border-white/15 bg-[#4f46e5] text-white shadow-[0_10px_30px_-14px_rgba(17,24,39,0.45)] lg:min-h-[107px]">
-      <div className="mx-auto grid w-full max-w-480 grid-cols-[1fr_auto] items-center gap-4 px-6 py-4 sm:px-10 lg:min-h-[107px] lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-6 lg:px-16 lg:py-0">
+    <header className="relative z-50 min-h-20 border-b border-white/15 bg-[#455FF6] text-white shadow-[0_10px_30px_-14px_rgba(17,24,39,0.45)] lg:min-h-[127px]">
+      <div className="mx-auto grid w-full max-w-480 grid-cols-[1fr_auto] items-center gap-4 px-6 py-4 sm:px-10 lg:min-h-[127px] lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-6 lg:px-16 lg:py-0">
         <Link
           href="/"
           aria-label="WizJobs home"
@@ -40,7 +40,7 @@ export function Navigation() {
               <li key={label}>
                 <Link
                   href={href}
-                  className="whitespace-nowrap text-[15px] font-medium text-white transition-colors hover:text-white/85"
+                  className="font-extrabold whitespace-nowrap text-[15px] text-white transition-colors hover:text-white/85"
                 >
                   {label}
                 </Link>
@@ -52,20 +52,20 @@ export function Navigation() {
         <div className="row-start-1 hidden min-w-0 items-center justify-end gap-4 lg:col-start-3 lg:flex lg:justify-self-end xl:gap-5">
           <Link
             href="#sign-in"
-            className="shrink-0 text-[13px] font-semibold tracking-wide text-white uppercase transition-opacity hover:opacity-85"
+            className="shrink-0 text-[13px] font-extrabold tracking-wide text-white uppercase transition-opacity hover:opacity-85"
           >
             Sign in
           </Link>
           <div className="flex shrink-0 items-center gap-3">
             <Link
               href="#recruiter"
-              className="inline-flex min-h-11 min-w-[7.5rem] items-center justify-center rounded-full border border-white bg-transparent px-5 text-[15px] font-medium italic text-white transition-colors hover:bg-white/10"
+              className="inline-flex min-h-11 min-w-[7.5rem] items-center justify-center rounded-full border border-white bg-transparent px-5 text-[15px] font-extrabold italic text-white transition-colors hover:bg-white/10"
             >
               Recruiter
             </Link>
             <Link
               href="#candidate"
-              className="inline-flex min-h-11 min-w-[7.5rem] items-center justify-center rounded-full border border-white bg-transparent px-5 text-[15px] font-medium italic text-white transition-colors hover:bg-white/10"
+              className="inline-flex min-h-11 min-w-[7.5rem] items-center justify-center rounded-full border border-white bg-transparent px-5 text-[15px] font-extrabold italic text-white transition-colors hover:bg-white/10"
             >
               Candidate
             </Link>
@@ -104,7 +104,7 @@ export function Navigation() {
         <div className="mx-auto max-w-[120rem] space-y-1 px-6 py-4 sm:px-10">
           <Link
             href="#sign-in"
-            className="block py-2 text-[13px] font-semibold tracking-wide text-white uppercase"
+            className="block py-2 text-[13px] font-extrabold tracking-wide text-white uppercase"
             onClick={() => setMenuOpen(false)}
           >
             Sign in
