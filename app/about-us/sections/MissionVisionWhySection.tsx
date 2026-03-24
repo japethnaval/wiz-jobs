@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentType, SVGProps } from "react";
+import type { ComponentType, RefObject, SVGProps } from "react";
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/shared-ui";
@@ -89,8 +89,26 @@ const problemGuidePathStroke = {
   fill: "none" as const,
 };
 
-function WhyProblemsConnectorScaffold() {
+function WhyProblemsConnectorScaffold({
+  trackRef,
+}: {
+  trackRef: RefObject<HTMLElement | null>;
+}) {
   const [y1, y2, y3, y4] = CONNECTOR_Y;
+  const reduceMotion = useReducedMotion() === true;
+  const { scrollYProgress } = useScroll({
+    target: trackRef,
+    offset: ["start 0.88", "end 0.22"],
+  });
+
+  const leg1PathLength = useTransform(scrollYProgress, [0.06, 0.28], [0, 1], { clamp: true });
+  const leg2PathLength = useTransform(scrollYProgress, [0.22, 0.48], [0, 1], { clamp: true });
+  const leg3PathLength = useTransform(scrollYProgress, [0.42, 0.75], [0, 1], { clamp: true });
+
+  const dot1Opacity = useTransform(leg1PathLength, [0, 0.12], [0.35, 1], { clamp: true });
+  const dot2Opacity = useTransform(leg2PathLength, [0, 0.12], [0.35, 1], { clamp: true });
+  const dot3Opacity = useTransform(leg3PathLength, [0, 0.12], [0.35, 1], { clamp: true });
+
   const yL2DropEnd = y2 - ICON_R - GUIDE_ABOVE_ICON_GAP;
   const yL3DropEnd = y3 - ICON_R - GUIDE_ABOVE_ICON_GAP;
   const yL3ExitY = y3 + ICON_R + L3_GUIDE_ENTRY_GAP;
@@ -124,17 +142,47 @@ function WhyProblemsConnectorScaffold() {
       preserveAspectRatio="none"
     >
       <g id="about-problem-guide-l1-l2">
-        <path d={pathLevel1To2} {...problemGuidePathStroke} />
+        <motion.path
+          d={pathLevel1To2}
+          {...problemGuidePathStroke}
+          style={{ pathLength: reduceMotion ? 1 : leg1PathLength }}
+        />
       </g>
       <g id="about-problem-guide-l2-l3">
-        <path d={pathLevel2To3} {...problemGuidePathStroke} />
+        <motion.path
+          d={pathLevel2To3}
+          {...problemGuidePathStroke}
+          style={{ pathLength: reduceMotion ? 1 : leg2PathLength }}
+        />
       </g>
       <g id="about-problem-guide-l3-l4">
-        <path d={pathLevel3To4} {...problemGuidePathStroke} />
+        <motion.path
+          d={pathLevel3To4}
+          {...problemGuidePathStroke}
+          style={{ pathLength: reduceMotion ? 1 : leg3PathLength }}
+        />
       </g>
-      <circle cx={LEVEL1_TEXT_EXIT_X} cy={y1} r="6" fill="#4FE3F2" />
-      <circle cx={L2_GUIDE_ENTRY_X} cy={y2} r="6" fill="#4FE3F2" />
-      <circle cx={L3_GUIDE_CENTER_X} cy={yL3ExitY} r="6" fill="#4FE3F2" />
+      <motion.circle
+        cx={LEVEL1_TEXT_EXIT_X}
+        cy={y1}
+        r={6}
+        fill="#4FE3F2"
+        style={{ opacity: reduceMotion ? 1 : dot1Opacity }}
+      />
+      <motion.circle
+        cx={L2_GUIDE_ENTRY_X}
+        cy={y2}
+        r={6}
+        fill="#4FE3F2"
+        style={{ opacity: reduceMotion ? 1 : dot2Opacity }}
+      />
+      <motion.circle
+        cx={L3_GUIDE_CENTER_X}
+        cy={yL3ExitY}
+        r={6}
+        fill="#4FE3F2"
+        style={{ opacity: reduceMotion ? 1 : dot3Opacity }}
+      />
     </svg>
   );
 }
@@ -246,6 +294,8 @@ function MissionVisionWhyIntroTrack() {
 }
 
 export function MissionVisionWhySection() {
+  const problemGuideTrackRef = useRef<HTMLDivElement>(null);
+
   return (
     <section
       aria-labelledby="why-wizjobs-heading"
@@ -255,8 +305,11 @@ export function MissionVisionWhySection() {
         <MissionVisionWhyIntroTrack />
 
         {/* Problem points: icon always left of copy (20px gap); rows stagger L/R; connector (md+) */}
-        <div className="relative mx-auto mt-14 w-full max-w-[min(100%,1310px)] md:mt-20">
-          <WhyProblemsConnectorScaffold />
+        <div
+          ref={problemGuideTrackRef}
+          className="relative mx-auto mt-14 w-full max-w-[min(100%,1310px)] md:mt-20"
+        >
+          <WhyProblemsConnectorScaffold trackRef={problemGuideTrackRef} />
           <StaggerContainer className="relative z-10 space-y-[46px]">
             {problemPoints.map((item, index) => {
               const staggerRight = index % 2 === 1;
