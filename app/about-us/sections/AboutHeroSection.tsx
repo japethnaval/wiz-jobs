@@ -9,7 +9,7 @@ export function AboutHeroSection() {
   return (
     <section
       aria-labelledby="about-us-heading"
-      className="relative isolate -mx-4 overflow-x-clip md:-mx-6 lg:-mx-8"
+      className="relative isolate overflow-x-clip md:-mx-6 lg:-mx-8 pb-[80px]"
     >
       <div
         className="
@@ -30,7 +30,7 @@ export function AboutHeroSection() {
         <WizJobGrey className="h-auto" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[min(100%,96rem)] px-4 pt-12 sm:px-6 sm:pt-16 lg:px-8 lg:pt-[124px]">
+      <div className="relative z-10 mx-auto w-full max-w-[min(100%,96rem)] px-6 pt-12 sm:pt-16 lg:px-8 lg:pt-[124px]">
         
         <FadeUp className="relative mx-auto max-w-4xl text-center">
           <h1 id="about-us-heading" className="text-balance font-black text-black leading-[1.1] text-[clamp(2.75rem,1.25rem+5.5vw,5.0625rem)]">
