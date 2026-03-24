@@ -74,7 +74,7 @@ export function CircularTornadoCard({
             <p className="text-pretty text-sm font-medium text-[#455ff6] sm:text-base">
               {eyebrow}
             </p>
-            <h2 className="mt-0.5 text-pretty text-2xl font-bold tracking-tight text-indigo-600 sm:text-3xl">
+            <h2 className="mt-0.5 text-pretty text-2xl font-bold tracking-tight text-[#455ff6] sm:text-3xl">
               {title}
             </h2>
             <div className="mt-4 max-w-[min(100%,16rem)] space-y-3 text-pretty text-xs leading-relaxed text-neutral-600 sm:mt-5 sm:max-w-[18rem] sm:space-y-3.5 sm:text-sm">

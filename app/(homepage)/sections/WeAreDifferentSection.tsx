@@ -79,7 +79,7 @@ export function WeAreDifferentSection() {
                 <colgroup>
                   <col className="w-1/3" />
                   <col className="w-1/3" />
-                  <col className="w-1/3 bg-[linear-gradient(0deg,#DAE0FC_33%,rgba(218,224,252,0.5)_77%,rgba(255,255,255,0)_100%)]" />
+                  <col className="w-1/3 bg-[linear-gradient(0deg,#DAE0FC_33%,rgba(218,224,252,0.5)_49%,rgba(255,255,255,0)_100%)]" />
                 </colgroup>
                 <thead>
                   <tr>

@@ -5,3 +5,4 @@ export * from "./GradientCtaButton";
 export * from "./Motion";
 export * from "./Navigation";
 export * from "./Spacer";
+export * from "./FloatingRegisterPill";
