@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Footer } from "@/shared-ui/Footer";
+import { FooterHeading } from "@/shared-ui/FooterHeading";
+import { Navigation } from "@/shared-ui/Navigation";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -25,9 +28,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full overflow-x-clip antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body
+        suppressHydrationWarning
+        className="flex min-h-full flex-col overflow-x-clip bg-white text-zinc-900"
+      >
+        <Navigation />
+        <main className="flex-1">{children}</main>
+        <FooterHeading />
+        <Footer />
+      </body>
     </html>
   );
 }
