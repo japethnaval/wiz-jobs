@@ -1,8 +1,9 @@
 import Image from "next/image";
 
 import { FamilyBg } from "@/assets/images";
-import { GlassFeatureCard, StaggerContainer, StaggerItem } from "@/shared-ui";
+import { StaggerContainer, StaggerItem } from "@/shared-ui";
 import { AnalyticsIcon, MaskIcon, PaperIcon, VerifiedIcon } from "@/assets";
+import { GlassFeatureCard } from "../components/GlassFeatureCard";
 
 const featureIconClassName = "block size-20 max-h-20 max-w-20 shrink-0";
 
