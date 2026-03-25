@@ -1,42 +1,44 @@
 "use client";
 
+import Image from "next/image";
+import { CandidateHeroGraphic } from "@/assets/images";
 import { FadeInScale, FadeUp } from "@/shared-ui";
 import { GradientCtaButton } from "@/shared-ui/GradientCtaButton";
 
 export function CandidateHeroSection() {
   return (
-    <section aria-labelledby="candidate-hero-heading" className="relative">
-      <div className="mx-auto w-full max-w-[70rem] px-4 pt-12 sm:px-6 sm:pt-16 lg:px-8 lg:pt-20">
-        <FadeUp className="text-center">
+    <section
+      aria-labelledby="candidate-hero-heading"
+      className="relative isolate overflow-x-clip md:-mx-6 lg:-mx-8 pb-[80px]"
+    >
+      <div className="relative z-10 mx-auto w-full max-w-[min(100%,96rem)] px-6 pt-12 sm:pt-16 lg:px-8 lg:pt-[124px]">
+        <FadeUp className="relative mx-auto text-center">
           <h1
             id="candidate-hero-heading"
-            className="mx-auto max-w-3xl text-balance text-4xl font-extrabold leading-tight text-black sm:text-5xl"
+            className="mx-auto max-w-[1000px] text-balance font-black text-black leading-[1.1] text-[clamp(2.75rem,1.25rem+5.5vw,5.0625rem)]"
           >
             Get Hired for Your Skills, Not Your Luck
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-pretty text-sm font-semibold text-zinc-700 sm:text-base">
-            Build your verified profile once. Then let WizJobs match you with roles
-            where your real capabilities are recognized.
-          </p>
+          <h3 className="relative z-10 mt-6 mx-auto max-w-[612px] text-pretty text-[clamp(1.125rem,0.45rem+2.1vw,1.5625rem)] font-black leading-[1.25] text-[#455FF6]">
+            Stop sending resumes into black holes. Get verified, get scored, get matched to jobs where
+            you’re actually qualified.
+          </h3>
         </FadeUp>
 
-        <FadeInScale delay={0.08} className="mt-8 sm:mt-10">
-          <div className="mx-auto max-w-3xl rounded-[2rem] border border-[#455ff6]/20 bg-white/75 p-8 shadow-lg backdrop-blur">
-            <div className="rounded-[1.5rem] bg-[radial-gradient(circle_at_30%_20%,#c7d2fe_0%,#e0f2fe_45%,#dbeafe_100%)] p-8">
-              <div className="mx-auto max-w-lg rounded-2xl bg-white/90 p-5 text-center shadow-md">
-                <p className="text-xs font-extrabold uppercase tracking-wide text-[#455ff6]">
-                  Candidate Verification
-                </p>
-                <p className="mt-2 text-sm font-semibold text-zinc-700">
-                  A clearer signal for employers and more control for job seekers.
-                </p>
-              </div>
-            </div>
+        <FadeInScale delay={0.08} className="mx-auto mt-[50px] w-full max-w-[1040px] sm:mt-[82px]">
+          <div className="w-full overflow-hidden rounded-[2rem] sm:rounded-[2.25rem]">
+            <Image
+              src={CandidateHeroGraphic}
+              alt="A candidate profile preview with verification and scoring indicators."
+              priority
+              sizes="(max-width: 1040px) 100vw, 1040px"
+              className="h-auto w-full object-cover"
+            />
           </div>
         </FadeInScale>
 
-        <FadeUp delay={0.12} className="mt-8 flex justify-center">
-          <GradientCtaButton href="#create-profile" text="Create Your Verified Profile" />
+        <FadeUp delay={0.12} className="mt-10 flex justify-center sm:mt-12">
+          <GradientCtaButton href="#create-profile" text="Create Your Verified Profile - It’s Free" />
         </FadeUp>
       </div>
     </section>
