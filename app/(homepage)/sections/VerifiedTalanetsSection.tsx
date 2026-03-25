@@ -39,7 +39,7 @@ export function VerifiedTalanetsSection() {
               at the Speed of{" "}
               <span className="relative inline-block">
                 AI
-                <SparkleIcon className="absolute -right-5 -top-1 h-4 w-4 text-neutral-900 sm:h-5 sm:w-5 sm:-right-6 sm:-top-1.5" />
+                <SparkleIcon className="absolute -right-5 -top-1 h-4 w-4 text-black sm:h-5 sm:w-5 sm:-right-6 sm:-top-1.5" />
               </span>
             </span>
           </h1>

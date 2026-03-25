@@ -86,7 +86,7 @@ const itemVariants = {
 
 export function TheSolutionSection() {
   return (
-      <section aria-labelledby="solution-heading">
+      <section aria-labelledby="solution-heading" className="pb-24">
         <div className="mx-auto w-full max-w-[min(100%,96rem)] px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <h2
@@ -97,7 +97,7 @@ export function TheSolutionSection() {
             </h2>
           </FadeUp>
           <motion.ul
-            className="grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-14 lg:grid-cols-4 lg:gap-8"
+            className="mx-auto grid max-w-6xl grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-14 lg:grid-cols-4 lg:gap-y-10 lg:gap-x-14 xl:gap-x-20"
             variants={listVariants}
             initial="hidden"
             whileInView="show"

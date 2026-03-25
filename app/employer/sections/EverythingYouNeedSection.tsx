@@ -35,7 +35,7 @@ export function EverythingYouNeedSection() {
           </h2>
 
           <StaggerContainer
-            className="mx-auto mt-12 grid max-w-6xl grid-cols-1 items-stretch gap-4 sm:mt-14 sm:gap-6 md:grid-cols-2 md:gap-8 lg:mt-16 lg:gap-[60px]"
+            className="mx-auto mt-12 grid max-w-6xl grid-cols-1 items-stretch justify-center gap-4 sm:mt-14 sm:gap-6 md:grid-cols-2 md:gap-8 lg:mt-16 lg:max-w-fit lg:grid-cols-[409px_409px] lg:gap-[60px]"
             amount={0.12}
           >
             <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">

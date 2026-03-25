@@ -6,18 +6,10 @@ import Image from "next/image";
 export type CircularTornadoCardTornadoSide = "leading" | "trailing";
 
 export type CircularTornadoCardProps = {
-  /** Small line above the title, e.g. “If you're an”. */
   eyebrow: string;
-  /** Main heading, e.g. “Employer”. */
   title: string;
-  /**
-   * `leading` — tornado sits on the left (default SVG orientation).
-   * `trailing` — horizontally flipped so the swirl reads on the right.
-   */
   tornadoSide?: CircularTornadoCardTornadoSide;
-  /** Body copy: paragraphs, `<strong>` for “The result?” lines, etc. */
   children: ReactNode;
-  /** Square card edge length in px (default 500). Scales down on narrow viewports. */
   size?: number;
   className?: string;
 };
@@ -62,7 +54,12 @@ export function CircularTornadoCard({
           )}
           aria-hidden
         >
-          <Image src={TornadoArt} alt="Tornado" className="mx-auto h-auto w-[90%]" />
+          <Image
+            src={TornadoArt}
+            alt="Tornado"
+            className="mx-auto h-auto w-[90%]"
+            loading="eager"
+          />
         </div>
 
         <div
@@ -71,13 +68,13 @@ export function CircularTornadoCard({
           )}
         >
           <div className="absolute inset-2 flex flex-col items-center justify-center overflow-y-auto rounded-full bg-white px-5 py-8 text-center sm:px-7 sm:py-10">
-            <p className="text-pretty text-sm font-medium text-[#455ff6] sm:text-base">
+            <p className="text-pretty text-sm font-bold text-black sm:text-base">
               {eyebrow}
             </p>
             <h2 className="mt-0.5 text-pretty text-2xl font-bold tracking-tight text-[#455ff6] sm:text-3xl">
               {title}
             </h2>
-            <div className="mt-4 max-w-[min(100%,16rem)] space-y-3 text-pretty text-xs leading-relaxed text-neutral-600 sm:mt-5 sm:max-w-[18rem] sm:space-y-3.5 sm:text-sm">
+            <div className="mt-4 max-w-[min(100%,16rem)] space-y-3 text-pretty text-xs leading-relaxed text-black sm:mt-5 sm:max-w-[18rem] sm:space-y-3.5 sm:text-sm">
               {children}
             </div>
           </div>

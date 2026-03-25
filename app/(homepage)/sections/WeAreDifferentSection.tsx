@@ -62,7 +62,7 @@ export function WeAreDifferentSection() {
                 <FadeUp>
                 <h2
                 id="we-are-different-heading"
-                className="mb-8 text-balance text-center text-2xl font-bold leading-tight text-neutral-900 sm:mb-12 sm:text-3xl lg:text-[2rem]"
+                className="mb-8 text-balance text-center text-2xl font-bold leading-tight text-black sm:mb-12 sm:text-3xl lg:text-[2rem]"
               >
                 <span className="block text-black font-extrabold text-3xl sm:text-4xl lg:text-5xl">Why We’re Different</span>
                 <span className="mt-1 block text-xl font-extrabold text-black sm:text-2xl lg:text-3xl">

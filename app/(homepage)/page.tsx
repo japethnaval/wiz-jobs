@@ -18,13 +18,12 @@ export default function Home() {
       <Spacer className="h-24" />
       <VerifiedTalanetsSection />
       <Spacer className="h-24" />
-      <EmployerJobSeekerSection />
+        <EmployerJobSeekerSection />
       <Spacer className="h-24" />
-      <CircularGradient className="-mx-4 md:-mx-6 lg:-mx-8">
+      <CircularGradient className="-mx-4 md:-mx-6 lg:-mx-8 sm:hidden md:hidden lg:block">
         <TheSolutionSection />
-        <Spacer className="h-24" />
+        <Spacer className="h-24 bg-[#eceef8]" />
         <WeAreDifferentSection />
-        <Spacer className="h-24" />
       </CircularGradient>
     </div>
   );

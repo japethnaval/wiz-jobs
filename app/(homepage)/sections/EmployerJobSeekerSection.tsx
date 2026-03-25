@@ -1,7 +1,6 @@
 "use client";
 
 import { CircularTornadoCard } from "@/app/(homepage)/components/CircularTornadoCard";
-import { FadeUp, StaggerContainer, StaggerItem } from "@/shared-ui";
 
 export function EmployerJobSeekerSection() {
   return (
@@ -9,58 +8,55 @@ export function EmployerJobSeekerSection() {
       aria-labelledby="employer-job-seeker-heading"
     >
       <div className="mx-auto w-full max-w-[1100px] px-4">
-        <FadeUp>
           <h2
             id="employer-job-seeker-heading"
             className="font-bold text-pretty mx-auto max-w-4xl text-center text-[clamp(1.75rem,1rem+3vw,3.5rem)] leading-[1.1] text-black sm:mb-16"
           >
             Stop Hiring the Wrong People Start Hiring Verified Talent.
           </h2>
-        </FadeUp>
-        <StaggerContainer className="flex flex-col items-center justify-center gap-16 pt-12 lg:flex-row lg:flex-nowrap">
-          <StaggerItem>
+        <div className="flex flex-col items-center justify-center gap-16 pt-12 lg:flex-row lg:flex-nowrap">
+          
             <CircularTornadoCard
               eyebrow="If you're an"
               title="Employer"
               tornadoSide="leading"
               size={400}
             >
-              <p className="font-semibold text-black text-xs">
-                You&apos;re drowning in applications, but most candidates exaggerate
-                skills. Traditional screening can&apos;t catch it fast enough.
+              <p className="font-regular text-black text-xs">
+                You&apos;re drowning in applications. Two hundred resumes for one role,
+                and maybe thirty are actually qualified. You spend hours screening CVs
+                only to uncover fabricated experience, inflated skills, and unverifiable
+                credentials.
               </p>
-              <p className="font-semibold text-black text-xs">
-                <strong className="font-bold text-neutral-900">The result?</strong>
+              <p className="font-bold text-black text-lg">
+                <strong className="font-bold text-black">The result?</strong>
               </p>
-              <p className="font-semibold text-black text-xs">
-                Bad hires that cost you time and money—often thousands per failed
-                role—while your team stays stuck in manual review.
+              <p className="font-regular text-black text-xs">
+                Bad hires that cost you $6,000 each. Wasted interviews. Lost
+                productivity and missed opportunities. Then the cycle starts again.
               </p>
             </CircularTornadoCard>
-          </StaggerItem>
 
-          <StaggerItem>
             <CircularTornadoCard
               eyebrow="If you're a"
               title="Job Seeker"
               tornadoSide="trailing"
               size={400}
             >
-              <p className="font-semibold text-black text-xs">
-                You send résumés into the void. ATS filters and keyword games make
-                it hard for real skills to stand out, even when you&apos;re a strong
-                fit.
+              <p className="font-regular text-black text-xs">
+                You&apos;ve sent 100+ applications into the void. No responses. No
+                feedback. Just automated rejections, or worse, silence. You&apos;re
+                competing against algorithms that screen you out for the wrong keywords.
               </p>
-              <p className="font-semibold text-black text-xs">
-                <strong className="font-bold text-neutral-900">The result?</strong>
+              <p className="font-bold text-black text-lg">
+                <strong className="font-extrabold text-black">The result?</strong>
               </p>
-              <p className="font-semibold text-black text-xs">
-                Longer searches and missed opportunities while employers still can&apos;t
-                tell who to trust.
+              <p className="font-regular text-black text-xs">
+                Longer job searches, missed opportunities, and no clear way for
+                employers to see what you&apos;re truly capable of.
               </p>
             </CircularTornadoCard>
-          </StaggerItem>
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );
