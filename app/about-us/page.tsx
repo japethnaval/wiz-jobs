@@ -15,7 +15,6 @@ export default function AboutUsPage() {
       <AboutHeroSection />
       <Spacer className="h-8 sm:h-10" />
       <MissionVisionWhySection />
-      <Spacer className="h-8 sm:h-10" />
       <ValuesSection />
     </div>
   );

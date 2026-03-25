@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentType, RefObject, SVGProps } from "react";
-import { useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/shared-ui";
 import Icon1 from "@/assets/icon-1.svg";
@@ -80,6 +80,15 @@ const L3_GUIDE_ENTRY_GAP = 20;
 /** L3→L4: vertical leg length before elbow (viewBox units ≈ px). */
 const L3L4_VERTICAL_DROP = 120;
 
+/**
+ * Motion legs 2–3: generous dash length in viewBox units (each polyline is shorter than this).
+ * L1 uses getTotalLength() — a huge dash vs ~317u path makes offset changes invisible (pattern never aligns).
+ */
+const PROBLEM_GUIDE_DASH_LEN = 4000;
+
+/** `d` for L1→L2 until `path.getTotalLength()` runs (same geometry as pathLevel1To2). */
+const L1_PATH_LEN_APPROX = 318;
+
 const problemGuidePathStroke = {
   stroke: "#4DECEB",
   strokeWidth: 3,
@@ -91,21 +100,90 @@ const problemGuidePathStroke = {
 
 function WhyProblemsConnectorScaffold({
   trackRef,
+  leg1RowRef,
 }: {
   trackRef: RefObject<HTMLElement | null>;
+  leg1RowRef: RefObject<HTMLElement | null>;
 }) {
   const [y1, y2, y3, y4] = CONNECTOR_Y;
   const reduceMotion = useReducedMotion() === true;
-  const { scrollYProgress } = useScroll({
+  const { scrollYProgress: trackScrollProgress } = useScroll({
     target: trackRef,
-    offset: ["start 0.88", "end 0.22"],
+    offset: ["start end", "end start"],
   });
 
-  const leg1PathLength = useTransform(scrollYProgress, [0.06, 0.28], [0, 1], { clamp: true });
-  const leg2PathLength = useTransform(scrollYProgress, [0.22, 0.48], [0, 1], { clamp: true });
-  const leg3PathLength = useTransform(scrollYProgress, [0.42, 0.75], [0, 1], { clamp: true });
+  /**
+   * L1: plain SVG + React state. Stroke draw must use strokeDasharray ≈ path length (see
+   * path.getTotalLength()); huge dash (4000) on ~318u path breaks dashoffset visibility.
+   */
+  const l1PathRef = useRef<SVGPathElement | null>(null);
+  const [l1PathLen, setL1PathLen] = useState(0);
+  const [l1Progress, setL1Progress] = useState(() => (reduceMotion ? 1 : 0));
+  const [l1DotOpacity, setL1DotOpacity] = useState(reduceMotion ? 1 : 0.35);
 
-  const dot1Opacity = useTransform(leg1PathLength, [0, 0.12], [0.35, 1], { clamp: true });
+  const l1LenDraw = l1PathLen > 0 ? l1PathLen : L1_PATH_LEN_APPROX;
+
+  useLayoutEffect(() => {
+    const path = l1PathRef.current;
+    if (path) {
+      setL1PathLen(path.getTotalLength());
+    }
+
+    const applyL1 = () => {
+      if (reduceMotion) {
+        setL1Progress(1);
+        setL1DotOpacity(1);
+        return;
+      }
+      const el = leg1RowRef.current;
+      if (!el) {
+        setL1Progress(0);
+        setL1DotOpacity(0.35);
+        return;
+      }
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const bandTop = vh * 0.92;
+      const bandBottom = vh * 0.35;
+      const p = Math.min(1, Math.max(0, (bandTop - rect.top) / (bandTop - bandBottom)));
+      setL1Progress(p);
+      const dotP = Math.min(1, Math.max(0, p / 0.12));
+      setL1DotOpacity(0.35 + dotP * 0.65);
+    };
+
+    applyL1();
+    queueMicrotask(applyL1);
+
+    let raf = 0;
+    const onScrollOrResize = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(applyL1);
+    };
+
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+
+    const trackEl = trackRef.current;
+    let ro: ResizeObserver | undefined;
+    if (trackEl && typeof ResizeObserver !== "undefined") {
+      ro = new ResizeObserver(onScrollOrResize);
+      ro.observe(trackEl);
+    }
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+      ro?.disconnect();
+    };
+  }, [reduceMotion, leg1RowRef, trackRef]);
+
+  const leg2PathLength = useTransform(trackScrollProgress, [0.22, 0.52], [0, 1], { clamp: true });
+  const leg3PathLength = useTransform(trackScrollProgress, [0.42, 0.82], [0, 1], { clamp: true });
+
+  const leg2Dash = useTransform(leg2PathLength, [0, 1], [PROBLEM_GUIDE_DASH_LEN, 0]);
+  const leg3Dash = useTransform(leg3PathLength, [0, 1], [PROBLEM_GUIDE_DASH_LEN, 0]);
+
   const dot2Opacity = useTransform(leg2PathLength, [0, 0.12], [0.35, 1], { clamp: true });
   const dot3Opacity = useTransform(leg3PathLength, [0, 0.12], [0.35, 1], { clamp: true });
 
@@ -135,39 +213,47 @@ function WhyProblemsConnectorScaffold({
 
   return (
     <svg
-      className="pointer-events-none absolute inset-0 -z-[1] hidden h-full w-full overflow-visible md:block"
+      className="pointer-events-none absolute inset-0 z-0 hidden h-full min-h-[52rem] w-full overflow-visible md:block"
       viewBox={`0 0 ${CONNECTOR_VIEW_W} ${CONNECTOR_VIEW_H}`}
       fill="none"
       aria-hidden
       preserveAspectRatio="none"
     >
       <g id="about-problem-guide-l1-l2">
-        <motion.path
+        <path
+          ref={l1PathRef}
           d={pathLevel1To2}
           {...problemGuidePathStroke}
-          style={{ pathLength: reduceMotion ? 1 : leg1PathLength }}
+          strokeDasharray={`${l1LenDraw} ${l1LenDraw}`}
+          strokeDashoffset={reduceMotion ? 0 : l1LenDraw * (1 - l1Progress)}
         />
       </g>
       <g id="about-problem-guide-l2-l3">
         <motion.path
           d={pathLevel2To3}
           {...problemGuidePathStroke}
-          style={{ pathLength: reduceMotion ? 1 : leg2PathLength }}
+          strokeDasharray={PROBLEM_GUIDE_DASH_LEN}
+          style={{
+            strokeDashoffset: reduceMotion ? 0 : leg2Dash,
+          }}
         />
       </g>
       <g id="about-problem-guide-l3-l4">
         <motion.path
           d={pathLevel3To4}
           {...problemGuidePathStroke}
-          style={{ pathLength: reduceMotion ? 1 : leg3PathLength }}
+          strokeDasharray={PROBLEM_GUIDE_DASH_LEN}
+          style={{
+            strokeDashoffset: reduceMotion ? 0 : leg3Dash,
+          }}
         />
       </g>
-      <motion.circle
+      <circle
         cx={LEVEL1_TEXT_EXIT_X}
         cy={y1}
         r={6}
         fill="#4FE3F2"
-        style={{ opacity: reduceMotion ? 1 : dot1Opacity }}
+        opacity={reduceMotion ? 1 : l1DotOpacity}
       />
       <motion.circle
         cx={L2_GUIDE_ENTRY_X}
@@ -295,11 +381,12 @@ function MissionVisionWhyIntroTrack() {
 
 export function MissionVisionWhySection() {
   const problemGuideTrackRef = useRef<HTMLDivElement>(null);
+  const problemGuideLeg1RowRef = useRef<HTMLDivElement>(null);
 
   return (
     <section
       aria-labelledby="why-wizjobs-heading"
-      className="bg-[linear-gradient(178.76deg,rgba(69,95,246,0.411765)_0.98%,rgba(255,255,255,0)_28.13%)] pt-[113px]"
+      className="bg-[linear-gradient(178.76deg,rgba(69,95,246,0.411765)_0.98%,rgba(255,255,255,0)_28.13%)] bg-[#ECEEF7] pt-[113px] pb-[77px]"
     >
       <div className="mx-auto w-full max-w-[min(100%,1430px)] px-4 sm:px-6 lg:px-8">
         <MissionVisionWhyIntroTrack />
@@ -309,13 +396,17 @@ export function MissionVisionWhySection() {
           ref={problemGuideTrackRef}
           className="relative mx-auto mt-14 w-full max-w-[min(100%,1310px)] md:mt-20"
         >
-          <WhyProblemsConnectorScaffold trackRef={problemGuideTrackRef} />
+          <WhyProblemsConnectorScaffold
+            trackRef={problemGuideTrackRef}
+            leg1RowRef={problemGuideLeg1RowRef}
+          />
           <StaggerContainer className="relative z-10 space-y-[46px]">
             {problemPoints.map((item, index) => {
               const staggerRight = index % 2 === 1;
               return (
                 <StaggerItem key={item.id}>
                   <div
+                    ref={index === 0 ? problemGuideLeg1RowRef : undefined}
                     className={[
                       "flex w-full",
                       staggerRight ? "md:justify-end" : "md:justify-start",
@@ -336,6 +427,12 @@ export function MissionVisionWhySection() {
             })}
           </StaggerContainer>
         </div>
+
+        <FadeUp delay={0.06} className="relative z-10 text-center pt-[50px] lg:pt-[161px]">
+          <h2 className="font-black text-[clamp(2.5rem,1.75rem+4.5vw,5.4375rem)] leading-[1.1] text-[#455FF6]">We knew there had to be
+          a better way. So we built it.</h2>
+        </FadeUp>
+
       </div>
     </section>
   );

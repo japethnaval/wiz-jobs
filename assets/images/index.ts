@@ -6,3 +6,4 @@ export { default as AtomicIcon } from "./AtomicIcon.png";
 export { default as BarChartIcon } from "./BarChartIcon.png";
 export { default as AboutHeroLeft } from "./graphics-1.webp";
 export { default as AboutHeroRight } from "./graphics-2.webp";
+export { default as ValuesBackground } from "./background-1.webp";
