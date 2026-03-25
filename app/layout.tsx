@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Footer } from "@/shared-ui/Footer";
 import { FooterHeading } from "@/shared-ui/FooterHeading";
 import { Navigation } from "@/shared-ui/Navigation";
+import { WizJobGreyBackDrop } from "@/shared-ui";
 import "./globals.css";
 
 const areaNormal = localFont({
@@ -40,15 +41,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full overflow-x-clip antialiased">
-      <head>
-        <link rel="stylesheet" href="https://use.typekit.net/hvt4ktg.css" />
-      </head>
       <body
         suppressHydrationWarning
-        className={`${areaNormal.className} ${areaNormal.variable} flex min-h-full flex-col overflow-x-clip bg-white text-zinc-900`}
+        className={`${areaNormal.className} ${areaNormal.variable} relative flex min-h-full flex-col overflow-x-clip bg-white text-zinc-900`}
       >
+        <WizJobGreyBackDrop />
         <Navigation />
-        <div className="relative flex flex-1 flex-col overflow-clip">
+        <div className="relative z-10 flex flex-1 flex-col overflow-clip">
           <main className="flex-1">{children}</main>
           <FooterHeading />
           <Footer />

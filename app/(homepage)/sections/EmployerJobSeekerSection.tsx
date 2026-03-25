@@ -12,9 +12,9 @@ export function EmployerJobSeekerSection() {
         <FadeUp>
           <h2
             id="employer-job-seeker-heading"
-            className="font-extrabold text-pretty mx-auto max-w-4xl text-center text-2xl leading-[1.1] text-black sm:mb-16 sm:text-3xl lg:text-5xl"
+            className="font-extrabold text-pretty mx-auto max-w-4xl text-center text-[clamp(1.75rem,1rem+3vw,3.5rem)] leading-[1.1] text-black sm:mb-16"
           >
-            Stop Hiring the Wrong People <br /> Start Hiring Verified Talent.
+            Stop Hiring the Wrong People Start Hiring Verified Talent.
           </h2>
         </FadeUp>
         <StaggerContainer className="flex flex-col items-center justify-center gap-16 pt-12 lg:flex-row lg:flex-nowrap">

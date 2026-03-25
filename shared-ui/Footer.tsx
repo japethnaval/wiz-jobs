@@ -93,7 +93,7 @@ export function Footer() {
             Human-led AI hiring. <br />
             Built for accountable decisions.
             </p>
-            <p className="mt-8 text-xs text-zinc-500">
+            <p className="mt-8 text-xs text-black">
               © {year} WizJobs. All rights reserved.
             </p>
           </div>
@@ -105,9 +105,6 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-6 lg:col-span-3 lg:items-end">
-            <p className="text-sm font-bold text-[#4f46e5] lg:text-right">
-              Socials
-            </p>
             <div className="flex flex-wrap gap-3 lg:justify-end">
               {socials.map(({ name, href, icon }) => (
                 <Link
