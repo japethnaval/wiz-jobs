@@ -11,3 +11,4 @@ export { default as Graphics5 } from "./graphics-5.webp";
 export { default as Graphics6 } from "./graphics-6.webp";
 export { default as Graphics7 } from "./graphics-7.webp";
 export { default as Graphics8 } from "./graphics-8.webp";
+export { default as Graphics9 } from "./graphics-9.webp";
