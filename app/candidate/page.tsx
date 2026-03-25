@@ -18,7 +18,6 @@ export default function CandidatePage() {
       <HowItWorksSection />
       <Spacer className="h-8 sm:h-10" />
       <VerificationBenefitsSection />
-      <Spacer className="h-8 sm:h-10" />
       <JobSeekerVoicesSection />
     </div>
   );
