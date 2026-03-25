@@ -6,3 +6,8 @@ export { default as CandidateHeroGraphic } from "./graphics-3.webp";
 export { default as ValuesBackground } from "./background-1.webp";
 export { default as EmployerHero } from "./EmployerHero.png";
 export { default as FamilyBg } from "./FamilyBg.png";
+export { default as Graphics4 } from "./graphics-4.webp";
+export { default as Graphics5 } from "./graphics-5.webp";
+export { default as Graphics6 } from "./graphics-6.webp";
+export { default as Graphics7 } from "./graphics-7.webp";
+export { default as Graphics8 } from "./graphics-8.webp";

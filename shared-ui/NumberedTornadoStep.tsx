@@ -88,7 +88,7 @@ export function NumberedTornadoStep({
           <h3 className="text-pretty text-lg font-extrabold text-[#455ff6] sm:text-xl">
             {title}
           </h3>
-          <div className="mt-2 text-pretty text-sm font-semibold leading-relaxed text-zinc-700 sm:text-[15px]">
+          <div className="mt-2 text-pretty text-sm font-semibold leading-relaxed text-zinc-700 sm:text-[15px] max-w-[260px]">
             {children}
           </div>
         </div>

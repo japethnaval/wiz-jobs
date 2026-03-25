@@ -2,7 +2,10 @@
 
 import Image, { type StaticImageData } from "next/image";
 import { FadeUp, NumberedTornadoStep } from "@/shared-ui";
-import { FamilyBg } from "@/assets/images";
+import { Graphics5 } from "@/assets/images";
+import { Graphics6 } from "@/assets/images";
+import { Graphics7 } from "@/assets/images";
+import { Graphics8 } from "@/assets/images";
 
 type VerificationImageContainerProps = {
   image: StaticImageData | string;
@@ -14,10 +17,10 @@ function VerificationImageContainer({
   imageAlt,
 }: VerificationImageContainerProps) {
   return (
-    <div className="relative inline-block w-full max-w-[410px] lg:h-[270px]">
+    <div className="relative inline-block w-full max-w-[480px] lg:h-[270px]">
       <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[28px] border-b-2 border-r-2 border-[#455ff6]" />
       <div className="relative overflow-hidden rounded-[28px] border border-[#455ff6]/25 bg-white">
-        <Image src={image} alt={imageAlt} className="h-auto w-full object-cover lg:h-[270px] lg:w-[410px]" />
+        <Image src={image} alt={imageAlt} className="h-auto w-full object-cover lg:h-[270px] lg:w-[480px]" />
       </div>
     </div>
   );
@@ -70,44 +73,68 @@ function StepWithImage({
 
 export function HowItWorksSection() {
   return (
-    <section aria-labelledby="how-it-works" className="mt-16 sm:mt-24">
-      <div className="mx-auto w-full max-w-280 px-4 sm:px-6 lg:px-8">
+    <section 
+      aria-labelledby="how-it-works" 
+      className="bg-[linear-gradient(178.76deg,rgba(69,95,246,0.411765)_0.98%,rgba(255,255,255,0)_28.13%)] bg-[#FFFFFF] pt-[69px] pb-[103px]"
+    >
+      <div className="mx-auto w-full max-w-[1487px] px-4 sm:px-6 lg:px-8">
         <FadeUp>
           <h2
             id="how-it-works"
-            className="text-center text-4xl font-extrabold text-black sm:text-5xl"
+            className="text-center text-black font-black text-[clamp(50px,62px+(100vw-768px)*0.02,62px)] leading-[1.1]"
           >
             How It Works
           </h2>
         </FadeUp>
-        <div className="mx-auto mt-14 max-w-6xl">
-
+        <div className="mx-auto mt-14">
             <div className="space-y-12 lg:space-y-16">
               <StepWithImage
-                step={1}
-                title="Verify Your Credentials"
-                image={FamilyBg}
-                imageAlt="Verification preview"
-                imageSide="right"
+                step={1} 
+                title="Create Your Profile"
+                image={Graphics5}
+                imageAlt="Create Your Profile"
+                imageSide="left"
                 body={
                   <p>
-                    Connect LinkedIn, upload certificates, confirm work history.
-                    <br />
-                    Get blockchain verification.
+                    Upload your CV. Our AI automatically extracts your experience, skills, and education.
                   </p>
                 }
               />
               <StepWithImage
-                step={1}
+                step={2}
                 title="Verify Your Credentials"
-                image={FamilyBg}
+                image={Graphics6}
                 imageAlt="Verification preview"
+                imageSide="right"
+                body={
+                  <p>
+                    Connect LinkedIn, upload certificates, confirm work history. Get blockchain verification.
+                  </p>
+                }
+              />
+
+              <StepWithImage
+                step={3}
+                title="See Your Score"
+                image={Graphics7}
+                imageAlt="See Your Score"
                 imageSide="left"
                 body={
                   <p>
-                    Connect LinkedIn, upload certificates, confirm work history.
-                    <br />
-                    Get blockchain verification.
+                    For every job, see exactly how you match—skill by skill, requirement by requirement.
+                  </p>
+                }
+              />
+
+              <StepWithImage
+                step={4}
+                title="Get Matched"
+                image={Graphics8}
+                imageAlt="Get Matched"
+                imageSide="right"
+                body={
+                  <p>
+                    When a job fits your verified qualifications, you’re automatically surfaced to employers.
                   </p>
                 }
               />
