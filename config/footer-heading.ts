@@ -32,7 +32,7 @@ export const defaultFooterHeading: FooterHeadingContent = {
 
 /** Exact path → content (highest priority). */
 export const footerHeadingByPath: Record<string, FooterHeadingContent> = {
-  "/candidate": {
+  "candidate": {
     ...defaultFooterHeading,
     titleLine1: "Your Next Job is Waiting,",
     titleLine2: "",
@@ -40,6 +40,16 @@ export const footerHeadingByPath: Record<string, FooterHeadingContent> = {
     ctas: [
       { text: "Create Your Verified Free Profile", href: "#create-profile" },
       { text: "Talk to our team", href: "#contact" },
+    ],
+  },
+  "employer": {
+    ...defaultFooterHeading,
+    titleLine1: "Ready to Hire Smarter?",
+    titleLine2: "",
+    subtitle: "Get Started Today",
+    ctas: [
+      { text: "Book a 15-min demo", href: "#create-profile" },
+      { text: "Start a trial!", href: "#contact" },
     ],
   },
 };
@@ -53,14 +63,15 @@ export const footerHeadingByPathPrefix: {
 ];
 
 export function getFooterHeadingForPath(pathname: string): FooterHeadingContent {
-  const exact = footerHeadingByPath[pathname];
+  const cleanPathname = pathname.replace(/\//g, "");
+  const exact = footerHeadingByPath[cleanPathname];
   if (exact) return exact;
 
   const byPrefix = [...footerHeadingByPathPrefix].sort(
     (a, b) => b.prefix.length - a.prefix.length,
   );
   for (const { prefix, content } of byPrefix) {
-    if (prefix !== "/" && pathname.startsWith(prefix)) return content;
+    if (prefix !== "/" && cleanPathname.startsWith(prefix)) return content;
   }
 
   return defaultFooterHeading;

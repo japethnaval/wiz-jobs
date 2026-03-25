@@ -12,7 +12,7 @@ export function EmployerJobSeekerSection() {
         <FadeUp>
           <h2
             id="employer-job-seeker-heading"
-            className="font-extrabold text-pretty mx-auto max-w-4xl text-center text-[clamp(1.75rem,1rem+3vw,3.5rem)] leading-[1.1] text-black sm:mb-16"
+            className="font-bold text-pretty mx-auto max-w-4xl text-center text-[clamp(1.75rem,1rem+3vw,3.5rem)] leading-[1.1] text-black sm:mb-16"
           >
             Stop Hiring the Wrong People Start Hiring Verified Talent.
           </h2>

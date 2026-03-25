@@ -99,7 +99,7 @@ export function WeAreDifferentSection() {
                       scope="col"
                       className="w-1/3 rounded-t-3xl px-4 pb-4 pt-2"
                     >
-                      <div className="flex flex-col items-center gap-3">
+                      <div className="flex flex-col items-center gap-3 opacity-60">
                         <WMark />
                         <span className="sr-only">WizJobs</span>
                       </div>

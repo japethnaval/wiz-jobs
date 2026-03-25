@@ -77,7 +77,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative text-zinc-900 bg-[#F0F2F9]">
+    <footer className="relative text-black bg-[#F0F2F9]">
       
       <div className="mx-auto max-w-[120rem] px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
@@ -93,7 +93,7 @@ export function Footer() {
             Human-led AI hiring. <br />
             Built for accountable decisions.
             </p>
-            <p className="mt-8 text-xs text-black">
+            <p className="mt-8 text-xs ">
               © {year} WizJobs. All rights reserved.
             </p>
           </div>

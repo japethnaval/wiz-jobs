@@ -1,3 +1,11 @@
 export { default as WizLogo } from "./WizLogo.svg";
 export { default as WizJobGrey } from "./WizJobGrey.svg";
 export { default as BotIcon } from "./BotIcon.svg";
+export { default as VerifiedIcon } from "./VerifiedIcon.svg";
+export { default as PaperIcon } from "./PaperIcon.svg";
+export { default as MaskIcon } from "./MaskIcon.svg";
+export { default as AnalyticsIcon } from "./AnalyticsIcon.svg";
+export { default as ShieldIcon } from "./ShieldIcon.svg";
+export { default as PeopleIcon } from "./PeopleIcon.svg";
+export { default as BarChartIcon } from "./BarChartIcon.svg";
+export { default as AtomicIcon } from "./AtomicIcon.svg";
