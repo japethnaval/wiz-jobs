@@ -29,7 +29,7 @@ export function EmployerJobSeekerSection() {
                 credentials.
               </p>
               <p className="font-bold text-black text-lg">
-                <strong className="font-bold text-black">The result?</strong>
+                <strong className="font-extrabold text-black">The result?</strong>
               </p>
               <p className="font-regular text-black text-xs">
                 Bad hires that cost you $6,000 each. Wasted interviews. Lost
