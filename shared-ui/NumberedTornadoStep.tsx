@@ -35,7 +35,7 @@ function NumberedTornadoBadge({
       </div>
 
       {/* Tornado */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[108px] -translate-x-1/2 -translate-y-[54%] opacity-95 sm:w-[128px]">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[108px] -translate-x-1/2 -translate-y-[54%] opacity-95 sm:w-[128px] z-10">
         <Image src={TornadoArt} alt="" className="h-auto w-full" />
       </div>
 

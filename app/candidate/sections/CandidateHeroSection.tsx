@@ -17,7 +17,7 @@ export function CandidateHeroSection() {
             id="candidate-hero-heading"
             className="mx-auto max-w-[100%] text-balance font-black text-black leading-[1.37] text-[clamp(2.75rem,1.25rem+5.5vw,5.0625rem)]"
           >
-            Get Hired for Your Skills, Not Your Luck
+            Get Hired for Your Skills, <br/> Not Your Luck
           </h1>
           <h3 className="relative z-10 mt-0 mx-auto max-w-[612px] text-[clamp(1.125rem,0.45rem+2.1vw,1.5625rem)] font-black leading-[1.25] text-[#455FF6]">
             Stop sending resumes into black holes. Get verified, get scored, get matched to jobs where
