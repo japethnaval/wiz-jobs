@@ -62,13 +62,13 @@ export function JobSeekerVoicesSection() {
                     />
                   </div>
 
-                  <h3 className="mt-[40px] font-extrabold text-[#222222] text-[clamp(1.25rem,1.1rem+0.4vw,1.5625rem)] leading-[33px]">
+                  <h3 className="mt-[40px] font-extrabold text-white text-[clamp(1.25rem,1.1rem+0.4vw,1.5625rem)] leading-[33px]">
                     {item.name}
                     <br />
                     {item.title}
                   </h3>
 
-                  <p className="mt-[12px] font-medium text-[#222222] text-[clamp(0.9375rem,0.9rem+0.2vw,1rem)] leading-[23px]">
+                  <p className="mt-[12px] font-medium text-white text-[clamp(0.9375rem,0.9rem+0.2vw,1rem)] leading-[23px]">
                     {item.quote}
                   </p>
                 </div>

@@ -18,7 +18,7 @@ function VerificationImageContainer({
 }: VerificationImageContainerProps) {
   return (
     <div className="relative inline-block w-full max-w-[480px] lg:h-[270px]">
-      <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[28px] border-b-2 border-r-2 border-[#455ff6]" />
+      <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[28px] border-b border-r border-[#455ff6]" />
       <div className="relative overflow-hidden rounded-[28px] border border-[#455ff6]/25 bg-white">
         <Image src={image} alt={imageAlt} className="h-auto w-full object-cover lg:h-[270px] lg:w-[480px]" />
       </div>

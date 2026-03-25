@@ -46,7 +46,7 @@ function NumberedTornadoBadge({
             "pointer-events-none absolute top-[50%] hidden w-[160px] -translate-y-1/2 lg:block",
             isRight
               ? "left-[calc(100%+1rem)]"
-              : "right-[calc(100%+1rem)] -scale-x-100",
+              : "right-[calc(100%+1rem)] -scale-x-80",
           ].join(" ")}
           viewBox="0 0 140 80"
         >
@@ -54,7 +54,7 @@ function NumberedTornadoBadge({
             points="0,40 90,40 130,75"
             fill="none"
             stroke="#455ff6"
-            strokeWidth="2"
+            strokeWidth="1"
             initial={{ pathLength: 0 }}
             whileInView={{ pathLength: 1 }}
             viewport={{ once: true }}
@@ -85,10 +85,10 @@ export function NumberedTornadoStep({
       >
         <NumberedTornadoBadge step={step} showConnector={showConnector} connectorSide={connectorSide} />
         <div className="mt-4 min-w-0 pt-4">
-          <h3 className="text-pretty text-lg font-extrabold text-[#455ff6] sm:text-xl">
+          <h3 className="text-pretty text-lg font-bold text-[#455ff6] sm:text-xl">
             {title}
           </h3>
-          <div className="mt-2 text-pretty text-sm font-semibold leading-relaxed text-zinc-700 sm:text-[15px] max-w-[260px]">
+          <div className="mt-2 text-pretty text-sm font-regular leading-relaxed text-zinc-700 sm:text-[15px] max-w-[260px]">
             {children}
           </div>
         </div>
