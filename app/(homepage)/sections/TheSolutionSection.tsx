@@ -2,41 +2,66 @@
 
 import Image, { type StaticImageData } from "next/image";
 import { motion } from "framer-motion";
-
-import { BarChartIcon, AtomicIcon, PeopleIcon, ShieldIcon } from "@/assets/images";
+import { ShieldIcon, AtomicIcon, PeopleIcon, BarChartIcon } from "@/assets";
 import { FadeUp } from "@/shared-ui";
 
 type Feature = {
   title: string;
   body: string;
   highlight: string;
-  icon: StaticImageData;
+  icon: StaticImageData | React.ReactNode;
 };
+
+function isStaticImageData(icon: Feature["icon"]): icon is StaticImageData {
+  return typeof icon === "object" && icon !== null && "src" in icon;
+}
+
+function FeatureIcon({ icon }: { icon: Feature["icon"] }) {
+  if (isStaticImageData(icon)) {
+    return (
+      <Image
+        src={icon}
+        alt=""
+        aria-hidden
+        className="h-12 w-12 shrink-0 object-contain"
+      />
+    );
+  }
+
+  return (
+    <div
+      className="h-12 w-12 shrink-0 [&_svg]:h-full [&_svg]:w-full"
+      aria-hidden
+    >
+      {icon}
+    </div>
+  );
+}
 
 const features: Feature[] = [
   {
     title: "Blockchain-Verified \n Credentials",
     body: "Every work experience, skill, and certificate is verified through multiple sources, layers and secured on blockchain. No more resume fiction.",
     highlight: "Just verified truth.",
-    icon: ShieldIcon,
+    icon: <ShieldIcon />,
   },
   {
     title: "AI-Powered \n Qualification Matching",
     body: "Our AI doesn’t just match keywords—it understands context, evaluates true skill levels, and scores candidates on actual job fit.",
     highlight: "90% accuracy vs. \n the industry’s 30%.",
-    icon: AtomicIcon,
+    icon: <AtomicIcon />,
   },
   {
     title: "Complete \n Transparency",
     body: "Candidates see their qualification scores. Employers see verification status on every claim. No black boxes.",
     highlight: "No bias. Just data-\ndriven decisions.",
-    icon: PeopleIcon,
+    icon: <PeopleIcon />,
   },
   {
     title: "Pay for Results, \n Not Resume Volume",
     body: "At WizJobs, our pricing is built around what actually matters: verified, qualified candidates who match your requirements. You’re investing in precision, not spam.",
     highlight: "That’s recruiting \n done right.",
-    icon: BarChartIcon,
+    icon: <BarChartIcon />,
   },
 ];
 
@@ -85,20 +110,15 @@ export function TheSolutionSection() {
                 variants={itemVariants}
               >
                 <div className="mb-4">
-                  <Image
-                    src={item.icon}
-                    alt=""
-                    aria-hidden
-                    className="h-12 w-12 shrink-0 object-contain"
-                  />
+                  <FeatureIcon icon={item.icon} />
                 </div>
-                <h3 className="mb-3 whitespace-pre-line text-lg font-extrabold leading-snug text-black sm:text-xl">
+                <h3 className="mb-3 whitespace-pre-line text-lg font-bold leading-snug text-black sm:text-xl">
                   {item.title}
                 </h3>
                 <p className="text-pretty whitespace-pre-line text-[15px] leading-relaxed text-black sm:text-[0.9375rem] font-semibold">
                   {item.body}
                 </p>
-                <p className="mt-auto whitespace-pre-line pt-4 text-pretty text-sm font-extrabold text-[#455ff6] sm:text-base">
+                <p className="mt-auto whitespace-pre-line pt-4 text-pretty text-sm font-bold text-[#455ff6] sm:text-base">
                   {item.highlight}
                 </p>
               </motion.li>

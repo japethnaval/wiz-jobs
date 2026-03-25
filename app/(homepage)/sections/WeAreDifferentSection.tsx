@@ -55,7 +55,7 @@ function WMark() {
 export function WeAreDifferentSection() {
   return (
       <section aria-labelledby="we-are-different-heading">
-        <div className="mx-auto w-full max-w-[min(100%,56rem)] px-4 sm:px-6 bg-[#EAEBF6">
+        <div className="mx-auto w-full max-w-[min(100%,70rem)] px-4 sm:px-6 bg-[#EAEBF6]">
           <FadeInScale>
             <div className="rounded-[1.75rem] bg-[linear-gradient(90deg,#4FE3F2_-0.04%,#49FBDF_0.04%)] p-[3px] shadow-sm sm:rounded-[2rem] sm:p-1">
               <div className="rounded-[calc(1.75rem-3px)] bg-white px-4 py-8 sm:rounded-[calc(2rem-4px)] sm:px-8 sm:py-8 lg:px-8 lg:py-12">
@@ -79,19 +79,19 @@ export function WeAreDifferentSection() {
                 <colgroup>
                   <col className="w-1/3" />
                   <col className="w-1/3" />
-                  <col className="w-1/3 bg-[linear-gradient(0deg,#DAE0FC_33%,rgba(218,224,252,0.5)_77%,rgba(255,255,255,0)_100%)]" />
+                  <col className="w-1/3 bg-[linear-gradient(0deg,#DAE0FC_33%,rgba(218,224,252,0.5)_49%,rgba(255,255,255,0)_100%)]" />
                 </colgroup>
                 <thead>
                   <tr>
                     <th
                       scope="col"
-                      className="w-1/3 px-4 pb-4 text-center text-[0.9375rem] font-semibold text-[#455ff6]"
+                      className="w-1/3 px-4 pb-4 text-center text-[0.9375rem] font-extrabold italic text-[#455ff6]"
                     >
                       Feature
                     </th>
                     <th
                       scope="col"
-                      className="w-1/3 px-4 pb-4 text-center text-[0.9375rem] font-semibold text-[#455ff6]"
+                      className="w-1/3 px-4 pb-4 text-center text-[0.9375rem] font-medium italic text-[#455ff6]"
                     >
                       Traditional Platforms
                     </th>
@@ -99,7 +99,7 @@ export function WeAreDifferentSection() {
                       scope="col"
                       className="w-1/3 rounded-t-3xl px-4 pb-4 pt-2"
                     >
-                      <div className="flex flex-col items-center gap-3">
+                      <div className="flex flex-col items-center gap-3 opacity-60">
                         <WMark />
                         <span className="sr-only">WizJobs</span>
                       </div>
@@ -113,21 +113,21 @@ export function WeAreDifferentSection() {
                       <tr key={row.feature}>
                         <td
                           className={
-                            "px-4 py-4 text-center align-middle font-medium text-[#455ff6]"
+                            "px-4 py-4 text-center align-middle font-extrabold italic text-[#455ff6]"
                           }
                         >
                           {row.feature}
                         </td>
                         <td
                           className={
-                            "px-4 py-4 text-center align-middle text-[#455ff6]"
+                            "px-4 py-4 text-center align-middle font-medium italic text-[#455ff6]"
                           }
                         >
                           {row.traditional}
                         </td>
                         <td
                           className={[
-                            "px-4 py-4 text-center align-middle text-base font-bold italic text-[#455ff6]",
+                            "px-4 py-4 text-center align-middle text-base font-extrabold text-[#455ff6]",
                             isLast ? "rounded-b-3xl shadow-[inset_0_-1px_0_0_rgba(69,95,246,0.06)]" : "",
                           ].join(" ")}
                         >

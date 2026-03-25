@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { WizJobGrey } from "@/assets";
 import { AboutHeroLeft, AboutHeroRight } from "@/assets/images";
 import { FadeInScale, FadeUp } from "@/shared-ui";
 
@@ -11,25 +10,6 @@ export function AboutHeroSection() {
       aria-labelledby="about-us-heading"
       className="relative isolate overflow-x-clip md:-mx-6 lg:-mx-8 pb-[80px]"
     >
-      <div
-        className="
-          select-none
-          pointer-events-none 
-          opacity-45 
-          absolute left-0 
-          top-[42%] 
-          z-0  
-          -translate-x-[45%] 
-          -translate-y-[55.5%] 
-          sm:top-1/2 
-          sm:-translate-x-[35%] 
-          lg:w-[min(50vw,56rem)] 
-          lg:-translate-x-[5%]"
-        aria-hidden
-      >
-        <WizJobGrey className="h-auto" />
-      </div>
-
       <div className="relative z-10 mx-auto w-full max-w-[min(100%,96rem)] px-6 pt-12 sm:pt-16 lg:px-8 lg:pt-[124px]">
         
         <FadeUp className="relative mx-auto max-w-4xl text-center">
