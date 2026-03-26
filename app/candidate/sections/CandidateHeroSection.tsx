@@ -8,7 +8,7 @@ export function CandidateHeroSection() {
   return (
     <section
       aria-labelledby="candidate-hero-heading"
-      className="relative isolate overflow-x-clip"
+      className="relative isolate overflow-x-clip px-4 md:px-8 lg:px-12"
     >
       <div className="relative z-10 mx-auto flex w-full max-w-[min(100%,96rem)] flex-col items-center text-center">
         <h1

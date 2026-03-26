@@ -13,7 +13,7 @@ export function EverythingYouNeedSection() {
       aria-labelledby="everything-you-need-heading"
       className="md:-mx-6 lg:-mx-8"
     >
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full overflow-hidden py-12 md:py-16 lg:py-24">
         <div className="absolute inset-0 -z-10" aria-hidden>
           <Image
             src={Background3}
