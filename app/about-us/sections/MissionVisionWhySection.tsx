@@ -289,7 +289,7 @@ function MissionVisionWhyIntroTrack() {
     <div ref={trackRef} className="relative">
       {/* Mission & Vision */}
       <FadeUp>
-        <div className="relative z-10 pb-[110px]">
+        <div className="relative z-10 pb-8]">
           {/* Upper guide: clipped to this block so stem never stacks with lower guide */}
           <div
             className="pointer-events-none absolute left-1/2 top-2 bottom-0 z-[1] hidden -translate-x-1/2 flex flex-col items-center md:flex"
@@ -308,21 +308,21 @@ function MissionVisionWhyIntroTrack() {
             />
           </div>
           <div className="relative z-10 grid gap-10 md:grid-cols-2 md:gap-0">
-            <article className="md:pr-10 lg:pr-[50px]">
-              <h2 className="font-black text-black text-[clamp(3.25rem,1.5rem+6.5vw,6.375rem)] leading-[1.1]">
+            <article className="px-6 md:px-8 lg:px-12">
+              <h2 className="mx-auto max-w-4xl text-balance leading-[1.15] font-bold text-black text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]">
                 Our Mission
               </h2>
-              <p className="mt-[33px] max-w-[448px] text-[clamp(1.125rem,0.35rem+2.1vw,1.5625rem)] leading-[1.2] font-area-normal-medium">
+              <p className="relative py-6 md:py-8 font-normal leading-[1.30] text-black text-[clamp(0.875rem,0.65rem+0.8vw,1.125rem)]">
                 To build the world&apos;s most trusted recruitment platform—where qualifications
                 matter more than keywords, and verification matters more than volume.
               </p>
             </article>
 
-            <article className="md:pl-10 lg:pl-[50px]">
-              <h2 className="font-black text-black text-[clamp(3.25rem,1.5rem+6.5vw,6.375rem)] leading-[1.1]">
+            <article className="px-6 md:px-8 lg:px-12">
+              <h2 className="mx-auto max-w-4xl text-balance leading-[1.15] font-bold text-black text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]">
                 Our Vision
               </h2>
-              <p className="mt-[33px] max-w-[480px] text-[clamp(1.125rem,0.35rem+2.1vw,1.5625rem)] leading-[1.2] font-area-normal-medium">
+              <p className="relative py-6 md:py-8 font-normal leading-[1.30] text-black text-[clamp(0.875rem,0.65rem+0.8vw,1.125rem)]">
                 A world where hiring is fast, fair, and based on verified truth. Where job seekers
                 are valued for their skills, and employers never waste time on unqualified
                 candidates.
@@ -333,15 +333,15 @@ function MissionVisionWhyIntroTrack() {
       </FadeUp>
 
       {/* WHY header + intro */}
-      <FadeUp delay={0.06} className="relative z-10 text-center pt-[50px] pb-[20px]">
+      <FadeUp delay={0.06} className="relative z-10 text-center py-6 md:py-8">
         <h2
           id="why-wizjobs-heading"
-          className="font-black text-black text-[clamp(3.25rem,1.5rem+6.5vw,6.375rem)] leading-[1.1]"
+          className="mx-auto max-w-4xl text-balance leading-[1.15] font-bold text-black text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]"
         >
           WHY
         </h2>
         <h4 
-          className="font-black text-black text-[clamp(1.25rem,0.65rem+2.2vw,2rem)] leading-[1.1]">
+          className="font-normal text-black text-[clamp(1.25rem,0.65rem+2.2vw,2rem)] leading-[1.1]">
           We Built WizJobs
         </h4>
       </FadeUp>
@@ -365,10 +365,10 @@ function MissionVisionWhyIntroTrack() {
       </div>
 
       <FadeUp delay={0.06} className="relative z-10 text-center">
-        <p className="mt-[33px] mx-auto max-w-[570px] text-[clamp(1.125rem,0.35rem+2.1vw,1.5625rem)] leading-[1.2] font-black">
+        <p className="mx-auto max-w-[570px] text-[clamp(1.125rem,0.35rem+2.1vw,1.5625rem)] font-normal leading-[1.30] text-black text-[clamp(0.875rem,0.65rem+0.8vw,1.125rem)] py-6 md:py-8">
           We&apos;ve spent a combined 50+ years in software, recruitment, and talent analytics.{" "}
         </p>
-        <h3 className="mx-auto max-w-[650px] text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem))] leading-[1.3] font-black text-[#455FF6]">
+        <h3 className="mx-auto max-w-[650px] font-bold text-[#4f46e5] text-base font-extrabold sm:text-xl md:text-2xl lg:text-[2.5rem] py-6 md:py-8">
           And we&apos;ve seen the same problems over and over.
         </h3>
       </FadeUp>
@@ -383,7 +383,7 @@ export function MissionVisionWhySection() {
   return (
     <section
       aria-labelledby="why-wizjobs-heading"
-      className="bg-[linear-gradient(178.76deg,rgba(69,95,246,0.411765)_0.98%,rgba(255,255,255,0)_28.13%)] bg-[#ECEEF7] pt-[113px] pb-[77px]"
+      className="bg-[linear-gradient(178.76deg,rgba(69,95,246,0.411765)_0.98%,rgba(255,255,255,0)_28.13%)] bg-[#ECEEF7] -mt-12 py-12 md:py-16 lg:py-24"
     >
       <div className="mx-auto w-full max-w-[min(100%,1430px)] px-4 sm:px-6 lg:px-8">
         <MissionVisionWhyIntroTrack />
@@ -391,13 +391,13 @@ export function MissionVisionWhySection() {
         {/* Problem points: icon always left of copy (20px gap); rows stagger L/R; connector (md+) */}
         <div
           ref={problemGuideTrackRef}
-          className="relative mx-auto mt-14 w-full max-w-[min(100%,1310px)] md:mt-20"
+          className="relative mx-auto w-full max-w-[min(100%,1310px)] py-6 md:py-8"
         >
           <WhyProblemsConnectorScaffold
             trackRef={problemGuideTrackRef}
             leg1RowRef={problemGuideLeg1RowRef}
           />
-          <StaggerContainer className="relative z-10 space-y-[46px]">
+          <StaggerContainer className="relative z-10 space-y-8">
             {problemPoints.map((item, index) => {
               const staggerRight = index % 2 === 1;
               return (
@@ -414,7 +414,7 @@ export function MissionVisionWhySection() {
                       style={{ maxWidth: PROBLEM_CLUSTER_W }}
                     >
                       <CircleIconSlot icon={item.Icon} className="problem-icon" />
-                      <p className="problem-copy w-full max-w-[370px] shrink-0 text-pretty text-center font-area-normal-black text-[22px] leading-[29px] text-black sm:text-[24px] sm:leading-[32px] md:text-left md:text-[25px] md:leading-[33px]">
+                      <p className="problem-copy w-full max-w-[370px] shrink-0 text-pretty text-center font-area-normal-medium text-[22px] leading-[29px] text-black sm:text-[24px] sm:leading-[32px] md:text-left md:text-[25px] md:leading-[33px]">
                         {item.text}
                       </p>
                     </div>
@@ -425,9 +425,8 @@ export function MissionVisionWhySection() {
           </StaggerContainer>
         </div>
 
-        <FadeUp delay={0.06} className="relative z-10 text-center pt-[50px] lg:pt-[161px]">
-          <h2 className="font-black text-[clamp(2.5rem,1.75rem+4.5vw,5.4375rem)] leading-[1.1] text-[#455FF6]">We knew there had to be
-          a better way. So we built it.</h2>
+        <FadeUp delay={0.06} className="relative z-10 text-center py-6 md:py-8">
+          <h2 className="w-full max-w-[750px] mx-auto font-bold text-[clamp(1.875rem,1rem+3.2vw,3.25rem)] leading-[1.1] text-[#455FF6]">We knew there had to be a better way. So we built it.</h2>
         </FadeUp>
 
       </div>

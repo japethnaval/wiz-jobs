@@ -17,9 +17,12 @@ export default function AboutUsPage() {
           <AboutHeroSection />
         <Spacer className="h-6 md:h-8 lg:h-12" />
       </FadeUp>
-      
-      <MissionVisionWhySection />
-      <ValuesSection />
+      <FadeUp className="w-full py-6 md:py-8 lg:py-12 bg-[#ECEEF7]" amount={0.15}>
+        <MissionVisionWhySection />
+      </FadeUp>
+      <FadeUp className="w-full py-6 md:py-8 lg:py-12 bg-[#ECEEF7]" amount={0.15}>
+        <ValuesSection />
+      </FadeUp>
     </div>
   );
 }
