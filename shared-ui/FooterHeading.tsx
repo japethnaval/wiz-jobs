@@ -5,48 +5,61 @@ import { usePathname } from "next/navigation";
 import { GradientCtaButton } from "@/shared-ui/GradientCtaButton";
 import { getFooterHeadingForPath } from "@/config/footer-heading";
 
+/** Same responsive scale as the subtitle so title + subtitle feel like one band. */
+const bandHeadingType =
+  "text-pretty text-base font-extrabold sm:text-xl md:text-2xl lg:text-[2.5rem]";
+
 export function FooterHeading() {
   const pathname = usePathname() ?? "/";
-  const {
-    titleLine1,
-    titleLine2,
-    subtitle,
-    ctas: [primary, secondary],
-  } = getFooterHeadingForPath(pathname);
+  const { titleLine1, titleLine2, subtitle, ctas } = getFooterHeadingForPath(pathname);
+  const isSingleCta = ctas.length === 1;
 
   return (
-    <div className={["relative",  "pt-24" ].filter(Boolean).join(" ")}>
-      {(
-        <div
-          className="pointer-events-none absolute inset-0 z-10 bg-[#eceef8]"
-          aria-hidden
-        />
-      )}
+    <div className={["relative", "pt-24"].filter(Boolean).join(" ")}>
+      <div className="pointer-events-none absolute inset-0 z-10 bg-[#eceef8]" aria-hidden />
       <section
-        className="relative z-10 rounded-t-[452px] border-b border-white bg-[linear-gradient(180deg,#FFF_0%,#F0F2F9_100%)] px-6 pb-16 pt-14 text-center sm:px-10 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-20"
+        className="relative z-10 rounded-t-[452px] border-b border-white bg-[linear-gradient(180deg,#FFF_0%,#F0F2F9_100%)] px-4 pb-12 pt-10 text-center sm:px-10 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-20"
         aria-labelledby="footer-heading-title"
       >
-        <h2
-          id="footer-heading-title"
-          className="mx-auto max-w-3xl text-pretty text-4xl font-extrabold leading-[1.1] text-black sm:text-5xl lg:text-6xl"
-        >
-          <span className="block">{titleLine1}</span>
-          <span className="block">{titleLine2}</span>
-        </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-pretty text-xl font-extrabold text-[#4f46e5] sm:text-2xl lg:text-[2.75rem]">
-          {subtitle}
-        </p>
-        <div className="mx-auto mt-10 flex w-full max-w-2xl flex-col gap-4 sm:mt-12 sm:flex-row sm:justify-center sm:gap-5">
-          <GradientCtaButton
-            className="w-full justify-center px-6 py-3 text-base lg:px-8 lg:py-4 lg:max-h-[124px] overflow-hidden sm:flex-initial sm:max-w-[442px] sm:text-2xl"
-            href={primary.href}
-            text={primary.text}
-          />
-          <GradientCtaButton
-            className="w-full justify-center px-6 py-3 text-base lg:px-8 lg:py-4 lg:max-h-[124px] overflow-hidden sm:flex-initial sm:max-w-[442px] sm:text-2xl"
-            href={secondary.href}
-            text={secondary.text}
-          />
+        <div className="mx-auto flex w-full max-w-[min(42rem,calc(100vw-2rem))] flex-col items-center sm:max-w-3xl lg:max-w-4xl">
+          <h2
+            id="footer-heading-title"
+            className={[
+              "mx-auto max-w-[min(20rem,calc(100vw-2.5rem))] px-2 leading-[1.15] font-bold sm:max-w-3xl sm:px-0 sm:leading-[1.1]",
+              bandHeadingType,
+            ].join(" ")}
+          >
+            <span className="block">{titleLine1}</span>
+            {titleLine2.trim() ? <span className="block">{titleLine2}</span> : null}
+          </h2>
+          <p
+            className={[
+              "mx-auto mt-3 max-w-[min(18rem,calc(100vw-2.5rem))] font-bold text-[#4f46e5] sm:mt-5 sm:max-w-2xl lg:mt-6",
+              bandHeadingType,
+            ].join(" ")}
+          >
+            {subtitle}
+          </p>
+          <div
+            className={[
+              "mx-auto mt-6 flex w-full flex-col gap-3 px-12 sm:mt-10 sm:flex-row sm:justify-center sm:gap-4 sm:px-0 md:gap-5",
+              isSingleCta ? "max-w-[min(300px,calc(100vw-2rem))]" : "max-w-2xl",
+            ].join(" ")}
+          >
+            {ctas.map((cta, i) => (
+              <GradientCtaButton
+                key={`${cta.href}-${i}`}
+                className={[
+                  "justify-center overflow-hidden px-6 py-3 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg lg:max-h-[124px] lg:px-8 lg:py-4 lg:text-2xl",
+                  isSingleCta
+                    ? "w-full"
+                    : "w-full sm:flex-initial sm:max-w-[min(442px,100%)]",
+                ].join(" ")}
+                href={cta.href}
+                text={cta.text}
+              />
+            ))}
+          </div>
         </div>
       </section>
     </div>

@@ -11,7 +11,7 @@ export type FooterHeadingContent = {
   titleLine1: string;
   titleLine2: string;
   subtitle: string;
-  ctas: readonly [FooterHeadingCta, FooterHeadingCta];
+  ctas: readonly FooterHeadingCta[];
 };
 
 export const defaultFooterHeading: FooterHeadingContent = {
@@ -34,12 +34,11 @@ export const defaultFooterHeading: FooterHeadingContent = {
 export const footerHeadingByPath: Record<string, FooterHeadingContent> = {
   "candidate": {
     ...defaultFooterHeading,
-    titleLine1: "Your Next Job is Waiting,",
+    titleLine1: "Your Next Job \nis Waiting",
     titleLine2: "",
     subtitle: "Are You Verified?",
     ctas: [
-      { text: "Create Your Verified Free Profile", href: "#create-profile" },
-      { text: "Talk to our team", href: "#contact" },
+      { text: "Create Your \n Free Profile", href: "#create-profile" },
     ],
   },
   "employer": {

@@ -19,8 +19,8 @@
   opacity: 0.95;
 }
 
-/* Hide arrows on small viewports; touch swipe still works (matches Tailwind `md:`). */
-@media (max-width: 47.9375rem) {
+/* Hide side arrows until the header/nav switches to desktop at 1240px. */
+@media (max-width: 77.4375rem) {
   .root :global(.swiper-button-prev),
   .root :global(.swiper-button-next) {
     display: none !important;

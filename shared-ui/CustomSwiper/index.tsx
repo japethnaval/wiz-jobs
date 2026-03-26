@@ -2,6 +2,7 @@
 
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useSwiper } from "swiper/react";
 
 import styles from "./index.module.css";
 
@@ -25,14 +26,40 @@ export type CustomSlide = {
 export type CustomSwiperProps = {
   slides: CustomSlide[];
   className?: string;
-  /** Use `\n` for line breaks. */
   problemSectionTitle?: string;
-  /** Use `\n` for line breaks. */
   solutionSectionTitle?: string;
-  /** Use `\n` for line breaks. */
   resultQuestion?: string;
   loop?: boolean;
 };
+
+function InlineNav() {
+  const swiper = useSwiper();
+
+  return (
+    <div className="mt-5 flex w-full items-center justify-center gap-4 min-[1240px]:hidden">
+      <button
+        type="button"
+        onClick={() => swiper.slidePrev()}
+        className="inline-flex size-11 items-center justify-center rounded-full border border-white/70 text-white transition hover:bg-white/10"
+        aria-label="Previous slide"
+      >
+        <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 18l-6-6 6-6" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        onClick={() => swiper.slideNext()}
+        className="inline-flex size-11 items-center justify-center rounded-full border border-white/70 text-white transition hover:bg-white/10"
+        aria-label="Next slide"
+      >
+        <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 6l6 6-6 6" />
+        </svg>
+      </button>
+    </div>
+  );
+}
 
 function SlideContent({
   slide,
@@ -50,17 +77,17 @@ function SlideContent({
       className="flex min-h-[min(32rem,85vh)] flex-col text-left px-4"
       style={{ backgroundColor: bg }}
     >
-      <div className="flex min-h-0 flex-1 flex-col justify-center sm:px-[5%] md:px-[8%] lg:px-[10%] xl:px-[12%]">
+      <div className="flex min-h-0 flex-1 flex-col justify-center sm:px-[4%] md:px-[6%] lg:px-[10%] xl:px-[12%]">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto_1fr] md:items-stretch md:gap-0 md:gap-x-[3%] lg:gap-x-[6%] xl:gap-x-[8%]">
         <section className="mx-auto flex w-full max-w-[min(100%,22rem)] min-w-0 flex-col gap-0 whitespace-pre-line md:mx-0 md:max-w-[20rem] md:justify-self-end md:pr-2 lg:max-w-88">
-          <h2 className="mb-16 font-area-normal-black text-2xl leading-tight text-white sm:text-3xl md:text-[1.75rem] lg:text-4xl">
+          <h2 className="mb-16 font-bold text-2xl leading-tight text-white sm:text-3xl md:text-[1.75rem] lg:text-4xl">
             {problemSectionTitle}
           </h2>
           <div className="w-full lg:w-[280px]">
             <p className="mb-4 text-sm font-extrabold tracking-wide" style={{ color: accent }}>
               {slide.problemLabel}
             </p>
-            <h3 className="mb-6 font-area-normal-black text-xl leading-snug text-white sm:text-2xl lg:text-[1.65rem]">
+            <h3 className="mb-6 font-bold text-xl leading-snug text-white sm:text-2xl lg:text-[1.65rem]">
               {slide.problemSubheading}
             </h3>
             <p className="max-w-prose text-sm leading-relaxed text-white/95 sm:text-base lg:max-w-none">
@@ -77,14 +104,14 @@ function SlideContent({
         </div>
 
         <section className="mx-auto flex w-full max-w-[min(100%,22rem)] min-w-0 flex-col gap-0 whitespace-pre-line md:mx-0 md:max-w-[20rem] md:justify-self-start md:pl-2 lg:max-w-88">
-          <h2 className="mb-16 font-area-normal-black text-2xl leading-tight text-white sm:text-3xl md:text-[1.75rem] lg:text-4xl">
+          <h2 className="mb-16 font-bold text-2xl leading-tight text-white sm:text-3xl md:text-[1.75rem] lg:text-4xl">
             {solutionSectionTitle}
           </h2>
           <div className="w-full lg:w-[280px]">
             <p className="mb-4 text-sm font-extrabold tracking-wide" style={{ color: accent }}>
               {slide.solutionLabel}
             </p>
-            <h3 className="mb-6 font-area-normal-black text-xl leading-snug text-white sm:text-2xl lg:text-[1.65rem]">
+            <h3 className="mb-6 font-bold text-xl leading-snug text-white sm:text-2xl lg:text-[1.65rem]">
               {slide.solutionSubheading}
             </h3>
             <p className="max-w-prose text-[clamp(0.875rem,0.45rem+1.125vw,1.4rem)] leading-relaxed text-white/95 sm:text-base lg:max-w-none">
@@ -97,19 +124,20 @@ function SlideContent({
 
       <div className="mx-auto mt-10 flex w-full max-w-sm shrink-0 flex-col items-center gap-4 whitespace-pre-line sm:mt-12 sm:max-w-md">
         <p
-          className="w-full text-center font-extrabold text-[clamp(1.5rem,0.65rem+2.6vw,50px)]"
+          className="w-full text-center font-bold text-[clamp(1.5rem,0.65rem+2.6vw,50px)]"
           style={{ color: accent }}
         >
           {resultQuestion}
         </p>
         <div
-          className="font-area-normal-black w-full rounded-full px-6 py-3.5 text-center text-sm text-white shadow-sm sm:px-8 sm:text-base md:py-4"
+          className="w-full rounded-full px-6 py-3.5 text-center text-1xl font-bold text-white shadow-sm sm:px-8 sm:text-xl md:py-4 md:text-2xl"
           style={{
             background: "linear-gradient(270deg, #455FF6 -11.13%, #FFFFFF 147.23%)",
           }}
         >
           {slide.resultPillText}
         </div>
+        <InlineNav />
       </div>
     </div>
   );

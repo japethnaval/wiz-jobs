@@ -68,7 +68,7 @@ export function CircularTornadoCard({
           )}
         >
           <div className="absolute inset-2 flex flex-col items-center justify-center overflow-y-auto rounded-full bg-white px-5 py-8 text-center sm:px-7 sm:py-10">
-            <p className="text-pretty text-sm font-bold text-black sm:text-base">
+            <p className="text-pretty text-sm font-bold text-[#455FF6] sm:text-base">
               {eyebrow}
             </p>
             <h2 className="mt-0.5 text-pretty text-2xl font-bold tracking-tight text-[#455ff6] sm:text-3xl">
