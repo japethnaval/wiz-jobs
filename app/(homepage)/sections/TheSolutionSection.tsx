@@ -2,7 +2,7 @@
 
 import Image, { type StaticImageData } from "next/image";
 import { motion } from "framer-motion";
-import { ShieldIcon, AtomicIcon, PeopleIcon, BarChartIcon } from "@/assets";
+import { Icon12, Icon15, Icon13, Icon14 } from "@/assets";
 import { FadeUp } from "@/shared-ui";
 
 type Feature = {
@@ -43,25 +43,25 @@ const features: Feature[] = [
     title: "Blockchain-Verified \n Credentials",
     body: "Every work experience, skill, and certificate is verified through multiple sources, layers and secured on blockchain. No more resume fiction.",
     highlight: "Just verified truth.",
-    icon: <ShieldIcon />,
+    icon: <Icon12 />,
   },
   {
     title: "AI-Powered \n Qualification Matching",
     body: "Our AI doesn’t just match keywords—it understands context, evaluates true skill levels, and scores candidates on actual job fit.",
     highlight: "90% accuracy vs. \n the industry’s 30%.",
-    icon: <AtomicIcon />,
+    icon: <Icon15 />,
   },
   {
     title: "Complete \n Transparency",
     body: "Candidates see their qualification scores. Employers see verification status on every claim. No black boxes.",
     highlight: "No bias. Just data-\ndriven decisions.",
-    icon: <PeopleIcon />,
+    icon: <Icon13 />,
   },
   {
     title: "Pay for Results, \n Not Resume Volume",
     body: "At WizJobs, our pricing is built around what actually matters: verified, qualified candidates who match your requirements. You’re investing in precision, not spam.",
     highlight: "That’s recruiting \n done right.",
-    icon: <BarChartIcon />,
+    icon: <Icon14 />,
   },
 ];
 

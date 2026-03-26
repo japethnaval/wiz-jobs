@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { AboutHeroLeft, AboutHeroRight } from "@/assets/images";
+import { Graphics1, Graphics2 } from "@/assets/images";
 import { FadeInScale, FadeUp } from "@/shared-ui";
 
 export function AboutHeroSection() {
@@ -29,7 +29,7 @@ export function AboutHeroSection() {
           <div className="flex w-full flex-col items-center gap-[34px] min-[1369px]:flex-row min-[1369px]:justify-center min-[1369px]:items-center">
             <div className="w-full max-w-[782px] min-w-0 min-[1369px]:w-[782px] min-[1369px]:max-w-none min-[1369px]:shrink-0 overflow-hidden rounded-[2rem] sm:rounded-[2.25rem]">
               <Image
-                src={AboutHeroLeft}
+                src={Graphics1}
                 alt="A professional handshake representing trusted hiring outcomes."
                 priority
                 sizes="(max-width: 1368px) 100vw, 782px"
@@ -39,7 +39,7 @@ export function AboutHeroSection() {
 
             <div className="w-full max-w-[553px] min-w-0 min-[1369px]:w-[553px] min-[1369px]:max-w-none min-[1369px]:shrink-0 overflow-hidden rounded-[2rem] sm:rounded-[2.25rem]">
               <Image
-                src={AboutHeroRight}
+                src={Graphics2}
                 alt="A candidate profile interview image showing confidence and trust."
                 sizes="(max-width: 1368px) 100vw, 553px"
                 className="h-auto w-full object-cover"

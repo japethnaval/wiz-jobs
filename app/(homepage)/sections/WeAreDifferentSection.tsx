@@ -1,6 +1,6 @@
 "use client";
 
-import WizLogo from "@/assets/WizLogo.svg";
+import { Icon5 } from "@/assets";
 import { FadeInScale, FadeUp } from "@/shared-ui";
 
 const rows = [
@@ -47,7 +47,7 @@ function WMark() {
       className="relative mx-auto h-14 w-[3.25rem] overflow-hidden sm:h-16 sm:w-[3.75rem]"
       aria-hidden
     >
-      <WizLogo className="absolute left-0 top-1/2 h-[4.5rem] w-auto min-w-[11rem] -translate-y-1/2 text-[#455ff6] sm:h-[5rem]" />
+      <Icon5 className="absolute left-0 top-1/2 h-[4.5rem] w-auto min-w-[11rem] -translate-y-1/2 text-[#455ff6] sm:h-[5rem]" />
     </div>
   );
 }

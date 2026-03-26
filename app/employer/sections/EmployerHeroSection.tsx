@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { EmployerHero } from "@/assets/images";
+import { Graphics13 } from "@/assets/images";
 import { FadeInScale, FadeUp } from "@/shared-ui";
 import { GradientCtaButton } from "@/shared-ui/GradientCtaButton";
 
@@ -25,7 +25,7 @@ export function EmployerHeroSection() {
         <FadeInScale delay={0.08} className="mx-auto mt-[50px] flex w-full max-w-[1370px] flex-col items-center sm:mt-[82px]">
             <div className="w-full max-w-[782px] min-w-0 overflow-hidden rounded-[2rem] sm:rounded-[2.25rem]">
               <Image
-                src={EmployerHero}
+                src={Graphics13}
                 alt="A professional handshake representing trusted hiring outcomes."
                 priority
                 sizes="(max-width: 1368px) 100vw, 782px"

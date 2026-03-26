@@ -1,4 +1,4 @@
-import { WizJobGrey } from "@/assets";
+import { Icon6 } from "@/assets";
 
 export function WizJobGreyBackDrop() {
   return (
@@ -15,7 +15,7 @@ export function WizJobGreyBackDrop() {
       lg:-translate-x-[5%]"
     aria-hidden
   >
-    <WizJobGrey className="h-auto" />
+    <Icon6 className="h-auto" />
   </div>
   );
 }

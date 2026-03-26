@@ -1,6 +1,6 @@
 "use client";
 
-import { ValuesBackground } from "@/assets/images";
+import { Background1 } from "@/assets/images";
 import { FadeInScale, FadeUp } from "@/shared-ui";
 
 const valueCards = [
@@ -35,7 +35,7 @@ export function ValuesSection() {
       <div
         className="section-inner w-full max-w-[1920px] overflow-hidden bg-cover bg-top-center bg-no-repeat pt-[50px] lg:pt-[85px]"
         style={{
-          backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0.40) 100%), url(${ValuesBackground.src})`,
+          backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0.40) 100%), url(${Background1.src})`,
         }}
       >
         <div className="relative z-10 mx-auto w-full max-w-[1731px] px-4 sm:px-6 lg:px-8">

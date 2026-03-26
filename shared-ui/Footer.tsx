@@ -1,6 +1,5 @@
 import Link from "next/link";
-import WizLogo from "@/assets/WizLogo.svg";
-import BotIcon from "@/assets/BotIcon.svg";
+import { Icon5, Icon7 } from "@/assets";
 
 const productLinks = [
   { label: "For Employers", href: "/employer" },
@@ -87,7 +86,7 @@ export function Footer() {
               aria-label="WizJobs home"
               className="inline-block text-[#4f46e5]"
             >
-              <WizLogo className="h-10 w-auto sm:h-11" aria-hidden />
+              <Icon5 className="h-10 w-auto sm:h-11" aria-hidden />
             </Link>
             <p className="mt-5 max-w-xs text-sm font-medium leading-relaxed text-[#4f46e5]">
             Human-led AI hiring. <br />
@@ -133,7 +132,7 @@ export function Footer() {
         className="fixed bottom-6 right-6 z-40 flex items-center justify-center"
         aria-label="Open chat assistant"
       >
-        <BotIcon className="size-20"/>
+        <Icon7 className="size-20"/>
       </Link>
     </footer>
   );

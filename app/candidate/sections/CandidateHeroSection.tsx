@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CandidateHeroGraphic } from "@/assets/images";
+import { Graphics3 } from "@/assets/images";
 import { FadeInScale, FadeUp } from "@/shared-ui";
 import { GradientCtaButton } from "@/shared-ui/GradientCtaButton";
 
@@ -28,7 +28,7 @@ export function CandidateHeroSection() {
         <FadeInScale delay={0.08} className="mx-auto mt-[20px] w-full max-w-[1272px] sm:mt-[27px]">
           <div className="w-full overflow-hidden">
             <Image
-              src={CandidateHeroGraphic}
+              src={Graphics3}
               alt="A candidate profile preview with verification and scoring indicators."
               priority
               sizes="(max-width: 1040px) 100vw, 1040px"

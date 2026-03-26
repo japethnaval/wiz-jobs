@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import WizLogo from "@/assets/WizLogo.svg";
+import { Icon5 } from "@/assets";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -26,7 +26,7 @@ export function Navigation() {
           aria-label="WizJobs home"
           className="col-start-1 flex items-center justify-self-start self-center"
         >
-          <WizLogo className="h-9 w-auto sm:h-11 min-[1240px]:h-[85px]" />
+          <Icon5 className="h-9 w-auto sm:h-11 min-[1240px]:h-[85px]" />
         </Link>
 
         {/* DESKTOP NAV */}

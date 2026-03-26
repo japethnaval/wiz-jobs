@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CandidateVoicesBackground, Graphics10 } from "@/assets/images";
+import { Background2, Graphics10 } from "@/assets/images";
 import { FadeUp } from "@/shared-ui";
 
 const testimonials = [
@@ -28,7 +28,7 @@ export function JobSeekerVoicesSection() {
       <div
         className="section-inner w-full max-w-[1920px] overflow-hidden bg-cover bg-center bg-no-repeat py-[70px] sm:py-[96px]"
         style={{
-          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.25) 100%), url(${CandidateVoicesBackground.src})`,
+          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.25) 100%), url(${Background2.src})`,
         }}
       >
         <div className="relative z-10 mx-auto w-full max-w-[1731px] px-4 sm:px-6 lg:px-8">

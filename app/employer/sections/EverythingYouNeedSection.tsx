@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import { FamilyBg } from "@/assets/images";
+import { Background3 } from "@/assets/images";
 import { StaggerContainer, StaggerItem } from "@/shared-ui";
-import { AnalyticsIcon, MaskIcon, PaperIcon, VerifiedIcon } from "@/assets";
+import { Icon11, Icon10, Icon9, Icon8 } from "@/assets";
 import { GlassFeatureCard } from "../components/GlassFeatureCard";
 
 const featureIconClassName = "block size-20 max-h-20 max-w-20 shrink-0";
@@ -16,7 +16,7 @@ export function EverythingYouNeedSection() {
       <div className="relative w-full overflow-hidden">
         <div className="absolute inset-0 -z-10" aria-hidden>
           <Image
-            src={FamilyBg}
+            src={Background3}
             alt=""
             fill
             priority
@@ -41,7 +41,7 @@ export function EverythingYouNeedSection() {
             <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
               <GlassFeatureCard
                 className="h-full min-h-0"
-                icon={<MaskIcon aria-hidden className={featureIconClassName} />}
+                icon={<Icon10 aria-hidden className={featureIconClassName} />}
                 title="90% Match Accuracy. Every Single Job Post."
               >
                 <p className="mb-4">
@@ -65,7 +65,7 @@ export function EverythingYouNeedSection() {
             <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
               <GlassFeatureCard
                 className="h-full min-h-0"
-                icon={<PaperIcon aria-hidden className={featureIconClassName} />}
+                icon={<Icon9 aria-hidden className={featureIconClassName} />}
                 title="See More Candidates. Headhunting Mode."
               >
                 <p>
@@ -79,7 +79,7 @@ export function EverythingYouNeedSection() {
             <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
               <GlassFeatureCard
                 className="h-full min-h-0"
-                icon={<VerifiedIcon aria-hidden className={featureIconClassName} />}
+                icon={<Icon8 aria-hidden className={featureIconClassName} />}
                 title="Verification Reports"
               >
                 <p>
@@ -92,7 +92,7 @@ export function EverythingYouNeedSection() {
             <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
               <GlassFeatureCard
                 className="h-full min-h-0"
-                icon={<AnalyticsIcon aria-hidden className={featureIconClassName} />}
+                icon={<Icon11 aria-hidden className={featureIconClassName} />}
                 title="Analytics Dashboard"
               >
                 <p>

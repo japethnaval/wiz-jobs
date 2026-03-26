@@ -4,10 +4,7 @@ import type { ComponentType, RefObject, SVGProps } from "react";
 import { useLayoutEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/shared-ui";
-import Icon1 from "@/assets/icon-1.svg";
-import Icon2 from "@/assets/icon-2.svg";
-import Icon3 from "@/assets/icon-3.svg";
-import Icon4 from "@/assets/icon-4.svg";
+import { Icon1, Icon2, Icon3, Icon4 } from "@/assets";
 
 const problemPoints = [
   {

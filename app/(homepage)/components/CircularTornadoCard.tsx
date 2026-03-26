@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 
-import TornadoArt from "@/assets/images/Tornado.png";
+import { Graphics12 } from "@/assets/images";
 import Image from "next/image";
 
 export type CircularTornadoCardTornadoSide = "leading" | "trailing";
@@ -55,7 +55,7 @@ export function CircularTornadoCard({
           aria-hidden
         >
           <Image
-            src={TornadoArt}
+            src={Graphics12}
             alt="Tornado"
             className="mx-auto h-auto w-[90%]"
             loading="eager"
