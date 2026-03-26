@@ -23,19 +23,19 @@ export function VerificationBenefitsSection() {
   return (
     <section
       aria-labelledby="verification-benefits"
-      className="bg-[#E9EBF6] py-[50px] sm:pt-[103px] sm:pb-[93px]"
+      className="bg-[#E9EBF6] py-12 md:py-16 lg:py-24"
     >
       <div className="mx-auto w-full max-w-[70rem] px-4 sm:px-6 lg:px-8">
         <FadeUp>
           <h2
             id="verification-benefits"
-            className="text-center font-black text-black text-[clamp(50px,3.2rem+1.1vw,62px)] leading-[1.1] max-w-[550px] mx-auto"
+            className="mx-auto max-w-4xl text-balance text-center leading-[1.15] font-bold text-black text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]"
           >
-            Why Verification Matters for You
+            Why Verification <br /> Matters for You
           </h2>
         </FadeUp>
 
-        <div className="mx-auto mt-[30px] grid w-full max-w-[815px] gap-9 sm:mt-[58px]">
+        <div className="mx-auto mt-16 grid w-full max-w-[815px] gap-8">
           {benefits.map((benefit, index) => (
             <FadeUp
               key={benefit.title}
@@ -44,7 +44,8 @@ export function VerificationBenefitsSection() {
                 "w-full max-w-[815px] min-h-[92px] content-center",
                 "rounded-[58px]",
                 "bg-[linear-gradient(271.6deg,#455FF6_-49.43%,#FFFFFF_39.97%)]",
-                "px-8 py-7 sm:px-5 sm:py-[13px]",
+                "px-6 sm:px-8",
+                "py-6 sm:py-8",
               ].join(" ")}
             >
               <div className="flex flex-col items-center gap-[30px] md:flex-row md:items-center">
@@ -57,8 +58,8 @@ export function VerificationBenefitsSection() {
                   />
                 </div>
 
-                <div className="flex w-full min-w-0 flex-1 flex-col items-center gap-3 md:flex-row md:items-center md:gap-[40px]">
-                  <h3 className="w-full text-center md:max-w-[270px] md:text-left font-extrabold text-[#455FF6] text-[clamp(1.25rem,1.1rem+0.4vw,1.5625rem)] leading-[33px]">
+                <div className="flex w-full min-w-0 flex-1 flex-col items-center gap-3 md:flex-row md:items-center md:gap-[0px]">
+                  <h3 className="w-full text-center md:max-w-[270px] md:text-left font-extrabold text-[#455FF6] text-[clamp(1.25rem,1.1rem+0.4vw,1.5rem)] leading-[33px]">
                     {benefit.title}
                   </h3>
 

@@ -26,10 +26,10 @@ export function EverythingYouNeedSection() {
           <div className="absolute inset-0 bg-white/40" />
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-[min(100%,96rem)] px-6 py-16 sm:py-20 lg:px-8 lg:py-24">
+        <div className="relative z-10 mx-auto w-full max-w-[min(100%,96rem)] py-12 md:py-16 lg:py-24 px-4">
           <h2
             id="everything-you-need-heading"
-            className="mx-auto max-w-4xl text-balance text-center font-black leading-[1.15] text-black text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]"
+            className="mx-auto max-w-4xl text-balance text-center leading-[1.15] font-bold text-black text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]"
           >
             Everything You Need to Hire Better
           </h2>
@@ -44,7 +44,7 @@ export function EverythingYouNeedSection() {
                 icon={<Icon10 aria-hidden className={featureIconClassName} />}
                 title="90% Match Accuracy. Every Single Job Post."
               >
-                <p className="mb-4 text-black font-bold">
+                <p className="mb-4">
                   The Industry Standard is 30%. We Deliver 90%. That means 9 out of 10 candidates you
                   review are actually qualified, not 3 out of 10.
                 </p>

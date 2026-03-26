@@ -15,7 +15,7 @@ export function FooterHeading() {
   const isSingleCta = ctas.length === 1;
 
   return (
-    <div className={["relative", "pt-24"].filter(Boolean).join(" ")}>
+    <div className={["relative pt-12 md:pt-16 lg:pt-24"].filter(Boolean).join(" ")}>
       <div className="pointer-events-none absolute inset-0 z-10 bg-[#eceef8]" aria-hidden />
       <section
         className="relative z-10 rounded-t-[452px] border-b border-white bg-[linear-gradient(180deg,#FFF_0%,#F0F2F9_100%)] px-4 pb-12 pt-10 text-center sm:px-10 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-20"

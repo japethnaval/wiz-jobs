@@ -26,7 +26,7 @@ export function JobSeekerVoicesSection() {
   return (
     <section aria-labelledby="job-seeker-voices" className="relative isolate overflow-hidden">
       <div
-        className="section-inner w-full max-w-[1920px] overflow-hidden bg-cover bg-center bg-no-repeat py-[70px] sm:py-[96px]"
+        className="section-inner w-full max-w-[1920px] overflow-hidden bg-cover bg-center bg-no-repeat py-12 md:py-16 lg:py-24"
         style={{
           backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.25) 100%), url(${Background2.src})`,
         }}
@@ -35,21 +35,21 @@ export function JobSeekerVoicesSection() {
           <FadeUp>
             <h2
               id="job-seeker-voices"
-              className="mx-auto text-center font-black text-white text-[clamp(50px,3.2rem+1.1vw,62px)] leading-[83px]"
+              className="mx-auto max-w-4xl text-balance text-center leading-[1.15] font-bold text-white text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]"
             >
               What Job Seekers Say
             </h2>
           </FadeUp>
 
-          <div className="mx-auto mt-[40px] lg:mt-[86px] grid w-full max-w-[1345px] gap-[58px] md:grid-cols-3">
+          <div className="mx-auto mt-[40px] grid w-full max-w-[1345px] gap-[58px] min-[1240px]:mt-[86px] min-[1240px]:grid-cols-3">
             {testimonials.map((item, index) => (
               <FadeUp
                 key={`${item.name}-${item.title}`}
                 delay={0.08 + index * 0.05}
                 className={[
-                  "rounded-[54px] border border-white min-h-[none] sm:min-h-[415px]",
+                  "rounded-[54px] border border-white min-h-[none]",
                   "bg-white/25 backdrop-blur-[30px]",
-                  "px-8 py-12 sm:px-10 sm:pt-[82px] sm:pb-[40px]",
+                  "py-10 px-5 sm:px-7 min-[1240px]:py-16 min-[1240px]:px-10",
                 ].join(" ")}
               >
                 <div className="flex flex-col">
@@ -62,7 +62,7 @@ export function JobSeekerVoicesSection() {
                     />
                   </div>
 
-                  <h3 className="mt-[40px] font-extrabold text-white text-[clamp(1.25rem,1.1rem+0.4vw,1.5625rem)] leading-[33px]">
+                  <h3 className="mt-4 md:mt-4 lg:mt-8 font-bold text-white text-[clamp(1.25rem,1.1rem+0.4vw,1.5625rem)] leading-[33px]">
                     {item.name}
                     <br />
                     {item.title}

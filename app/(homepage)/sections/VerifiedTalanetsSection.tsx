@@ -27,7 +27,7 @@ export function VerifiedTalanetsSection() {
       aria-labelledby="hero-heading"
     >
       <div className="relative z-10 mx-auto flex w-full max-w-[min(100%,96rem)] flex-col items-center px-4 sm:px-6 lg:px-8">
-        <FadeUp className="mb-8 max-w-4xl text-center sm:mb-12 lg:mb-16">
+        <div className="mb-8 max-w-4xl text-center sm:mb-12 lg:mb-16">
           <h1
             id="hero-heading"
             className="text-balance font-bold leading-[1.1] text-[clamp(2.75rem,1.25rem+5.5vw,5.0625rem)]"
@@ -46,7 +46,7 @@ export function VerifiedTalanetsSection() {
           <h3 className="relative z-10 text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] font-bold text-[#455FF6] mt-4 sm:mt-8 mx-auto max-w-[650px] leading-[1.30]">
             The first recruitment platform built on truth, not volume.
           </h3>
-        </FadeUp>
+        </div>
         <FadeInScale delay={0.08}>
           <HeroImageCollage />
         </FadeInScale>

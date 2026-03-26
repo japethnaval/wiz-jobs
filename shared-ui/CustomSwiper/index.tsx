@@ -80,7 +80,7 @@ function SlideContent({
       <div className="flex min-h-0 flex-1 flex-col justify-center sm:px-[4%] md:px-[6%] lg:px-[10%] xl:px-[12%]">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto_1fr] md:items-stretch md:gap-0 md:gap-x-[3%] lg:gap-x-[6%] xl:gap-x-[8%]">
         <section className="mx-auto flex w-full max-w-[min(100%,22rem)] min-w-0 flex-col gap-0 whitespace-pre-line md:mx-0 md:max-w-[20rem] md:justify-self-end md:pr-2 lg:max-w-88">
-          <h2 className="mb-16 font-bold text-2xl leading-tight text-white sm:text-3xl md:text-[1.75rem] lg:text-4xl">
+          <h2 className="mb-8 md:mb-16 font-bold text-2xl leading-tight text-white sm:text-3xl md:text-[1.75rem] lg:text-4xl">
             {problemSectionTitle}
           </h2>
           <div className="w-full lg:w-[280px]">
@@ -104,7 +104,7 @@ function SlideContent({
         </div>
 
         <section className="mx-auto flex w-full max-w-[min(100%,22rem)] min-w-0 flex-col gap-0 whitespace-pre-line md:mx-0 md:max-w-[20rem] md:justify-self-start md:pl-2 lg:max-w-88">
-          <h2 className="mb-16 font-bold text-2xl leading-tight text-white sm:text-3xl md:text-[1.75rem] lg:text-4xl">
+          <h2 className="mb-8 md:mb-16 font-bold text-2xl leading-tight text-white sm:text-3xl md:text-[1.75rem] lg:text-4xl">
             {solutionSectionTitle}
           </h2>
           <div className="w-full lg:w-[280px]">
@@ -124,7 +124,7 @@ function SlideContent({
 
       <div className="mx-auto mt-10 flex w-full max-w-sm shrink-0 flex-col items-center gap-4 whitespace-pre-line sm:mt-12 sm:max-w-md">
         <p
-          className="w-full text-center font-bold text-[clamp(1.5rem,0.65rem+2.6vw,50px)]"
+          className="font-bold w-full text-center text-[clamp(1.5rem,0.65rem+2.6vw,42px)]"
           style={{ color: accent }}
         >
           {resultQuestion}

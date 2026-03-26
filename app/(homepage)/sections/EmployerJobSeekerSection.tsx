@@ -7,7 +7,7 @@ export function EmployerJobSeekerSection() {
     <section
       aria-labelledby="employer-job-seeker-heading"
     >
-      <div className="mx-auto w-full max-w-[1100px] px-4">
+      <div className="mx-auto w-full max-w-[1100px]">
           <h2
             id="employer-job-seeker-heading"
             className="font-bold text-pretty mx-auto max-w-4xl text-center text-[clamp(1.75rem,1rem+3vw,3.5rem)] leading-[1.1] text-black sm:mb-16"

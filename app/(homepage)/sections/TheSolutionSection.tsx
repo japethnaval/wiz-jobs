@@ -86,7 +86,7 @@ const itemVariants = {
 
 export function TheSolutionSection() {
   return (
-      <section aria-labelledby="solution-heading" className="pb-24">
+      <section aria-labelledby="solution-heading">
         <div className="mx-auto w-full max-w-[min(100%,96rem)] px-4 sm:px-6 lg:px-8">
           <FadeUp>
             <h2

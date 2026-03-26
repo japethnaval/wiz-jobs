@@ -35,7 +35,7 @@ function NumberedTornadoBadge({
       </div>
 
       {/* Tornado */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 w-[108px] -translate-x-1/2 -translate-y-[54%] opacity-95 sm:w-[128px] z-10">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[108px] -translate-x-1/2 -translate-y-[54%] opacity-95 sm:w-[128px]">
         <Image src={Graphics12} alt="" className="h-auto w-full" />
       </div>
 
@@ -46,7 +46,7 @@ function NumberedTornadoBadge({
             "pointer-events-none absolute top-[50%] hidden w-[160px] -translate-y-1/2 lg:block",
             isRight
               ? "left-[calc(100%+1rem)]"
-              : "right-[calc(100%+1rem)] -scale-x-80",
+              : "right-[calc(100%+1rem)] -scale-x-98",
           ].join(" ")}
           viewBox="0 0 140 80"
         >
@@ -79,16 +79,16 @@ export function NumberedTornadoStep({
       {/* STEP CONTENT */}
       <div
         className={mergeClass(
-          "flex w-fit flex-col items-center justify-center text-center lg:max-w-[290px]",
+          "flex w-fit flex-col items-center justify-center text-center lg:max-w-[450px]",
           className,
         )}
       >
         <NumberedTornadoBadge step={step} showConnector={showConnector} connectorSide={connectorSide} />
-        <div className="mt-4 min-w-0 pt-4">
-          <h3 className="text-pretty text-lg font-bold text-[#455ff6] sm:text-xl">
+        <div className="mt-4 min-w-0 max-w-[320px] pt-4 sm:max-w-[380px]">
+          <h3 className="text-pretty text-[25px] font-bold text-[#455ff6] sm:text-xl">
             {title}
           </h3>
-          <div className="mt-2 text-pretty text-sm font-regular leading-relaxed text-zinc-700 sm:text-[15px] max-w-[260px]">
+          <div className="mt-2 text-pretty text-sm font-regular leading-relaxed text-black sm:text-[16px]">
             {children}
           </div>
         </div>

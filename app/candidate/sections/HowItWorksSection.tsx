@@ -17,9 +17,8 @@ function VerificationImageContainer({
   imageAlt,
 }: VerificationImageContainerProps) {
   return (
-    <div className="relative inline-block w-full max-w-[480px] lg:h-[270px]">
-      <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[28px] border-b border-r border-[#455ff6]" />
-      <div className="relative overflow-hidden rounded-[28px] border border-[#455ff6]/25 bg-white">
+    <div className="inline-block w-full max-w-[480px] rounded-[28px] border border-[#455ff6] bg-white p-3">
+      <div className="overflow-hidden rounded-[20px]">
         <Image src={image} alt={imageAlt} className="h-auto w-full object-cover lg:h-[270px] lg:w-[480px]" />
       </div>
     </div>
@@ -75,19 +74,19 @@ export function HowItWorksSection() {
   return (
     <section 
       aria-labelledby="how-it-works" 
-      className="bg-[linear-gradient(178.76deg,rgba(69,95,246,0.411765)_0.98%,rgba(255,255,255,0)_28.13%)] bg-[#FFFFFF] pt-[69px] pb-[103px]"
+      className="bg-[linear-gradient(178.76deg,rgba(69,95,246,0.411765)_0.98%,rgba(255,255,255,0)_28.13%)] bg-[#FFFFFF] pt-12 md:pt-16 lg:pt-24 pb-4 md:pb-8 lg:pb-12"
     >
       <div className="mx-auto w-full max-w-[1487px] px-4 sm:px-6 lg:px-8">
         <FadeUp>
           <h2
             id="how-it-works"
-            className="text-center text-black font-black text-[clamp(50px,62px+(100vw-768px)*0.02,62px)] leading-[1.1]"
+            className="mx-auto max-w-4xl text-balance text-center leading-[1.15] font-bold text-black text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]"
           >
             How It Works
           </h2>
         </FadeUp>
-        <div className="mx-auto mt-14">
-            <div className="space-y-12 lg:space-y-16">
+        <div className="mx-auto mt-16">
+            <div className="space-y-12 lg:space-y-12">
               <StepWithImage
                 step={1} 
                 title="Create Your Profile"
@@ -95,7 +94,7 @@ export function HowItWorksSection() {
                 imageAlt="Create Your Profile"
                 imageSide="left"
                 body={
-                  <p>
+                  <p className="font-bold">
                     Upload your CV. Our AI automatically extracts your experience, skills, and education.
                   </p>
                 }
@@ -107,7 +106,7 @@ export function HowItWorksSection() {
                 imageAlt="Verification preview"
                 imageSide="right"
                 body={
-                  <p>
+                  <p className="font-bold">
                     Connect LinkedIn, upload certificates, confirm work history. Get blockchain verification.
                   </p>
                 }
@@ -120,7 +119,7 @@ export function HowItWorksSection() {
                 imageAlt="See Your Score"
                 imageSide="left"
                 body={
-                  <p>
+                  <p className="font-bold">
                     For every job, see exactly how you match—skill by skill, requirement by requirement.
                   </p>
                 }
@@ -133,7 +132,7 @@ export function HowItWorksSection() {
                 imageAlt="Get Matched"
                 imageSide="right"
                 body={
-                  <p>
+                  <p className="font-bold">
                     When a job fits your verified qualifications, you’re automatically surfaced to employers.
                   </p>
                 }
