@@ -87,11 +87,11 @@ const itemVariants = {
 export function TheSolutionSection() {
   return (
       <section aria-labelledby="solution-heading">
-        <div className="mx-auto w-full max-w-[min(100%,96rem)] px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-[min(100%,96rem)] px-4 sm:px-6 lg:px-8 sm:pb-12 py-12 sm:py-12 md:py-12">
           <FadeUp>
             <h2
               id="solution-heading"
-              className="font-extrabold text-pretty mb-12 text-center text-2xl leading-[1.1] text-white sm:mb-16 sm:text-3xl lg:text-5xl"
+              className="mt-4 mb-4 text-center text-2xl font-extrabold leading-[1.1] text-black sm:mb-16 sm:text-3xl lg:text-5xl md:text-white lg:text-white"
             >
               The solution?
             </h2>

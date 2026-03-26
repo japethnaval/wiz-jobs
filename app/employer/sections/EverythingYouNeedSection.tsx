@@ -11,7 +11,7 @@ export function EverythingYouNeedSection() {
   return (
     <section
       aria-labelledby="everything-you-need-heading"
-      className="md:-mx-6 lg:-mx-8"
+      className="overflow-x-clip"
     >
       <div className="relative w-full overflow-hidden py-12 md:py-16 lg:py-24">
         <div className="absolute inset-0 -z-10" aria-hidden>
@@ -26,7 +26,7 @@ export function EverythingYouNeedSection() {
           <div className="absolute inset-0 bg-white/40" />
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-[min(100%,96rem)] py-12 md:py-16 lg:py-24 px-4">
+        <div className="relative z-10 mx-auto w-full max-w-[min(100%,96rem)] py-12 md:py-16 lg:py-24 px-4 md:px-8 lg:px-12">
           <h2
             id="everything-you-need-heading"
             className="mx-auto max-w-4xl text-balance text-center leading-[1.15] font-bold text-black text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]"
