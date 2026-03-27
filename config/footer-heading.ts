@@ -11,7 +11,7 @@ export type FooterHeadingContent = {
   titleLine1: string;
   titleLine2: string;
   subtitle: string;
-  ctas: readonly [FooterHeadingCta, FooterHeadingCta];
+  ctas: readonly FooterHeadingCta[];
 };
 
 export const defaultFooterHeading: FooterHeadingContent = {
@@ -32,17 +32,25 @@ export const defaultFooterHeading: FooterHeadingContent = {
 
 /** Exact path → content (highest priority). */
 export const footerHeadingByPath: Record<string, FooterHeadingContent> = {
-  // Example overrides — customize as you add pages:
-  // "/for-employers": {
-  //   ...defaultFooterHeading,
-  //   titleLine1: "Hire verified talent",
-  //   titleLine2: "faster",
-  //   subtitle: "Post a role in minutes.",
-  //   ctas: [
-  //     { text: "Post a job - Get started", href: "/post" },
-  //     { text: "Talk to sales - Book a call", href: "/contact" },
-  //   ],
-  // },
+  "candidate": {
+    ...defaultFooterHeading,
+    titleLine1: "Your Next Job \nis Waiting",
+    titleLine2: "",
+    subtitle: "Are You Verified?",
+    ctas: [
+      { text: "Create Your \n Free Profile", href: "#create-profile" },
+    ],
+  },
+  "employer": {
+    ...defaultFooterHeading,
+    titleLine1: "Ready to Hire Smarter?",
+    titleLine2: "",
+    subtitle: "Get Started Today",
+    ctas: [
+      { text: "Book a 15-min demo", href: "#create-profile" },
+      { text: "Start a trial!", href: "#contact" },
+    ],
+  },
 };
 
 /** Longest matching prefix wins (after exact match fails). Skip "/" here; it is handled by default. */
@@ -54,14 +62,15 @@ export const footerHeadingByPathPrefix: {
 ];
 
 export function getFooterHeadingForPath(pathname: string): FooterHeadingContent {
-  const exact = footerHeadingByPath[pathname];
+  const cleanPathname = pathname.replace(/\//g, "");
+  const exact = footerHeadingByPath[cleanPathname];
   if (exact) return exact;
 
   const byPrefix = [...footerHeadingByPathPrefix].sort(
     (a, b) => b.prefix.length - a.prefix.length,
   );
   for (const { prefix, content } of byPrefix) {
-    if (prefix !== "/" && pathname.startsWith(prefix)) return content;
+    if (prefix !== "/" && cleanPathname.startsWith(prefix)) return content;
   }
 
   return defaultFooterHeading;

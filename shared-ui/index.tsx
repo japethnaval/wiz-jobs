@@ -5,3 +5,7 @@ export * from "./GradientCtaButton";
 export * from "./Motion";
 export * from "./Navigation";
 export * from "./Spacer";
+export * from "./FloatingRegisterPill";
+export * from "./CustomSwiper";
+export * from "./WizJobGreyBackDrop";
+export * from "./NumberedTornadoStep";

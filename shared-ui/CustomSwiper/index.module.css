@@ -1,0 +1,33 @@
+.root {
+  --swiper-navigation-size: clamp(2.25rem, 5vw, 3rem);
+  --swiper-navigation-color: #ffffff;
+  /* Larger = farther from left/right edge, closer to the slide copy (md+ only; mobile arrows hidden). */
+  --swiper-navigation-sides-offset: clamp(7rem, 14vw, 14rem);
+  --swiper-navigation-top-offset: 42%;
+}
+
+.root :global(.swiper) {
+  overflow: visible;
+}
+
+.root :global(.swiper-slide) {
+  height: auto;
+}
+
+.root :global(.swiper-button-prev),
+.root :global(.swiper-button-next) {
+  opacity: 0.95;
+}
+
+/* Hide side arrows until the header/nav switches to desktop at 1240px. */
+@media (max-width: 77.4375rem) {
+  .root :global(.swiper-button-prev),
+  .root :global(.swiper-button-next) {
+    display: none !important;
+  }
+}
+
+.root :global(.swiper-button-prev::after),
+.root :global(.swiper-button-next::after) {
+  display: none;
+}

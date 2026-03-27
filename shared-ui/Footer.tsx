@@ -1,17 +1,16 @@
 import Link from "next/link";
-import WizLogo from "@/assets/WizLogo.svg";
-import BotIcon from "@/assets/BotIcon.svg";
+import { Icon5, Icon7 } from "@/assets";
 
 const productLinks = [
-  { label: "For Employers", href: "#employers" },
-  { label: "For Candidates", href: "#candidates" },
-  { label: "How It Works", href: "#how-it-works" },
+  { label: "For Employers", href: "/employer" },
+  { label: "For Candidates", href: "/candidate" },
+  { label: "How It Works", href: "/candidate#how-it-works" },
 ] as const;
 
 const resourceLinks = [{ label: "Help Center", href: "#help" }] as const;
 
 const companyLinks = [
-  { label: "About Us", href: "#about" },
+  { label: "About Us", href: "/about-us" },
   { label: "Privacy Policy", href: "#privacy" },
   { label: "Terms of Service", href: "#terms" },
 ] as const;
@@ -77,37 +76,33 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative text-zinc-900 bg-[#F0F2F9]">
-      
-      <div className="mx-auto max-w-[120rem] px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
+    <footer className="relative text-black bg-[#F0F2F9]">
+      <div className="mx-auto max-w-480 px-6 py-12 sm:px-10 lg:px-16 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-4">
+          <div className="order-3 lg:order-1 lg:col-span-4">
             <Link
               href="/"
               aria-label="WizJobs home"
               className="inline-block text-[#4f46e5]"
             >
-              <WizLogo className="h-10 w-auto sm:h-11" aria-hidden />
+              <Icon5 className="h-10 w-auto sm:h-11" aria-hidden />
             </Link>
             <p className="mt-5 max-w-xs text-sm font-medium leading-relaxed text-[#4f46e5]">
-            Human-led AI hiring. <br />
-            Built for accountable decisions.
+              Human-led AI hiring. <br />
+              Built for accountable decisions.
             </p>
-            <p className="mt-8 text-xs text-zinc-500">
+            <p className="mt-8 text-xs ">
               © {year} WizJobs. All rights reserved.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-5 lg:gap-12">
+          <div className="order-1 grid grid-cols-2 gap-10 sm:grid-cols-3 lg:order-2 lg:col-span-5 lg:gap-12">
             <FooterColumn title="Product" links={productLinks} />
             <FooterColumn title="Resources" links={resourceLinks} />
             <FooterColumn title="Company" links={companyLinks} />
           </div>
 
-          <div className="flex flex-col gap-6 lg:col-span-3 lg:items-end">
-            <p className="text-sm font-bold text-[#4f46e5] lg:text-right">
-              Socials
-            </p>
+          <div className="order-2 flex flex-col gap-6 lg:order-3 lg:col-span-3 lg:items-end">
             <div className="flex flex-wrap gap-3 lg:justify-end">
               {socials.map(({ name, href, icon }) => (
                 <Link
@@ -136,7 +131,7 @@ export function Footer() {
         className="fixed bottom-6 right-6 z-40 flex items-center justify-center"
         aria-label="Open chat assistant"
       >
-        <BotIcon className="size-20"/>
+        <Icon7 className="size-20"/>
       </Link>
     </footer>
   );

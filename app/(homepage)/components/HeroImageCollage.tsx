@@ -1,14 +1,15 @@
 import Image from "next/image";
-import { HomeHero } from "@/assets/images";
+import { Graphics11 } from "@/assets/images";
 
 export function HeroImageCollage() {
   return (
-    <div className="mx-auto w-full max-w-[min(100%,960px)]">
+    <div className="mx-auto w-full max-w-[960px]">
       <Image
-        src={HomeHero}
-        alt="Hiring platform hero: verified candidates, hiring ROI, less screening time, and match accuracy."
+        src={Graphics11}
         priority
-        sizes="(max-width: 768px) 100vw, 960px"
+        alt="Hiring platform hero: verified candidates, hiring ROI, less screening time, and match accuracy."
+        placeholder="blur"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 960px"
         className="h-auto w-full"
       />
     </div>
