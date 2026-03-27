@@ -2,8 +2,8 @@ import Image from "next/image";
 
 import { Background3 } from "@/assets/images";
 import { StaggerContainer, StaggerItem } from "@/shared-ui";
+import { SpotlightCard } from "@/shared-ui/ReactBits";
 import { Icon11, Icon10, Icon9, Icon8 } from "@/assets";
-import { GlassFeatureCard } from "../components/GlassFeatureCard";
 
 const featureIconClassName = "block size-20 max-h-20 max-w-20 shrink-0";
 
@@ -39,67 +39,103 @@ export function EverythingYouNeedSection() {
             amount={0.12}
           >
             <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
-              <GlassFeatureCard
-                className="h-full min-h-0"
-                icon={<Icon10 aria-hidden className={featureIconClassName} />}
-                title="90% Match Accuracy. Every Single Job Post."
+              <SpotlightCard
+                className="h-full min-h-0 rounded-[54px] border-white bg-white/70 p-6 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-[30px] sm:p-8 lg:max-w-[409px] lg:mx-auto"
+                spotlightColor="rgba(69, 95, 246, 0.22)"
               >
-                <p className="mb-4 text-black font-bold">
-                  The Industry Standard is 30%. We Deliver 90%. That means 9 out of 10 candidates you
-                  review are actually qualified, not 3 out of 10.
-                </p>
-                <p className="mb-3 text-black font-bold">
-                  <span className="font-bold text-[#455FF6]">How? </span>
-                  <br />
-                  AI qualification scoring + blockchain verification + multi-source credential checks.
-                </p>
-                <p className="text-black font-bold">
-                  <span className="font-bold text-[#455FF6]">Result? </span>
-                  <br />
-                  Stop wasting 70% of your time on unqualified applicants. Interview the right people. Hire
-                  faster.
-                </p>
-              </GlassFeatureCard>
+                <article className="flex h-full min-h-0 flex-col gap-4 sm:gap-5">
+                  <div className="flex shrink-0 text-[#455FF6]" aria-hidden>
+                    <Icon10 aria-hidden className={featureIconClassName} />
+                  </div>
+                  <h3 className="text-xl font-bold leading-tight text-black sm:text-2xl">
+                    90% Match Accuracy. Every Single Job Post.
+                  </h3>
+                  <div className="min-h-0 flex-1 text-sm font-normal leading-relaxed text-black/90 sm:text-base">
+                    <p className="mb-4 text-black font-bold">
+                      The Industry Standard is 30%. We Deliver 90%. That means 9 out of 10 candidates you
+                      review are actually qualified, not 3 out of 10.
+                    </p>
+                    <p className="mb-3 text-black font-bold">
+                      <span className="font-bold text-[#455FF6]">How? </span>
+                      <br />
+                      AI qualification scoring + blockchain verification + multi-source credential checks.
+                    </p>
+                    <p className="text-black font-bold">
+                      <span className="font-bold text-[#455FF6]">Result? </span>
+                      <br />
+                      Stop wasting 70% of your time on unqualified applicants. Interview the right people.
+                      Hire faster.
+                    </p>
+                  </div>
+                </article>
+              </SpotlightCard>
             </StaggerItem>
 
             <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
-              <GlassFeatureCard
-                className="h-full min-h-0"
-                icon={<Icon9 aria-hidden className={featureIconClassName} />}
-                title="See More Candidates. Headhunting Mode."
+              <SpotlightCard
+                className="h-full min-h-0 rounded-[54px] border-white bg-white/70 p-6 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-[30px] sm:p-8 lg:max-w-[409px] lg:mx-auto"
+                spotlightColor="rgba(69, 95, 246, 0.22)"
               >
-                <p className="text-black font-bold">
-                  Headhunting Mode gives you access to additional qualified candidates beyond your initial
-                  matches—candidates who may have slightly lower scores but bring strong cultural fit or
-                  unique value to your organization.
-                </p>
-              </GlassFeatureCard>
+                <article className="flex h-full min-h-0 flex-col gap-4 sm:gap-5">
+                  <div className="flex shrink-0 text-[#455FF6]" aria-hidden>
+                    <Icon9 aria-hidden className={featureIconClassName} />
+                  </div>
+                  <h3 className="text-xl font-bold leading-tight text-black sm:text-2xl">
+                    See More Candidates. Headhunting Mode.
+                  </h3>
+                  <div className="min-h-0 flex-1 text-sm font-normal leading-relaxed text-black/90 sm:text-base">
+                    <p className="text-black font-bold">
+                      Headhunting Mode gives you access to additional qualified candidates beyond your
+                      initial matches-candidates who may have slightly lower scores but bring strong cultural
+                      fit or unique value to your organization.
+                    </p>
+                  </div>
+                </article>
+              </SpotlightCard>
             </StaggerItem>
 
             <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
-              <GlassFeatureCard
-                className="h-full min-h-0"
-                icon={<Icon8 aria-hidden className={featureIconClassName} />}
-                title="Verification Reports"
+              <SpotlightCard
+                className="h-full min-h-0 rounded-[54px] border-white bg-white/70 p-6 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-[30px] sm:p-8 lg:max-w-[409px] lg:mx-auto"
+                spotlightColor="rgba(69, 95, 246, 0.22)"
               >
-                <p className="text-black font-bold">
-                  Standardized format showing LinkedIn profile match, employment history verification, skill
-                  assessment results, and certificate validation.
-                </p>
-              </GlassFeatureCard>
+                <article className="flex h-full min-h-0 flex-col gap-4 sm:gap-5">
+                  <div className="flex shrink-0 text-[#455FF6]" aria-hidden>
+                    <Icon8 aria-hidden className={featureIconClassName} />
+                  </div>
+                  <h3 className="text-xl font-bold leading-tight text-black sm:text-2xl">
+                    Verification Reports
+                  </h3>
+                  <div className="min-h-0 flex-1 text-sm font-normal leading-relaxed text-black/90 sm:text-base">
+                    <p className="text-black font-bold">
+                      Standardized format showing LinkedIn profile match, employment history verification,
+                      skill assessment results, and certificate validation.
+                    </p>
+                  </div>
+                </article>
+              </SpotlightCard>
             </StaggerItem>
 
             <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
-              <GlassFeatureCard
-                className="h-full min-h-0"
-                icon={<Icon11 aria-hidden className={featureIconClassName} />}
-                title="Analytics Dashboard"
+              <SpotlightCard
+                className="h-full min-h-0 rounded-[54px] border-white bg-white/70 p-6 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-[30px] sm:p-8 lg:max-w-[409px] lg:mx-auto"
+                spotlightColor="rgba(69, 95, 246, 0.22)"
               >
-                <p className="text-black font-bold">
-                  Track applications vs. qualified candidates ratio, average time-to-hire,
-                  cost-per-quality-hire, and hiring manager performance.
-                </p>
-              </GlassFeatureCard>
+                <article className="flex h-full min-h-0 flex-col gap-4 sm:gap-5">
+                  <div className="flex shrink-0 text-[#455FF6]" aria-hidden>
+                    <Icon11 aria-hidden className={featureIconClassName} />
+                  </div>
+                  <h3 className="text-xl font-bold leading-tight text-black sm:text-2xl">
+                    Analytics Dashboard
+                  </h3>
+                  <div className="min-h-0 flex-1 text-sm font-normal leading-relaxed text-black/90 sm:text-base">
+                    <p className="text-black font-bold">
+                      Track applications vs. qualified candidates ratio, average time-to-hire,
+                      cost-per-quality-hire, and hiring manager performance.
+                    </p>
+                  </div>
+                </article>
+              </SpotlightCard>
             </StaggerItem>
           </StaggerContainer>
         </div>

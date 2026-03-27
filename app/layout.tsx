@@ -5,6 +5,7 @@ import { FooterHeading } from "@/shared-ui/FooterHeading";
 import { Navigation } from "@/shared-ui/Navigation";
 import { WizJobGreyBackDrop } from "@/shared-ui";
 import { FloatingRegisterPill } from "@/shared-ui/FloatingRegisterPill";
+import FloatingLines from "@/shared-ui/ReactBits/FloatingLines";
 import "./globals.css";
 
 const areaNormal = localFont({
@@ -46,6 +47,23 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${areaNormal.className} ${areaNormal.variable} relative flex min-h-full flex-col overflow-x-clip bg-white text-zinc-900`}
       >
+        <div className="pointer-events-none fixed inset-0 z-0 opacity-35">
+          <FloatingLines
+            linesGradient={["#2f4ba2", "#455ff6", "#fff"]}
+            enabledWaves={["top", "middle", "bottom"]}
+            lineCount={[4, 4, 4]}
+            lineDistance={[7, 7, 7]}
+            topWavePosition={{ x: -0.2, y: 0.85, rotate: -0.03 }}
+            middleWavePosition={{ x: 0, y: 0, rotate: 0 }}
+            animationSpeed={1}
+            bendRadius={4}
+            bendStrength={-0.35}
+            interactive={false}
+            parallax
+            parallaxStrength={0.15}
+            mixBlendMode="multiply"
+          />
+        </div>
         <WizJobGreyBackDrop />
         <Navigation />
         <FloatingRegisterPill />

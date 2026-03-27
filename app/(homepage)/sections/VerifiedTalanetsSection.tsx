@@ -1,8 +1,17 @@
 "use client";
 
+import type { ComponentType } from "react";
 import { HeroImageCollage } from "@/app/(homepage)/components/HeroImageCollage";
 import { FadeInScale, FadeUp } from "@/shared-ui";
 import { GradientCtaButton } from "../../../shared-ui/GradientCtaButton";
+import { RotatingText, ShinyText } from "@/shared-ui/ReactBits";
+
+const RotatingTextComponent = RotatingText as ComponentType<Record<string, unknown>>;
+
+const homeHeroSubtexts = [
+  "The first recruitment platform built on truth, not volume.",
+  "Verification-first hiring with real qualification matching.",
+] as const;
 
 
 function SparkleIcon({ className }: { className?: string }) {
@@ -30,22 +39,58 @@ export function VerifiedTalanetsSection() {
         <div className="mb-8 max-w-4xl text-center sm:mb-12 lg:mb-16">
           <h1
             id="hero-heading"
-            className="text-balance font-bold leading-[1.1] text-[clamp(2.75rem,1.25rem+5.5vw,5.0625rem)]"
+            className="text-balance font-bold leading-[1.1] text-black text-[clamp(2.75rem,1.25rem+5.5vw,5.0625rem)]"
           >
             <span className="block">
-              Verified Talents
+              <ShinyText
+                text="Verified Talents"
+                disabled={false}
+                speed={3}
+                className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
+                color="#000000"
+                shineColor="#435FF6"
+                spread={120}
+                yoyo={false}
+                pauseOnHover={false}
+                direction="left"
+                delay={0}
+              />
             </span>
             <span className="block">
-              at the Speed of{" "}
+              <ShinyText
+                text="at the Speed of AI"
+                disabled={false}
+                speed={3}
+                className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
+                color="#000000"
+                shineColor="#435FF6"
+                spread={120}
+                yoyo={false}
+                pauseOnHover={false}
+                direction="left"
+                delay={0}
+              />
               <span className="relative inline-block">
-                AI
                 <SparkleIcon className="absolute -right-5 -top-1 h-4 w-4 text-black sm:h-5 sm:w-5 sm:-right-6 sm:-top-1.5" />
               </span>
             </span>
           </h1>
-          <h3 className="relative z-10 text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] font-bold text-[#455FF6] mt-4 sm:mt-8 mx-auto max-w-[650px] leading-[1.30]">
-            The first recruitment platform built on truth, not volume.
-          </h3>
+          <h2
+            className="relative z-10 mx-auto mt-4 flex min-h-24 w-full max-w-[650px] items-center justify-center text-pretty font-bold leading-[1.30] text-[#455FF6] text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] sm:mt-8 sm:min-h-28"
+          >
+            <RotatingTextComponent
+              texts={[...homeHeroSubtexts]}
+              auto
+              loop
+              splitBy="lines"
+              rotationInterval={2600}
+              staggerDuration={0.01}
+              staggerFrom="first"
+              mainClassName="mx-auto flex w-full max-w-full justify-center text-center text-[#455FF6]"
+              splitLevelClassName="justify-center"
+              elementLevelClassName="will-change-transform"
+            />
+          </h2>
         </div>
         <FadeInScale delay={0.08}>
           <HeroImageCollage />

@@ -18,7 +18,7 @@ export default function CandidatePage() {
       <FadeUp className="w-full py-6 md:py-8 lg:py-12" amount={0.15}>
         <CandidateHeroSection />
       </FadeUp>
-      <FadeUp className="w-full py-6 md:py-8 lg:py-12" amount={0.15}>
+      <FadeUp className="w-full" amount={0.15}>
         <HowItWorksSection />
       </FadeUp>
       <FadeUp className="w-full" delay={0.08} amount={0.15}>

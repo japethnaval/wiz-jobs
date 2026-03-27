@@ -1,9 +1,18 @@
 "use client";
 
+import type { ComponentType } from "react";
 import Image from "next/image";
 import { Graphics13 } from "@/assets/images";
 import { GradientCtaButton } from "@/shared-ui/GradientCtaButton";
 import { FadeInScale } from "@/shared-ui/Motion";
+import { RotatingText, ShinyText } from "@/shared-ui/ReactBits";
+
+const RotatingTextComponent = RotatingText as ComponentType<Record<string, unknown>>;
+
+const employerHeroSubtexts = [
+  "Stop wasting time on unqualified candidates.",
+  "Interview verified, high-fit talent faster.",
+] as const;
 
 export function EmployerHeroSection() {
   return (
@@ -16,23 +25,64 @@ export function EmployerHeroSection() {
           id="employer-hero-heading"
           className="pb-8 text-balance font-bold leading-[1.1] text-black text-[clamp(2.75rem,1.25rem+5.5vw,5.0625rem)]"
         >
-          Hire Verified Talent <br /> in Hours, Not Weeks
+          <span className="block">
+            <ShinyText
+              text="Hire Verified Talent"
+              disabled={false}
+              speed={3}
+              className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
+              color="#000000"
+              shineColor="#435FF6"
+              spread={120}
+              yoyo={false}
+              pauseOnHover={false}
+              direction="left"
+              delay={0}
+            />
+          </span>
+          <span className="block">
+            <ShinyText
+              text="in Hours, Not Weeks"
+              disabled={false}
+              speed={3}
+              className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
+              color="#000000"
+              shineColor="#435FF6"
+              spread={120}
+              yoyo={false}
+              pauseOnHover={false}
+              direction="left"
+              delay={0}
+            />
+          </span>
         </h1>
-        <h3 className="relative z-10 max-w-[650px] pb-8 font-bold leading-[1.30] text-[#455FF6] text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)]">
-          Stop wasting time on unqualified candidates.
-        </h3>
-        <FadeInScale delay={0.08}>
-        <div className="py-8 w-full max-w-[min(100%,960px)] min-w-0 overflow-hidden rounded-4xl sm:rounded-[2.25rem]">
-        
-          <Image
-            src={Graphics13}
-            alt="A professional handshake representing trusted hiring outcomes."
-            priority  
-            placeholder="blur"
-            sizes="(max-width: 1368px) 100vw, 782px"
-            className="h-auto w-full object-cover"
+        <h2
+          className="relative z-10 mx-auto flex min-h-24 w-full max-w-[650px] items-center justify-center pb-8 text-pretty font-bold leading-[1.30] text-[#455FF6] text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] sm:min-h-28"
+        >
+          <RotatingTextComponent
+            texts={[...employerHeroSubtexts]}
+            auto
+            loop
+            splitBy="lines"
+            rotationInterval={2600}
+            staggerDuration={0.01}
+            staggerFrom="first"
+            mainClassName="mx-auto flex w-full max-w-full justify-center text-center text-[#455FF6]"
+            splitLevelClassName="justify-center"
+            elementLevelClassName="will-change-transform"
           />
-        </div>
+        </h2>
+        <FadeInScale delay={0.08} className="flex w-full justify-center">
+          <div className="mx-auto w-full max-w-[min(100%,960px)] min-w-0 overflow-hidden rounded-4xl py-8 sm:rounded-[2.25rem]">
+            <Image
+              src={Graphics13}
+              alt="A professional handshake representing trusted hiring outcomes."
+              priority
+              placeholder="blur"
+              sizes="(max-width: 1368px) 100vw, 782px"
+              className="mx-auto block h-auto w-full object-cover object-center"
+            />
+          </div>
         </FadeInScale>
         <GradientCtaButton
           href="#book-demo"

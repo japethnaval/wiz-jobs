@@ -30,6 +30,7 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
+,   "shared-ui/ReactBits/index.js"  
   ],
   "exclude": ["node_modules"]
 }

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Background2, Graphics10 } from "@/assets/images";
 import { FadeUp } from "@/shared-ui";
+import { SpotlightCard } from "@/shared-ui/ReactBits";
 
 const testimonials = [
   {
@@ -41,39 +42,40 @@ export function JobSeekerVoicesSection() {
             </h2>
           </FadeUp>
 
-          <div className="mx-auto mt-[40px] grid w-full max-w-[1345px] gap-[58px] min-[1240px]:mt-[86px] min-[1240px]:grid-cols-3">
+          <div className="mx-auto mt-[40px] grid w-full max-w-[1345px] items-stretch gap-[58px] 1240:mt-[86px] 1240:grid-cols-3">
             {testimonials.map((item, index) => (
               <FadeUp
                 key={`${item.name}-${item.title}`}
                 delay={0.08 + index * 0.05}
-                className={[
-                  "rounded-[54px] border border-white min-h-[none]",
-                  "bg-white/25 backdrop-blur-[30px]",
-                  "py-10 px-5 sm:px-7 min-[1240px]:py-16 min-[1240px]:px-10",
-                ].join(" ")}
+                className="flex h-full min-h-0 flex-col"
               >
-                <div className="flex flex-col">
-                  <div className="h-[18px] w-[86px]">
-                    <Image
-                      src={Graphics10}
-                      alt=""
-                      aria-hidden
-                      placeholder="blur"
-                      sizes="86px"
-                      className="h-full w-full object-contain"
-                    />
+                <SpotlightCard
+                  className="flex h-full min-h-0 flex-1 flex-col p-0! rounded-[54px] border border-white bg-white/25 px-5! py-10! backdrop-blur-[30px] sm:px-7! 1240:px-10! 1240:py-16!"
+                  spotlightColor="rgba(255, 255, 255, 0.32)"
+                >
+                  <div className="flex min-h-0 flex-1 flex-col">
+                    <div className="h-[18px] w-[86px]">
+                      <Image
+                        src={Graphics10}
+                        alt=""
+                        aria-hidden
+                        placeholder="blur"
+                        sizes="86px"
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
+
+                    <h3 className="mt-4 font-bold leading-[33px] text-white md:mt-4 lg:mt-8 text-[clamp(1.25rem,1.1rem+0.4vw,1.5625rem)]">
+                      {item.name}
+                      <br />
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-[12px] font-medium leading-[23px] text-white text-[clamp(0.9375rem,0.9rem+0.2vw,1rem)]">
+                      {item.quote}
+                    </p>
                   </div>
-
-                  <h3 className="mt-4 md:mt-4 lg:mt-8 font-bold text-white text-[clamp(1.25rem,1.1rem+0.4vw,1.5625rem)] leading-[33px]">
-                    {item.name}
-                    <br />
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-[12px] font-medium text-white text-[clamp(0.9375rem,0.9rem+0.2vw,1rem)] leading-[23px]">
-                    {item.quote}
-                  </p>
-                </div>
+                </SpotlightCard>
               </FadeUp>
             ))}
           </div>

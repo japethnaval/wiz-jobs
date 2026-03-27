@@ -53,11 +53,12 @@ function StepWithImage({
   return (
     <div className="flex flex-col items-center gap-8 lg:grid lg:grid-cols-[410px_290px_410px] lg:justify-center lg:items-center lg:gap-x-8 xl:gap-x-12">
       <div
-        className={
+        className={[
+          "order-2 transition-transform duration-300 ease-out will-change-transform motion-safe:hover:scale-[1.02]",
           imageOnLeft
-            ? "order-2 lg:col-start-1 lg:row-start-1 lg:justify-self-end"
-            : "order-2 lg:col-start-3 lg:row-start-1 lg:justify-self-start"
-        }
+            ? "lg:col-start-1 lg:row-start-1 lg:justify-self-end"
+            : "lg:col-start-3 lg:row-start-1 lg:justify-self-start",
+        ].join(" ")}
       >
         <VerificationImageContainer image={image} imageAlt={imageAlt} />
       </div>
@@ -82,7 +83,7 @@ export function HowItWorksSection() {
       aria-labelledby="how-it-works" 
       className="bg-[linear-gradient(178.76deg,rgba(69,95,246,0.411765)_0.98%,rgba(255,255,255,0)_28.13%)] bg-[#FFFFFF] pt-12 md:pt-16 lg:pt-24 pb-4 md:pb-8 lg:pb-12"
     >
-      <div className="mx-auto w-full max-w-[1487px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1487px] px-4 sm:px-6 lg:px-8  py-6 md:py-8 lg:py-12">
         <FadeUp>
           <h2
             id="how-it-works"

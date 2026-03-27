@@ -1,6 +1,6 @@
 "use client";
 
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useSwiper } from "swiper/react";
 
@@ -8,6 +8,7 @@ import styles from "./index.module.css";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/autoplay";
 
 const bg = "#455FF6";
 const accent = "#4FE3F2";
@@ -30,6 +31,12 @@ export type CustomSwiperProps = {
   solutionSectionTitle?: string;
   resultQuestion?: string;
   loop?: boolean;
+  /** When true (default), advances slides automatically. No-op when there is only one slide. */
+  autoplay?: boolean;
+  /** Delay between automatic advances in milliseconds (e.g. `2000` = 2 seconds). Swiper expects ms, not seconds. */
+  autoplayDelay?: number;
+  /** If true, pauses autoplay while the pointer hovers the carousel (can make short delays feel “stuck”). Default false. */
+  autoplayPauseOnHover?: boolean;
 };
 
 function InlineNav() {
@@ -150,14 +157,28 @@ export function CustomSwiper({
   solutionSectionTitle = "How WizJobs \n Solves This",
   resultQuestion = "Result?",
   loop = true,
+  autoplay: autoplayEnabled = true,
+  autoplayDelay = 2000,
+  autoplayPauseOnHover = false,
 }: CustomSwiperProps) {
+  const shouldAutoplay = autoplayEnabled && slides.length > 1;
+
   return (
     <div className={[styles.root, "relative", className].filter(Boolean).join(" ")}>
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         navigation
         loop={loop && slides.length > 1}
         slidesPerView={1}
+        autoplay={
+          shouldAutoplay
+            ? {
+                delay: autoplayDelay,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: autoplayPauseOnHover,
+              }
+            : false
+        }
         className="overflow-visible!"
       >
         {slides.map((slide, index) => (
