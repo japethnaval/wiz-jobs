@@ -1,11 +1,23 @@
 import Image from "next/image";
 
 import { Background3 } from "@/assets/images";
-import { PulseMotion, StaggerContainer, StaggerItem } from "@/shared-ui";
+import {
+  featureCardStaggerItemVariants,
+  PulseMotion,
+  StaggerContainer,
+  StaggerItem,
+} from "@/shared-ui";
 import { SpotlightCard } from "@/shared-ui/ReactBits";
 import { Icon11, Icon10, Icon9, Icon8 } from "@/assets";
 
 const featureIconClassName = "block size-20 max-h-20 max-w-20 shrink-0";
+
+const staggerItemClassName = [
+  "flex h-full min-h-0 min-w-0 flex-col",
+  "will-change-transform",
+  "transition-shadow duration-300 ease-out",
+  "hover:shadow-[0_16px_48px_rgba(15,23,42,0.14)]",
+].join(" ");
 
 export function EverythingYouNeedSection() {
   return (
@@ -37,8 +49,17 @@ export function EverythingYouNeedSection() {
           <StaggerContainer
             className="mx-auto mt-12 grid max-w-6xl grid-cols-1 items-stretch justify-center gap-4 sm:mt-14 sm:gap-6 md:grid-cols-2 md:gap-8 lg:mt-16 lg:max-w-fit lg:grid-cols-[409px_409px] lg:gap-[60px]"
             amount={0.12}
+            staggerChildren={0.14}
+            delayChildren={0.08}
           >
-            <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
+            <StaggerItem
+              className={staggerItemClassName}
+              variants={featureCardStaggerItemVariants}
+              whileHover={{
+                y: -6,
+                transition: { type: "spring", stiffness: 420, damping: 30 },
+              }}
+            >
               <SpotlightCard
                 className="h-full min-h-0 rounded-[54px] border-white bg-white/70 p-6 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-[30px] sm:p-8 lg:max-w-[409px] lg:mx-auto"
                 spotlightColor="rgba(69, 95, 246, 0.22)"
@@ -73,7 +94,14 @@ export function EverythingYouNeedSection() {
               </SpotlightCard>
             </StaggerItem>
 
-            <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
+            <StaggerItem
+              className={staggerItemClassName}
+              variants={featureCardStaggerItemVariants}
+              whileHover={{
+                y: -6,
+                transition: { type: "spring", stiffness: 420, damping: 30 },
+              }}
+            >
               <SpotlightCard
                 className="h-full min-h-0 rounded-[54px] border-white bg-white/70 p-6 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-[30px] sm:p-8 lg:max-w-[409px] lg:mx-auto"
                 spotlightColor="rgba(69, 95, 246, 0.22)"
@@ -98,7 +126,14 @@ export function EverythingYouNeedSection() {
               </SpotlightCard>
             </StaggerItem>
 
-            <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
+            <StaggerItem
+              className={staggerItemClassName}
+              variants={featureCardStaggerItemVariants}
+              whileHover={{
+                y: -6,
+                transition: { type: "spring", stiffness: 420, damping: 30 },
+              }}
+            >
               <SpotlightCard
                 className="h-full min-h-0 rounded-[54px] border-white bg-white/70 p-6 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-[30px] sm:p-8 lg:max-w-[409px] lg:mx-auto"
                 spotlightColor="rgba(69, 95, 246, 0.22)"
@@ -122,7 +157,14 @@ export function EverythingYouNeedSection() {
               </SpotlightCard>
             </StaggerItem>
 
-            <StaggerItem className="flex min-h-0 min-w-0 h-full flex-col">
+            <StaggerItem
+              className={staggerItemClassName}
+              variants={featureCardStaggerItemVariants}
+              whileHover={{
+                y: -6,
+                transition: { type: "spring", stiffness: 420, damping: 30 },
+              }}
+            >
               <SpotlightCard
                 className="h-full min-h-0 rounded-[54px] border-white bg-white/70 p-6 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-[30px] sm:p-8 lg:max-w-[409px] lg:mx-auto"
                 spotlightColor="rgba(69, 95, 246, 0.22)"

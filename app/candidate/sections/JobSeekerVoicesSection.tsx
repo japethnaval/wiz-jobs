@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { Background2, Graphics10 } from "@/assets/images";
+import { Background2 } from "@/assets/images";
 import { FadeUp } from "@/shared-ui";
 import { SpotlightCard } from "@/shared-ui/ReactBits";
 
@@ -55,14 +54,12 @@ export function JobSeekerVoicesSection() {
                 >
                   <div className="flex min-h-0 flex-1 flex-col">
                     <div className="h-[18px] w-[86px]">
-                      <Image
-                        src={Graphics10}
-                        alt=""
+                      <span
+                        className="job-seeker-stars-shimmer text-[17px] leading-none tracking-[-0.02em]"
                         aria-hidden
-                        placeholder="blur"
-                        sizes="86px"
-                        className="h-full w-full object-contain"
-                      />
+                      >
+                        ★★★★★
+                      </span>
                     </div>
 
                     <h3 className="mt-4 font-bold leading-[33px] text-white md:mt-4 lg:mt-8 text-[clamp(1.25rem,1.1rem+0.4vw,1.5625rem)]">

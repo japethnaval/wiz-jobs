@@ -2,10 +2,46 @@
 
 import Image, { type StaticImageData } from "next/image";
 import { FadeUp, NumberedTornadoStep } from "@/shared-ui";
-import { Graphics5 } from "@/assets/images";
-import { Graphics6 } from "@/assets/images";
-import { Graphics7 } from "@/assets/images";
-import { Graphics8 } from "@/assets/images";
+import { Graphics5, Graphics6, Graphics7, Graphics8 } from "@/assets/images";
+
+const howItWorksSteps = [
+  {
+    step: 1,
+    title: "Create Your Profile",
+    image: Graphics5,
+    imageAlt: "Create Your Profile",
+    imageSide: "left" as const,
+    body:
+      "Upload your CV. Our AI automatically extracts your experience, skills, and education.",
+  },
+  {
+    step: 2,
+    title: "Verify Your Credentials",
+    image: Graphics6,
+    imageAlt: "Verification preview",
+    imageSide: "right" as const,
+    body:
+      "Connect LinkedIn, upload certificates, confirm work history. Get blockchain verification.",
+  },
+  {
+    step: 3,
+    title: "See Your Score",
+    image: Graphics7,
+    imageAlt: "See Your Score",
+    imageSide: "left" as const,
+    body:
+      "For every job, see exactly how you match—skill by skill, requirement by requirement.",
+  },
+  {
+    step: 4,
+    title: "Get Matched",
+    image: Graphics8,
+    imageAlt: "Get Matched",
+    imageSide: "right" as const,
+    body:
+      "When a job fits your verified qualifications, you’re automatically surfaced to employers.",
+  },
+] as const;
 
 type VerificationImageContainerProps = {
   image: StaticImageData | string;
@@ -93,58 +129,25 @@ export function HowItWorksSection() {
           </h2>
         </FadeUp>
         <div className="mx-auto mt-16">
-            <div className="space-y-12 lg:space-y-12">
-              <StepWithImage
-                step={1} 
-                title="Create Your Profile"
-                image={Graphics5}
-                imageAlt="Create Your Profile"
-                imageSide="left"
-                body={
-                  <p className="font-bold">
-                    Upload your CV. Our AI automatically extracts your experience, skills, and education.
-                  </p>
-                }
-              />
-              <StepWithImage
-                step={2}
-                title="Verify Your Credentials"
-                image={Graphics6}
-                imageAlt="Verification preview"
-                imageSide="right"
-                body={
-                  <p className="font-bold">
-                    Connect LinkedIn, upload certificates, confirm work history. Get blockchain verification.
-                  </p>
-                }
-              />
-
-              <StepWithImage
-                step={3}
-                title="See Your Score"
-                image={Graphics7}
-                imageAlt="See Your Score"
-                imageSide="left"
-                body={
-                  <p className="font-bold">
-                    For every job, see exactly how you match—skill by skill, requirement by requirement.
-                  </p>
-                }
-              />
-
-              <StepWithImage
-                step={4}
-                title="Get Matched"
-                image={Graphics8}
-                imageAlt="Get Matched"
-                imageSide="right"
-                body={
-                  <p className="font-bold">
-                    When a job fits your verified qualifications, you’re automatically surfaced to employers.
-                  </p>
-                }
-              />
-            </div>
+          <div className="space-y-12 lg:space-y-12">
+            {howItWorksSteps.map((item, index) => (
+              <FadeUp
+                key={item.step}
+                delay={0.06 + index * 0.11}
+                amount={0.15}
+                className="w-full"
+              >
+                <StepWithImage
+                  step={item.step}
+                  title={item.title}
+                  image={item.image}
+                  imageAlt={item.imageAlt}
+                  imageSide={item.imageSide}
+                  body={<p className="font-bold">{item.body}</p>}
+                />
+              </FadeUp>
+            ))}
+          </div>
         </div>
       </div>
     </section>

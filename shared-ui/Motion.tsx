@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type HTMLMotionProps, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { useMemo, type ReactNode } from "react";
 
 type RevealProps = Omit<HTMLMotionProps<"div">, "children"> & {
   children: ReactNode;
@@ -89,16 +89,6 @@ export function FadeInScale({
   );
 }
 
-const staggerVariants: Variants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.06,
-    },
-  },
-};
-
 const staggerItemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: {
@@ -111,15 +101,48 @@ const staggerItemVariants: Variants = {
   },
 };
 
+/** Slightly stronger entrance for feature grids (slide + fade). */
+export const featureCardStaggerItemVariants: Variants = {
+  hidden: { opacity: 0, y: 28, x: -20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    x: 0,
+    transition: {
+      duration: 0.52,
+      ease: easeOut,
+    },
+  },
+};
+
 export function StaggerContainer({
   children,
   once = true,
   amount = 0.15,
+  staggerChildren = 0.12,
+  delayChildren = 0.06,
   ...rest
-}: RevealProps) {
+}: RevealProps & {
+  staggerChildren?: number;
+  delayChildren?: number;
+}) {
+  const variants = useMemo(
+    () =>
+      ({
+        hidden: {},
+        show: {
+          transition: {
+            staggerChildren,
+            delayChildren,
+          },
+        },
+      }) satisfies Variants,
+    [staggerChildren, delayChildren],
+  );
+
   return (
     <motion.div
-      variants={staggerVariants}
+      variants={variants}
       initial="hidden"
       whileInView="show"
       viewport={{ once, amount }}
@@ -132,10 +155,14 @@ export function StaggerContainer({
 
 export function StaggerItem({
   children,
+  variants,
   ...rest
-}: Omit<HTMLMotionProps<"div">, "children"> & { children: ReactNode }) {
+}: Omit<HTMLMotionProps<"div">, "children"> & {
+  children: ReactNode;
+  variants?: Variants;
+}) {
   return (
-    <motion.div variants={staggerItemVariants} {...rest}>
+    <motion.div variants={variants ?? staggerItemVariants} {...rest}>
       {children}
     </motion.div>
   );

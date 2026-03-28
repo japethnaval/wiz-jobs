@@ -13,7 +13,7 @@ type CircularGradientProps = {
 export function CircularGradient({ children, className }: CircularGradientProps) {
   return (
     <div
-      className={["relative overflow-x-clip overflow-y-visible", className]
+      className={["relative z-0 overflow-x-clip overflow-y-visible", className]
         .filter(Boolean)
         .join(" ")}
     >
