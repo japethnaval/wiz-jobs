@@ -6,7 +6,7 @@ export function EmployerJobSeekerSection() {
   return (
     <section
       aria-labelledby="employer-job-seeker-heading"
-      className="overflow-x-hidden"
+      className="relative z-30 isolate overflow-x-hidden"
     >
       <div className="mx-auto w-full max-w-[1100px] px-4 sm:px-6 overflow-hidden">
           <h2

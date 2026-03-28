@@ -31,34 +31,3 @@ body {
   font-family: var(--font-area-normal), "area-normal", "area", Arial, Helvetica, sans-serif;
   font-weight: 900;
 }
-
-/* GradientCtaButton — bold shifting gradient (respects reduced motion) */
-@keyframes gradient-cta-pan {
-  0% {
-    background-position: 0% 40%;
-  }
-  25% {
-    background-position: 100% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  75% {
-    background-position: 0% 100%;
-  }
-  100% {
-    background-position: 0% 40%;
-  }
-}
-
-.gradient-cta-button {
-  background-size: 350% 350%;
-  animation: gradient-cta-pan 3.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .gradient-cta-button {
-    animation: none;
-    background-size: 100% 100%;
-  }
-}

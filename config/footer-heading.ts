@@ -38,7 +38,7 @@ export const footerHeadingByPath: Record<string, FooterHeadingContent> = {
     titleLine2: "",
     subtitle: "Are You Verified?",
     ctas: [
-      { text: "Create Your \n Free Profile", href: "#create-profile" },
+      { text: "Create Your Free Profile", href: "#create-profile" },
     ],
   },
   "employer": {

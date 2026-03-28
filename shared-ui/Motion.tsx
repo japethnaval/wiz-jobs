@@ -141,3 +141,82 @@ export function StaggerItem({
   );
 }
 
+export function FloatMotion({
+  children,
+  duration = 5.5,
+}: { children: ReactNode, duration?: number }) {
+  return (
+    <motion.div
+    animate={{ y: [0, -18, 0], rotate: [0, -0.9, 0.9, 0] }}
+    transition={{ duration, repeat: Infinity, ease: "easeInOut" }}
+  >
+      {children}
+    </motion.div>
+  );
+}
+
+export function PulseMotion({
+  children,
+  duration = 4.2,
+}: { children: ReactNode, duration?: number }) {
+  return (
+    <motion.div
+      animate={{ rotate: [0, 4, -4, 0] }}
+      transition={{ duration, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function HeartbeatMotion({
+  children,
+  duration = 1.6,
+  intensity = 0.06,
+  className,
+}: {
+  children: ReactNode;
+  duration?: number;
+  intensity?: number;
+  /** Classes for the motion wrapper (e.g. `w-full` so scale doesn’t collapse width). */
+  className?: string;
+}) {
+  return (
+    <motion.div
+      className={["origin-center will-change-transform", className]
+        .filter(Boolean)
+        .join(" ")}
+      animate={{
+        scale: [
+          1,
+          1 + intensity,
+          1,
+          1 + intensity * 0.6,
+          1,
+        ],
+      }}
+      transition={{
+        duration,
+        ease: "easeInOut",
+        repeat: Infinity,
+        times: [0, 0.15, 0.3, 0.45, 1], // creates the heartbeat rhythm
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export const ScaleHoverMotion = ({
+  children,
+  duration = 0.5,
+}: { children: ReactNode, duration?: number }) => {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration }}
+    >
+      {children}
+    </motion.div>
+  );
+}

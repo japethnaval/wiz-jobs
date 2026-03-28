@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { Background3 } from "@/assets/images";
-import { StaggerContainer, StaggerItem } from "@/shared-ui";
+import { PulseMotion, StaggerContainer, StaggerItem } from "@/shared-ui";
 import { SpotlightCard } from "@/shared-ui/ReactBits";
 import { Icon11, Icon10, Icon9, Icon8 } from "@/assets";
 
@@ -45,7 +45,9 @@ export function EverythingYouNeedSection() {
               >
                 <article className="flex h-full min-h-0 flex-col gap-4 sm:gap-5">
                   <div className="flex shrink-0 text-[#455FF6]" aria-hidden>
-                    <Icon10 aria-hidden className={featureIconClassName} />
+                    <PulseMotion>
+                      <Icon10 aria-hidden className={featureIconClassName} />
+                    </PulseMotion>
                   </div>
                   <h3 className="text-xl font-bold leading-tight text-black sm:text-2xl">
                     90% Match Accuracy. Every Single Job Post.
@@ -78,7 +80,9 @@ export function EverythingYouNeedSection() {
               >
                 <article className="flex h-full min-h-0 flex-col gap-4 sm:gap-5">
                   <div className="flex shrink-0 text-[#455FF6]" aria-hidden>
-                    <Icon9 aria-hidden className={featureIconClassName} />
+                    <PulseMotion>
+                      <Icon9 aria-hidden className={featureIconClassName} />
+                    </PulseMotion>
                   </div>
                   <h3 className="text-xl font-bold leading-tight text-black sm:text-2xl">
                     See More Candidates. Headhunting Mode.
@@ -101,7 +105,9 @@ export function EverythingYouNeedSection() {
               >
                 <article className="flex h-full min-h-0 flex-col gap-4 sm:gap-5">
                   <div className="flex shrink-0 text-[#455FF6]" aria-hidden>
-                    <Icon8 aria-hidden className={featureIconClassName} />
+                    <PulseMotion>
+                      <Icon8 aria-hidden className={featureIconClassName} />
+                    </PulseMotion>
                   </div>
                   <h3 className="text-xl font-bold leading-tight text-black sm:text-2xl">
                     Verification Reports
@@ -123,7 +129,9 @@ export function EverythingYouNeedSection() {
               >
                 <article className="flex h-full min-h-0 flex-col gap-4 sm:gap-5">
                   <div className="flex shrink-0 text-[#455FF6]" aria-hidden>
-                    <Icon11 aria-hidden className={featureIconClassName} />
+                    <PulseMotion>
+                      <Icon11 aria-hidden className={featureIconClassName} />
+                    </PulseMotion>
                   </div>
                   <h3 className="text-xl font-bold leading-tight text-black sm:text-2xl">
                     Analytics Dashboard

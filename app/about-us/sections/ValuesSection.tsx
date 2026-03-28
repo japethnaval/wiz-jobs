@@ -1,8 +1,7 @@
 "use client";
 
-import { Background1 } from "@/assets/images";
 import { FadeInScale, FadeUp } from "@/shared-ui";
-import { SpotlightCard } from "@/shared-ui/ReactBits";
+import { Aurora, SpotlightCard } from "@/shared-ui/ReactBits";
 
 const valueCards = [
   {
@@ -31,14 +30,21 @@ export function ValuesSection() {
   return (
     <section
       aria-labelledby="our-values"
-      className="relative isolate overflow-x-clip overflow-y-visible py-12 md:py-16 lg:py-24 bg-center bg-no-repeat bg-cover"
-      style={{
-        backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0.40) 100%), url(${Background1.src})`,
-      }}
+      className="relative isolate overflow-x-clip overflow-y-visible py-12 md:py-16 lg:py-24"
     >
+      <div className="pointer-events-none absolute inset-0 z-0 bg-black" aria-hidden>
+        <Aurora
+          amplitude={1.28}
+          blend={0.42}
+          speed={1.85}
+          colorStops={["#22D3EE", "#818CF8", "#0C0AB5"]}
+        />
+      </div>
       <div
-        className="section-inner w-full max-w-[1920px] overflow-x-clip overflow-y-visible bg-cover bg-top-center bg-no-repeat px-6 md:px-8 lg:px-12"
-      >
+        className="pointer-events-none absolute inset-0 z-1 bg-[linear-gradient(90deg,rgba(0,0,0,0.38)_0%,rgba(0,0,0,0.18)_55%,rgba(0,0,0,0.38)_100%)]"
+        aria-hidden
+      />
+      <div className="section-inner relative z-10 w-full max-w-[1920px] overflow-x-clip overflow-y-visible px-6 md:px-8 lg:px-12">
         <div className="relative z-10 mx-auto w-full max-w-[1731px]">
           <FadeUp className="pb-6 md:pb-24">
             <h2

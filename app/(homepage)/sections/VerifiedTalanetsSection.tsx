@@ -1,18 +1,10 @@
 "use client";
 
-import type { ComponentType } from "react";
 import { HeroImageCollage } from "@/app/(homepage)/components/HeroImageCollage";
 import { FadeInScale, FadeUp } from "@/shared-ui";
 import { GradientCtaButton } from "../../../shared-ui/GradientCtaButton";
-import { RotatingText, ShinyText } from "@/shared-ui/ReactBits";
-
-const RotatingTextComponent = RotatingText as ComponentType<Record<string, unknown>>;
-
-const homeHeroSubtexts = [
-  "The first recruitment platform built on truth, not volume.",
-  "Verification-first hiring with real qualification matching.",
-] as const;
-
+import { ShinyText } from "@/shared-ui/ReactBits";
+import { motion } from "motion/react";
 
 function SparkleIcon({ className }: { className?: string }) {
   return (
@@ -57,40 +49,39 @@ export function VerifiedTalanetsSection() {
               />
             </span>
             <span className="block">
-              <ShinyText
-                text="at the Speed of AI"
-                disabled={false}
-                speed={3}
-                className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
-                color="#000000"
-                shineColor="#435FF6"
-                spread={120}
-                yoyo={false}
-                pauseOnHover={false}
-                direction="left"
-                delay={0}
-              />
               <span className="relative inline-block">
-                <SparkleIcon className="absolute -right-5 -top-1 h-4 w-4 text-black sm:h-5 sm:w-5 sm:-right-6 sm:-top-1.5" />
+                <ShinyText
+                  text="at the Speed of AI"
+                  disabled={false}
+                  speed={3}
+                  className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
+                  color="#000000"
+                  shineColor="#435FF6"
+                  spread={120}
+                  yoyo={false}
+                  pauseOnHover={false}
+                  direction="left"
+                  delay={0}
+                />
+                <motion.span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-5 -top-1 inline-flex sm:-right-6 sm:-top-1.5"
+                  animate={{ scale: [1, 1.12, 1], rotate: [0, 8, 0], opacity: [0.85, 1, 0.85] }}
+                  transition={{
+                    duration: 2.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    repeatType: "loop",
+                  }}
+                >
+                  <SparkleIcon className="h-4 w-4 text-black sm:h-5 sm:w-5" />
+                </motion.span>
               </span>
             </span>
           </h1>
-          <h2
-            className="relative z-10 mx-auto mt-4 flex min-h-24 w-full max-w-[650px] items-center justify-center text-pretty font-bold leading-[1.30] text-[#455FF6] text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] sm:mt-8 sm:min-h-28"
-          >
-            <RotatingTextComponent
-              texts={[...homeHeroSubtexts]}
-              auto
-              loop
-              splitBy="lines"
-              rotationInterval={2600}
-              staggerDuration={0.01}
-              staggerFrom="first"
-              mainClassName="mx-auto flex w-full max-w-full justify-center text-center text-[#455FF6]"
-              splitLevelClassName="justify-center"
-              elementLevelClassName="will-change-transform"
-            />
-          </h2>
+          <h3 className="pt-8 relative z-10 text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] font-bold text-[#455FF6] mx-auto max-w-[650px] leading-[1.30]">
+            The first recruitment platform built on truth, not volume.
+          </h3>
         </div>
         <FadeInScale delay={0.08}>
           <HeroImageCollage />

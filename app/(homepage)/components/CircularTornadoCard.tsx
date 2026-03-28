@@ -1,7 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 
 import { Graphics12 } from "@/assets/images";
-import Image from "next/image";
+import { TornadoImage } from "@/shared-ui/TornadoBadge/TornadoImage";
 
 export type CircularTornadoCardTornadoSide = "leading" | "trailing";
 
@@ -40,35 +40,39 @@ export function CircularTornadoCard({
   } satisfies CSSProperties;
 
   return (
-    <article
-      className={mergeClass("relative mx-auto aspect-square max-w-full shrink-0", className)}
-      style={boxStyle}
+    <div
+      className={mergeClass(
+        "relative z-10 w-full overflow-visible pb-8 md:pb-12 lg:pb-16",
+        className,
+      )}
     >
-      <div className="relative flex h-full w-full items-center justify-center">
-        <div
-          className={mergeClass(
-            "pointer-events-none absolute top-1/2 z-0 w-[118%] max-w-none -translate-y-1/2 sm:w-[135%]",
-            trailing
-              ? "right-0 translate-x-[8%] sm:translate-x-[20%] -scale-x-100"
-              : "left-0 -translate-x-[8%] sm:-translate-x-[20%]",
-          )}
-          aria-hidden
-        >
-          <Image
-            src={Graphics12}
-            alt="Tornado"
-            placeholder="blur"
-            sizes="(max-width: 640px) 135vw, min(680px, 90vw)"
-            className="mx-auto h-auto w-[90%]"
-          />
-        </div>
+      <article
+        className="relative z-10 isolate mx-auto aspect-square max-w-full shrink-0 overflow-visible"
+        style={boxStyle}
+      >
+        <div className="relative flex h-full w-full items-center justify-center overflow-visible">
+          <div
+            className={mergeClass(
+              "pointer-events-none absolute top-1/2 z-1 w-[118%] max-w-none -translate-y-1/2 sm:w-[135%]",
+              trailing
+                ? "right-0 translate-x-[8%] sm:translate-x-[20%] -scale-x-100"
+                : "left-0 -translate-x-[8%] sm:-translate-x-[20%]",
+            )}
+            aria-hidden
+          >
+            <TornadoImage
+              image={Graphics12}
+              sizes="(max-width: 640px) 135vw, min(680px, 90vw)"
+              imageClassName="mx-auto h-auto w-[90%]"
+            />
+          </div>
 
-        <div
-          className={mergeClass(
-            "relative z-10 h-full w-full overflow-hidden rounded-full border-[5px] border-[#49FBDF] shadow-sm sm:border-[6px]",
-          )}
-        >
-          <div className="absolute inset-1.5 flex flex-col items-center justify-center rounded-full bg-white px-4 text-center sm:inset-2 sm:px-4 lg:py-4">
+          <div
+            className={mergeClass(
+              "relative z-10 h-full w-full overflow-hidden rounded-full border-[5px] border-[#49FBDF] shadow-sm sm:border-[6px]",
+            )}
+          >
+          <div className="absolute inset-1.5 z-20 flex flex-col items-center justify-center rounded-full bg-white px-4 text-center sm:inset-2 sm:px-4 lg:py-4">
             <p className="text-pretty text-[14px] font-bold leading-tight text-[#455FF6] sm:text-sm sm:leading-normal md:text-base">
               {eyebrow}
             </p>
@@ -79,8 +83,9 @@ export function CircularTornadoCard({
               {children}
             </div>
           </div>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
   );
 }

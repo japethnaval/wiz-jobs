@@ -3,7 +3,7 @@
 import Image, { type StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import { Icon12, Icon15, Icon13, Icon14 } from "@/assets";
-import { FadeUp } from "@/shared-ui";
+import { FadeUp, PulseMotion } from "@/shared-ui";
 
 type Feature = {
   title: string;
@@ -112,7 +112,11 @@ export function TheSolutionSection() {
                 variants={itemVariants}
               >
                 <div className="mb-4">
+                  <PulseMotion
+                  >
                   <FeatureIcon icon={item.icon} />
+                  </PulseMotion>
+
                 </div>
                 <h3 className="mb-3 whitespace-pre-line text-lg font-bold leading-snug text-black sm:text-xl">
                   {item.title}

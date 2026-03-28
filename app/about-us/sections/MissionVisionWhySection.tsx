@@ -3,7 +3,7 @@
 import type { ComponentType, RefObject, SVGProps } from "react";
 import { useLayoutEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { FadeUp, StaggerContainer, StaggerItem } from "@/shared-ui";
+import { FadeUp, FloatMotion, StaggerContainer, StaggerItem } from "@/shared-ui";
 import { Icon1, Icon2, Icon3, Icon4 } from "@/assets";
 
 const problemPoints = [
@@ -39,6 +39,7 @@ function CircleIconSlot({
   className?: string;
 }) {
   return (
+    <FloatMotion>
     <div
       className={[
         "flex h-[148px] w-[148px] shrink-0 items-center justify-center rounded-full bg-[#455FF6] sm:h-[164px] sm:w-[164px]",
@@ -47,6 +48,7 @@ function CircleIconSlot({
     >
       <Icon className="max-h-[55%] max-w-[60%] select-none" aria-hidden />
     </div>
+    </FloatMotion>
   );
 }
 

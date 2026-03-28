@@ -9,6 +9,7 @@ import styles from "./index.module.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
+import { HeartbeatMotion } from "../Motion";
 
 const bg = "#455FF6";
 const accent = "#4FE3F2";
@@ -136,14 +137,16 @@ function SlideContent({
         >
           {resultQuestion}
         </p>
-        <div
-          className="w-full rounded-full px-6 py-3.5 text-center text-1xl font-bold text-white shadow-sm sm:px-8 sm:text-xl md:py-4 md:text-2xl"
-          style={{
-            background: "linear-gradient(270deg, #455FF6 -11.13%, #FFFFFF 147.23%)",
-          }}
-        >
-          {slide.resultPillText}
-        </div>
+        <HeartbeatMotion className="w-full">
+          <div
+            className="w-full rounded-full px-6 py-3.5 text-center text-xl font-bold text-white shadow-sm sm:px-8 sm:text-xl md:py-4 md:text-2xl"
+            style={{
+              background: "linear-gradient(270deg, #455FF6 -11.13%, #FFFFFF 147.23%)",
+            }}
+          >
+            {slide.resultPillText}
+          </div>
+        </HeartbeatMotion>
         <InlineNav />
       </div>
     </div>

@@ -1,14 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "motion/react";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-/** Extra stops so background-position animation reads clearly. */
-const gradient =
-  "linear-gradient(191deg, rgb(73, 251, 223) 0%, rgb(79, 227, 242) 35%, rgb(90, 240, 235) 50%, rgb(79, 227, 242) 65%, rgb(73, 251, 223) 100%)";
-
 const pillClass =
-  "gradient-cta-button inline-flex items-center justify-center whitespace-pre-line rounded-full px-6 py-3 text-center font-black text-white shadow-md transition-[transform,filter] duration-300 ease-out will-change-transform motion-safe:hover:scale-[1.03] motion-safe:active:scale-[0.99] hover:brightness-105";
+  "inline-flex items-center justify-center whitespace-pre-line rounded-full px-6 py-3 text-center font-black text-white shadow-md";
+
 const defaultTextSizeClass = "text-[15px] sm:text-base";
 
 export type GradientCtaButtonProps = {
@@ -23,20 +21,58 @@ export function GradientCtaButton({
   style,
   ...rest
 }: GradientCtaButtonProps) {
-  const hasTextSizeOverride = /\b(?:[a-z]+:)?text-(?:xs|sm|base|lg|xl|[2-9]xl|\[[^\]]+\])!?/.test(
-    className ?? "",
-  );
+  const hasTextSizeOverride =
+    /\b(?:[a-z]+:)?text-(?:xs|sm|base|lg|xl|[2-9]xl|\[[^\]]+\])!?/.test(
+      className ?? "",
+    );
 
   return (
-    <Link
-      href={href}
-      className={[pillClass, hasTextSizeOverride ? undefined : defaultTextSizeClass, className]
-        .filter(Boolean)
-        .join(" ")}
-      style={{ backgroundImage: gradient, ...style }}
-      {...rest}
+    <motion.div
+      whileHover={{ scale: 1.06, y: -2 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: "spring", stiffness: 300, damping: 18 }}
+      className="inline-block"
     >
-      {text}
-    </Link>
+      <Link
+        href={href}
+        className={[
+          pillClass,
+          hasTextSizeOverride ? undefined : defaultTextSizeClass,
+          "relative overflow-hidden transition",
+          className,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        style={{
+          background:
+            "linear-gradient(120deg, #49fbdf, #4fe3f2, #6a8cff, #49fbdf)",
+          backgroundSize: "200% 200%",
+          ...style,
+        }}
+        {...rest}
+      >
+        {/* Animated gradient layer */}
+        <motion.span
+          aria-hidden
+          className="absolute inset-0 z-0"
+          animate={{
+            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          style={{
+            background:
+              "linear-gradient(120deg, #49fbdf, #4fe3f2, #6a8cff, #49fbdf)",
+            backgroundSize: "200% 200%",
+          }}
+        />
+
+        {/* Content */}
+        <span className="relative z-10">{text}</span>
+      </Link>
+    </motion.div>
   );
 }

@@ -1,9 +1,13 @@
 "use client";
 
+import type { ComponentType } from "react";
 import { usePathname } from "next/navigation";
 
 import { GradientCtaButton } from "@/shared-ui/GradientCtaButton";
+import { TextType } from "@/shared-ui/ReactBits";
 import { getFooterHeadingForPath } from "@/config/footer-heading";
+
+const TextTypeBand = TextType as ComponentType<Record<string, unknown>>;
 
 /** Same responsive scale as the subtitle so title + subtitle feel like one band. */
 const bandHeadingType =
@@ -32,14 +36,17 @@ export function FooterHeading() {
             <span className="block">{titleLine1}</span>
             {titleLine2.trim() ? <span className="block">{titleLine2}</span> : null}
           </h2>
-          <p
+          <TextTypeBand
+            as="p"
+            text={subtitle}
+            loop={false}
+            startOnVisible
+            showCursor={false}
             className={[
               "mx-auto mt-3 max-w-[min(18rem,calc(100vw-2.5rem))] font-bold text-[#4f46e5] sm:mt-5 sm:max-w-2xl lg:mt-6",
               bandHeadingType,
             ].join(" ")}
-          >
-            {subtitle}
-          </p>
+          />
           <div
             className={[
               "mx-auto mt-6 flex w-full flex-col items-center gap-3 px-4 sm:mt-10 sm:flex-row sm:items-stretch sm:justify-center sm:gap-4 sm:px-0 md:gap-5",

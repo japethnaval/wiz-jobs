@@ -8,4 +8,4 @@ export * from "./Spacer";
 export * from "./FloatingRegisterPill";
 export * from "./CustomSwiper";
 export * from "./WizJobGreyBackDrop";
-export * from "./NumberedTornadoStep";
+export * from "./TornadoBadge/NumberedTornadoStep";
