@@ -33,7 +33,7 @@ export default function Home() {
       <FadeUp className="relative z-0 w-full" delay={0.12} amount={0.15}>
         <CircularGradient className="-mx-4 md:-mx-6 lg:-mx-8">
           <TheSolutionSection />
-          <div className="pt-12 md:pt-16 lg:pt-24">
+          <div className="pt-12 md:pt-16 lg:pt-24 bg-[#eceef8] md:bg-transparent">
             <WeAreDifferentSection /> 
           </div>
         </CircularGradient>

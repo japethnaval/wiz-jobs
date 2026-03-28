@@ -173,6 +173,7 @@ export function CustomSwiper({
         navigation
         loop={loop && slides.length > 1}
         slidesPerView={1}
+        speed={2000}
         autoplay={
           shouldAutoplay
             ? {

@@ -80,7 +80,7 @@ export function VerifiedTalanetsSection() {
             </span>
           </h1>
           <h3 className="pt-8 relative z-10 text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] font-bold text-[#455FF6] mx-auto max-w-[650px] leading-[1.30]">
-            The first recruitment platform built on truth, not volume.
+            Stop wasting time on unqualified candidates. Get AI-matched, blockchain-verified talent.
           </h3>
         </div>
         <FadeInScale delay={0.08}>

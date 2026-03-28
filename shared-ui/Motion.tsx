@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type HTMLMotionProps, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type HTMLMotionProps, type Variants } from "framer-motion";
 import { useMemo, type ReactNode } from "react";
 
 type RevealProps = Omit<HTMLMotionProps<"div">, "children"> & {
@@ -114,6 +114,109 @@ export const featureCardStaggerItemVariants: Variants = {
     },
   },
 };
+
+/**
+ * Staggered scroll reveal for glass / `backdrop-blur` cards: slide + visibility only (no `opacity`),
+ * so the blur doesn’t appear to animate. Pair `BackdropStaggerContainer` + `BackdropStaggerItem`.
+ */
+export const backdropStaggerListVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.14,
+      delayChildren: 0.06,
+    },
+  },
+};
+
+export const backdropStaggerItemVariants: Variants = {
+  hidden: { y: 28, visibility: "hidden" },
+  visible: {
+    y: 0,
+    visibility: "visible",
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 34,
+      mass: 0.9,
+    },
+  },
+};
+
+export type BackdropStaggerContainerProps = Omit<
+  HTMLMotionProps<"div">,
+  "initial" | "whileInView" | "variants" | "viewport"
+> & {
+  children: ReactNode;
+  staggerChildren?: number;
+  delayChildren?: number;
+  once?: boolean;
+  amount?: number;
+};
+
+export function BackdropStaggerContainer({
+  children,
+  className,
+  staggerChildren = 0.14,
+  delayChildren = 0.06,
+  once = true,
+  amount = 0.12,
+  ...rest
+}: BackdropStaggerContainerProps) {
+  const reduceMotion = useReducedMotion();
+
+  const variants = useMemo(() => {
+    if (reduceMotion) {
+      return {
+        hidden: {},
+        visible: { transition: { staggerChildren: 0, delayChildren: 0 } },
+      } satisfies Variants;
+    }
+    return {
+      hidden: {},
+      visible: {
+        transition: { staggerChildren, delayChildren },
+      },
+    } satisfies Variants;
+  }, [reduceMotion, staggerChildren, delayChildren]);
+
+  return (
+    <motion.div
+      className={className}
+      variants={variants}
+      initial={reduceMotion ? "visible" : "hidden"}
+      whileInView={reduceMotion ? undefined : "visible"}
+      viewport={{ once, amount }}
+      {...rest}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function BackdropStaggerItem({
+  children,
+  className,
+  ...rest
+}: Omit<HTMLMotionProps<"div">, "variants"> & { children: ReactNode }) {
+  const reduceMotion = useReducedMotion();
+
+  const variants = useMemo(() => {
+    if (reduceMotion) {
+      return {
+        hidden: { y: 0, visibility: "visible" as const },
+        visible: { y: 0, visibility: "visible" as const },
+      } satisfies Variants;
+    }
+    return backdropStaggerItemVariants;
+  }, [reduceMotion]);
+
+  return (
+    <motion.div className={className} variants={variants} {...rest}>
+      {children}
+    </motion.div>
+  );
+}
 
 export function StaggerContainer({
   children,

@@ -1,7 +1,7 @@
 "use client";
 
 import { Background2 } from "@/assets/images";
-import { FadeUp } from "@/shared-ui";
+import { BackdropStaggerContainer, BackdropStaggerItem, FadeUp } from "@/shared-ui";
 import { SpotlightCard } from "@/shared-ui/ReactBits";
 
 const testimonials = [
@@ -41,11 +41,10 @@ export function JobSeekerVoicesSection() {
             </h2>
           </FadeUp>
 
-          <div className="mx-auto mt-[40px] grid w-full max-w-[1345px] items-stretch gap-[58px] 1240:mt-[86px] 1240:grid-cols-3">
-            {testimonials.map((item, index) => (
-              <FadeUp
+          <BackdropStaggerContainer className="mx-auto mt-[40px] grid w-full max-w-[1345px] items-stretch gap-[58px] 1240:mt-[86px] 1240:grid-cols-3">
+            {testimonials.map((item) => (
+              <BackdropStaggerItem
                 key={`${item.name}-${item.title}`}
-                delay={0.08 + index * 0.05}
                 className="flex h-full min-h-0 flex-col"
               >
                 <SpotlightCard
@@ -73,9 +72,9 @@ export function JobSeekerVoicesSection() {
                     </p>
                   </div>
                 </SpotlightCard>
-              </FadeUp>
+              </BackdropStaggerItem>
             ))}
-          </div>
+          </BackdropStaggerContainer>
         </div>
       </div>
     </section>

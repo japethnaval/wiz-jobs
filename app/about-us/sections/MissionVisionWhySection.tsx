@@ -289,7 +289,7 @@ function MobileConnectorStem() {
   return (
     <div
       ref={ref}
-      className="mx-auto mt-4 flex flex-col items-center pb-4 min-[1420px]:hidden"
+      className="relative mx-auto mt-4 flex flex-col items-center pb-4 min-[1420px]:hidden"
       aria-hidden
     >
       <motion.div

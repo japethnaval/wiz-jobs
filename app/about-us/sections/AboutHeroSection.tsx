@@ -36,7 +36,7 @@ export function AboutHeroSection() {
           where qualifications matter more than keywords, and verification matters more than volume.
         </h4>
         <FadeInScale delay={0.08}>
-          <HeroImage />
+          <HeroImage swapColumnsOnHover={true} />
         </FadeInScale>
       </div>
     </section>

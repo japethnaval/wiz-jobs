@@ -2,10 +2,9 @@ import Image from "next/image";
 
 import { Background3 } from "@/assets/images";
 import {
-  featureCardStaggerItemVariants,
+  BackdropStaggerContainer,
+  BackdropStaggerItem,
   PulseMotion,
-  StaggerContainer,
-  StaggerItem,
 } from "@/shared-ui";
 import { SpotlightCard } from "@/shared-ui/ReactBits";
 import { Icon11, Icon10, Icon9, Icon8 } from "@/assets";
@@ -46,15 +45,14 @@ export function EverythingYouNeedSection() {
             Everything You Need to Hire Better
           </h2>
 
-          <StaggerContainer
+          <BackdropStaggerContainer
             className="mx-auto mt-12 grid max-w-6xl grid-cols-1 items-stretch justify-center gap-4 sm:mt-14 sm:gap-6 md:grid-cols-2 md:gap-8 lg:mt-16 lg:max-w-fit lg:grid-cols-[409px_409px] lg:gap-[60px]"
             amount={0.12}
             staggerChildren={0.14}
             delayChildren={0.08}
           >
-            <StaggerItem
+            <BackdropStaggerItem
               className={staggerItemClassName}
-              variants={featureCardStaggerItemVariants}
               whileHover={{
                 y: -6,
                 transition: { type: "spring", stiffness: 420, damping: 30 },
@@ -92,11 +90,10 @@ export function EverythingYouNeedSection() {
                   </div>
                 </article>
               </SpotlightCard>
-            </StaggerItem>
+            </BackdropStaggerItem>
 
-            <StaggerItem
+            <BackdropStaggerItem
               className={staggerItemClassName}
-              variants={featureCardStaggerItemVariants}
               whileHover={{
                 y: -6,
                 transition: { type: "spring", stiffness: 420, damping: 30 },
@@ -124,11 +121,10 @@ export function EverythingYouNeedSection() {
                   </div>
                 </article>
               </SpotlightCard>
-            </StaggerItem>
+            </BackdropStaggerItem>
 
-            <StaggerItem
+            <BackdropStaggerItem
               className={staggerItemClassName}
-              variants={featureCardStaggerItemVariants}
               whileHover={{
                 y: -6,
                 transition: { type: "spring", stiffness: 420, damping: 30 },
@@ -155,11 +151,10 @@ export function EverythingYouNeedSection() {
                   </div>
                 </article>
               </SpotlightCard>
-            </StaggerItem>
+            </BackdropStaggerItem>
 
-            <StaggerItem
+            <BackdropStaggerItem
               className={staggerItemClassName}
-              variants={featureCardStaggerItemVariants}
               whileHover={{
                 y: -6,
                 transition: { type: "spring", stiffness: 420, damping: 30 },
@@ -186,8 +181,8 @@ export function EverythingYouNeedSection() {
                   </div>
                 </article>
               </SpotlightCard>
-            </StaggerItem>
-          </StaggerContainer>
+            </BackdropStaggerItem>
+          </BackdropStaggerContainer>
         </div>
       </div>
     </section>
