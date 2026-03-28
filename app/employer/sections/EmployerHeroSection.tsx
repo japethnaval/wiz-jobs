@@ -50,7 +50,7 @@ export function EmployerHeroSection() {
           </span>
         </h1>
         <h3 className="relative z-10 mx-auto max-w-[650px] pt-8 text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] font-bold leading-[1.30] text-[#455FF6]">
-          The first recruitment platform built on truth, not volume.
+          Stop wasting time on unqualified candidates. Get AI-matched, blockchain-verified talent.
         </h3>
         <FadeInScale delay={0.08}>
           <HeroImage />
