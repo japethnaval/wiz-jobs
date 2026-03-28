@@ -237,13 +237,22 @@ export function HeartbeatMotion({
 export const ScaleHoverMotion = ({
   children,
   duration = 0.5,
-}: { children: ReactNode, duration?: number }) => {
+  className,
+  ...rest
+}: {
+  children: ReactNode;
+  duration?: number;
+} & Omit<HTMLMotionProps<"div">, "children">) => {
   return (
     <motion.div
+      className={["origin-center will-change-transform", className]
+        .filter(Boolean)
+        .join(" ")}
       whileHover={{ scale: 1.05 }}
       transition={{ duration }}
+      {...rest}
     >
       {children}
     </motion.div>
   );
-}
+};
