@@ -85,7 +85,7 @@ export function CircularTornadoCard({
                 <h2 className="mt-0.5 text-pretty text-lg font-bold tracking-tight text-[#455ff6] sm:text-2xl md:text-3xl">
                   {title}
                 </h2>
-                <div className="mt-2 max-w-[min(100%,15.5rem)] space-y-2 text-pretty text-sm leading-snug text-black max-[450px]:text-[0.425rem] sm:mt-4 sm:max-w-[18rem] sm:space-y-3 sm:leading-relaxed md:text-sm">
+                <div className="mt-2 max-w-[min(100%,15.5rem)] space-y-2 text-pretty text-sm leading-snug text-black max-[450px]:text-[0.325rem] sm:mt-4 sm:max-w-[18rem] sm:space-y-3 sm:leading-relaxed md:text-sm">
                   {children}
                 </div>
               </div>
