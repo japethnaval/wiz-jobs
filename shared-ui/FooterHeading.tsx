@@ -39,7 +39,7 @@ export function FooterHeading() {
           <TextTypeBand
             as="p"
             text={subtitle}
-            loop={false}
+            loop={true}
             startOnVisible
             showCursor={false}
             className={[
