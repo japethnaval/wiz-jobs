@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion, type HTMLMotionProps, type Variants } from "framer-motion";
-import { useMemo, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 
 type RevealProps = Omit<HTMLMotionProps<"div">, "children"> & {
   children: ReactNode;
@@ -274,12 +274,48 @@ export function StaggerItem({
 export function FloatMotion({
   children,
   duration = 5.5,
-}: { children: ReactNode, duration?: number }) {
+  /**
+   * Hero images: keep the float off until `window` `load` so pixels paint first, then start the loop.
+   * No remount — only `animate` toggles after load (or immediately if `prefers-reduced-motion`).
+   */
+  deferUntilLoad = false,
+}: {
+  children: ReactNode;
+  duration?: number;
+  deferUntilLoad?: boolean;
+}) {
+  const prefersReducedMotion = useReducedMotion();
+  const [loadReady, setLoadReady] = useState(!deferUntilLoad);
+
+  useEffect(() => {
+    if (!deferUntilLoad) return;
+    if (prefersReducedMotion) {
+      setLoadReady(true);
+      return;
+    }
+    const start = () => setLoadReady(true);
+    if (document.readyState === "complete") {
+      requestAnimationFrame(start);
+    } else {
+      window.addEventListener("load", () => requestAnimationFrame(start), { once: true });
+    }
+  }, [deferUntilLoad, prefersReducedMotion]);
+
+  const shouldFloat = loadReady && !prefersReducedMotion;
+
   return (
     <motion.div
-    animate={{ y: [0, -18, 0], rotate: [0, -0.9, 0.9, 0] }}
-    transition={{ duration, repeat: Infinity, ease: "easeInOut" }}
-  >
+      animate={
+        shouldFloat
+          ? { y: [0, -18, 0], rotate: [0, -0.9, 0.9, 0] }
+          : false
+      }
+      transition={
+        shouldFloat
+          ? { duration, repeat: Infinity, ease: "easeInOut" }
+          : undefined
+      }
+    >
       {children}
     </motion.div>
   );

@@ -12,7 +12,7 @@ export function HeroImage() {
   const [secondHovered, setSecondHovered] = useState(false);
 
   return (
-    <FloatMotion>
+    <FloatMotion deferUntilLoad>
       <div className="mx-auto flex w-full max-w-[min(100%,960px)] flex-col items-center gap-[34px] pt-8 min-[960px]:flex-row min-[960px]:items-stretch">
         <div
           className={`${colShell} ${

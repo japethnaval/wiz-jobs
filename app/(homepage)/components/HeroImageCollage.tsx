@@ -6,7 +6,7 @@ import { FloatMotion } from "@/shared-ui/Motion";
 
 export function HeroImageCollage() {
   return (
-    <FloatMotion> 
+    <FloatMotion deferUntilLoad>
       <div className="mx-auto w-full max-w-[960px]">
         <Image
           src={Graphics11}

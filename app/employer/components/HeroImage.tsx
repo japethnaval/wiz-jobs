@@ -5,7 +5,7 @@ import { FloatMotion } from "@/shared-ui";
 
 export function HeroImage() {
   return (
-    <FloatMotion>
+    <FloatMotion deferUntilLoad>
         <div className="mx-auto w-full max-w-[min(100%,960px)] min-w-0 overflow-hidden rounded-4xl py-8 sm:rounded-[2.25rem]">
         <Image
         src={Graphics13}
