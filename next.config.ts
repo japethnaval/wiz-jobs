@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
   },
   basePath: isProd ? `/${repoName}` : "",
   assetPrefix: isProd ? `/${repoName}/` : undefined,
+  experimental: {
+    optimizePackageImports: ["framer-motion", "motion", "swiper", "gsap"],
+  },
   turbopack: {
     rules: {
       "*.svg": {

@@ -1,10 +1,12 @@
-import { EmployerJobSeekerSection } from "@/app/(homepage)/sections/EmployerJobSeekerSection";
-import { TheSolutionSection } from "@/app/(homepage)/sections/TheSolutionSection";
+import dynamic from "next/dynamic";
 import { VerifiedTalanetsSection } from "@/app/(homepage)/sections/VerifiedTalanetsSection";
-import { WeAreDifferentSection } from "@/app/(homepage)/sections/WeAreDifferentSection";
-import { CircularGradient } from "./components/CicularGradient";
 import { FadeUp, Spacer } from "@/shared-ui";
 import { createPageMetadata } from "@/config/metadata";
+
+const HomepageDeferredSections = dynamic(
+  () =>
+    import("./HomepageDeferredSections").then((m) => m.HomepageDeferredSections)
+);
 
 
 export const metadata = createPageMetadata({
@@ -23,21 +25,7 @@ export default function Home() {
       >
         <VerifiedTalanetsSection />
       </FadeUp>
-      <FadeUp
-        className="relative z-10 w-full py-6 md:py-8 lg:py-12"
-        delay={0.08}
-        amount={0.15}
-      >
-        <EmployerJobSeekerSection />
-      </FadeUp>
-      <FadeUp className="relative z-0 w-full" delay={0.12} amount={0.15}>
-        <CircularGradient className="-mx-4 md:-mx-6 lg:-mx-8">
-          <TheSolutionSection />
-          <div className="pt-12 md:pt-16 lg:pt-24 bg-[#eceef8] md:bg-transparent">
-            <WeAreDifferentSection /> 
-          </div>
-        </CircularGradient>
-      </FadeUp>
+      <HomepageDeferredSections />
     </div>
   );
 }

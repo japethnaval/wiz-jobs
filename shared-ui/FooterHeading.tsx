@@ -36,17 +36,21 @@ export function FooterHeading() {
             <span className="block">{titleLine1}</span>
             {titleLine2.trim() ? <span className="block">{titleLine2}</span> : null}
           </h2>
-          <TextTypeBand
-            as="p"
-            text={subtitle}
-            loop={true}
-            startOnVisible
-            showCursor={false}
+          <div
             className={[
-              "mx-auto mt-3 max-w-[min(18rem,calc(100vw-2.5rem))] font-bold text-[#4f46e5] sm:mt-5 sm:max-w-2xl lg:mt-6",
+              "mx-auto mt-3 flex w-full max-w-[min(18rem,calc(100vw-2.5rem))] min-h-[2.2lh] items-center justify-center leading-[1.15] sm:mt-5 sm:max-w-2xl lg:mt-6",
               bandHeadingType,
             ].join(" ")}
-          />
+          >
+            <TextTypeBand
+              as="p"
+              text={subtitle}
+              loop={true}
+              startOnVisible
+              showCursor={false}
+              className="m-0 max-w-none text-center font-bold text-[#4f46e5]"
+            />
+          </div>
           <div
             className={[
               "mx-auto mt-6 flex w-full flex-col items-center gap-3 px-4 sm:mt-10 sm:flex-row sm:items-stretch sm:justify-center sm:gap-4 sm:px-0 md:gap-5",
