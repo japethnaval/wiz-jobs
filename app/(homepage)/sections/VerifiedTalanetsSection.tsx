@@ -132,19 +132,59 @@ export function VerifiedTalanetsSection() {
                         alt: "Verified candidate",
                         position: "top-left",
                       },
-                    ],
-                    [
                       {
                         image: Graphics19,
                         alt: "Hiring ROI improvement",
                         position: "top-right",
                       },
-                    ],
-                    [
                       {
                         image: Graphics20,
                         alt: "Match accuracy",
+                        position: "bottom-left",
+                      },
+                    ],
+                    [
+                      {
+                        image: Graphics17,
+                        alt: "Less screening time",
                         position: "bottom-right",
+                      },
+                      {
+                        image: Graphics18,
+                        alt: "Verified candidate",
+                        position: "top-left",
+                      },
+                      {
+                        image: Graphics19,
+                        alt: "Hiring ROI improvement",
+                        position: "top-right",
+                      },
+                      {
+                        image: Graphics20,
+                        alt: "Match accuracy",
+                        position: "bottom-left",
+                      },
+                    ],
+                    [
+                      {
+                        image: Graphics17,
+                        alt: "Less screening time",
+                        position: "bottom-right",
+                      },
+                      {
+                        image: Graphics18,
+                        alt: "Verified candidate",
+                        position: "top-left",
+                      },
+                      {
+                        image: Graphics19,
+                        alt: "Hiring ROI improvement",
+                        position: "top-right",
+                      },
+                      {
+                        image: Graphics20,
+                        alt: "Match accuracy",
+                        position: "bottom-left",
                       },
                     ],
                   ]}
@@ -174,10 +214,10 @@ export function VerifiedTalanetsSection() {
         <GradientCtaButton
           className="w-full max-w-[320px] px-6 py-3 sm:w-auto sm:max-w-none sm:px-14"
           text="Start Hiring Smarter"
-          href="/coming-soon"
+          href="/employer"
         />
         <GradientCtaButton
-          href="/coming-soon"
+          href="/candidate"
           className="w-full max-w-[320px] px-6 py-3 sm:w-auto sm:max-w-none sm:px-14"
           text="Get Verified & Hired"
         />

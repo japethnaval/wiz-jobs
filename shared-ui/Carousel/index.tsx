@@ -42,56 +42,23 @@ function CarouselBadgeImage({
   );
 }
 
-type CardBadge = {
-  image: StaticImageData;
-  alt: string;
-  position: "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center";
-};
-
 type Card = {
   id: number;
   image: StaticImageData;
-  badges?: CardBadge[];
 };
 
 const cards: Card[] = [
   {
     id: 1,
     image: Graphics14,
-    badges: [
-      {
-        image: Graphics17,
-        alt: "Less screening",
-        position: "bottom-left",
-      },
-      {
-        image: Graphics18,
-        alt: "Verified candidate",
-        position: "top-left",
-      },
-    ],
   },
   {
     id: 2,
     image: Graphics15,
-    badges: [
-      {
-        image: Graphics19,
-        alt: "ROI",
-        position: "top-right",
-      },
-    ],
   },
   {
     id: 3,
     image: Graphics16,
-    badges: [
-      {
-        image: Graphics20,
-        alt: "Match accuracy",
-        position: "bottom-right",
-      },
-    ],
   },
 ];
 
@@ -117,6 +84,25 @@ export default function DiagonalCarouselLoop() {
   return (
     <div className="relative flex w-full justify-center overflow-x-clip overflow-y-visible py-2 md:py-0">
       <div className="relative flex h-[min(640px,85vh)] w-full max-w-[min(100%,56rem)] origin-center scale-[0.52] items-center justify-center sm:scale-[0.72] md:h-[640px] md:max-w-none md:scale-100">
+        <div
+          className="pointer-events-none absolute left-1/2 top-1/2 z-60 -translate-x-1/2 -translate-y-1/2"
+          aria-hidden
+        >
+          <div className="relative h-72 w-72 sm:h-80 sm:w-80 md:h-88 md:w-88">
+            <div className="absolute left-0 top-0 -translate-x-[32%] -translate-y-[38%] sm:-translate-x-[36%] sm:-translate-y-[44%]">
+              <CarouselBadgeImage image={Graphics18} alt="Verified candidate" />
+            </div>
+            <div className="absolute right-0 top-0 translate-x-[32%] -translate-y-[38%] sm:translate-x-[36%] sm:-translate-y-[44%]">
+              <CarouselBadgeImage image={Graphics19} alt="ROI" />
+            </div>
+            <div className="absolute left-0 bottom-0 -translate-x-[34%] translate-y-[34%] sm:-translate-x-[40%] sm:translate-y-[40%]">
+              <CarouselBadgeImage image={Graphics17} alt="Less screening" />
+            </div>
+            <div className="absolute right-0 bottom-0 translate-x-[34%] translate-y-[34%] sm:translate-x-[40%] sm:translate-y-[40%]">
+              <CarouselBadgeImage image={Graphics20} alt="Match accuracy" />
+            </div>
+          </div>
+        </div>
         {Array.from({ length: cards.length }).map((_, i) => {
           const index = getWrappedIndex(i);
           const offsetRaw = i - (active % cards.length);
@@ -172,30 +158,6 @@ export default function DiagonalCarouselLoop() {
                   priority={isActive}
                 />
               </div>
-
-              {card.badges?.map((badge, idx) => {
-                const positions: Record<CardBadge["position"], string> = {
-                  "top-left":
-                    "left-0 top-0 z-20 -translate-x-3 -translate-y-3",
-                  "top-right":
-                    "right-0 top-0 z-20 translate-x-3 -translate-y-1",
-                  "bottom-left":
-                    "left-0 bottom-0 z-20 -translate-x-5 translate-y-5",
-                  "bottom-right":
-                    "right-0 bottom-0 z-20 translate-x-5 translate-y-5",
-                  center:
-                    "left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-[58%]",
-                };
-
-                return (
-                  <div
-                    key={idx}
-                    className={clsx("absolute", positions[badge.position])}
-                  >
-                    <CarouselBadgeImage image={badge.image} alt={badge.alt} />
-                  </div>
-                );
-              })}
             </motion.div>
           );
         })}

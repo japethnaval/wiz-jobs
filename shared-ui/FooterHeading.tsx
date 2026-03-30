@@ -28,10 +28,11 @@ export function FooterHeading() {
         aria-labelledby="footer-heading-title"
       >
         <div className="mx-auto flex w-full max-w-[min(42rem,calc(100vw-2rem))] flex-col items-center sm:max-w-3xl lg:max-w-4xl">
-          <h2
-            id="footer-heading-title"
+        <h2
+          id="footer-heading-title"
             className={[
-              "mx-auto max-w-[min(20rem,calc(100vw-2.5rem))] px-2 leading-[1.15] font-bold sm:max-w-3xl sm:px-0 sm:leading-[1.1]",
+              "mx-auto max-w-[min(22rem,calc(100vw-2rem))] px-2 font-bold leading-[1.1]",
+              "text-3xl sm:text-4xl md:text-5xl",
               bandHeadingType,
             ].join(" ")}
           >

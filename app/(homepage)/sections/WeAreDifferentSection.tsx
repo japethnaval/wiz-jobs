@@ -156,7 +156,7 @@ function TableHorizontalScrollBar({
 function WMark({ shineDisabled }: { shineDisabled: boolean }) {
   return (
     <div
-      className="relative mx-auto h-14 w-[3.25rem] overflow-hidden sm:h-16 sm:w-[3.75rem]"
+      className="relative mx-auto h-14 w-17 overflow-hidden sm:h-16 md:w-19"
       aria-hidden
     >
       <Icon5 className="absolute left-0 top-1/2 z-0 h-[4.5rem] w-auto min-w-[11rem] -translate-y-1/2 text-[#455ff6] sm:h-[5rem]" />

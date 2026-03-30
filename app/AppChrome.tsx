@@ -37,8 +37,11 @@ export function AppChrome({ children }: { children: React.ReactNode }) {
 
   if (minimal) {
     return (
-      <div className="relative z-10 flex min-h-0 flex-1 flex-col overflow-hidden">
-        <main className="flex min-h-0 flex-1 flex-col overflow-hidden">{children}</main>
+      <div className="relative z-10 flex h-dvh max-h-dvh min-h-0 w-full flex-col overflow-hidden overscroll-none">
+        <Navigation />
+        <main className="flex min-h-0 flex-1 flex-col overflow-hidden overscroll-none">
+          {children}
+        </main>
       </div>
     );
   }

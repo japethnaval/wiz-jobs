@@ -33,7 +33,7 @@ function FeatureIcon({ icon }: { icon: Feature["icon"] }) {
 
   return (
     <div
-      className="h-12 w-12 shrink-0 [&_svg]:h-full [&_svg]:w-full"
+      className="h-12 w-12 shrink-0 text-[#455ff6] [&_svg]:h-full [&_svg]:w-full [&_svg_*]:fill-current [&_svg_*]:stroke-current"
       aria-hidden
     >
       {icon}
@@ -121,7 +121,7 @@ function FeatureGridItem({ item }: { item: Feature }) {
 
 function FeatureSlide({ item }: { item: Feature }) {
   return (
-    <div className="flex h-full flex-col items-start text-left">
+    <div className="flex h-full flex-col items-center text-center">
       <FeatureCardBody item={item} />
     </div>
   );
