@@ -10,7 +10,7 @@ import {
   Graphics30,
   Graphics31,
 } from "@/assets/images";
-import { DeviceScreen, FloatMotion } from "@/shared-ui";
+import { DeviceScreen, FloatMotion, HeartbeatMotion } from "@/shared-ui";
 
 const BADGE_SIZE_DEFAULT = 72;
 
@@ -28,20 +28,21 @@ function HeroCornerBadge({
   const blur =
     typeof image === "object" && image !== null && "blurDataURL" in image;
   return (
-    <div
-      className={`pointer-events-none absolute ${className}`}
-      aria-hidden={alt === "" ? true : undefined}
-    >
-      <Image
-        src={image}
-        alt={alt}
-        width={size}
-        height={size}
-        className="object-cover"
-        sizes={`${size}px`}
-        placeholder={blur ? "blur" : "empty"}
-      />
-    </div>
+    <HeartbeatMotion className={`pointer-events-none absolute ${className}`}>
+      <div
+        aria-hidden={alt === "" ? true : undefined}
+      >
+        <Image
+          src={image}
+          alt={alt}
+          width={size}
+          height={size}
+          className="object-cover"
+          sizes={`${size}px`}
+          placeholder={blur ? "blur" : "empty"}
+        />
+      </div>
+    </HeartbeatMotion>
   );
 }
 

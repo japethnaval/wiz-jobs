@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { Graphics13 } from "@/assets/images";
 import { GradientCtaButton } from "@/shared-ui/GradientCtaButton";
 import { FadeInScale } from "@/shared-ui/Motion";
 import { ShinyText } from "@/shared-ui/ReactBits";

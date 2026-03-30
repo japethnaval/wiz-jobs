@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { HeartbeatMotion } from "../Motion";
 
 export type ImageSwiperBadgePosition =
   | "top-left"
@@ -155,11 +156,13 @@ export default function ImageSwiper({
                         BADGE_POSITION_CLASSES[badge.position],
                       )}
                     >
-                      <SwiperBadgeImage
-                        image={badge.image}
-                        alt={badge.alt}
-                        size={badgeSize}
-                      />
+                      <HeartbeatMotion>
+                        <SwiperBadgeImage
+                          image={badge.image}
+                          alt={badge.alt}
+                          size={badgeSize}
+                        />
+                      </HeartbeatMotion>
                     </div>
                   ))}
                 </div>

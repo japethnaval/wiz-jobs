@@ -15,6 +15,7 @@ import {
   Graphics19,
   Graphics20,
 } from "@/assets/images";
+import { HeartbeatMotion } from "../Motion";
 
 function CarouselBadgeImage({
   image,
@@ -90,16 +91,24 @@ export default function DiagonalCarouselLoop() {
         >
           <div className="relative h-72 w-72 sm:h-80 sm:w-80 md:h-88 md:w-88">
             <div className="absolute left-0 top-0 -translate-x-[32%] -translate-y-[38%] sm:-translate-x-[36%] sm:-translate-y-[44%]">
-              <CarouselBadgeImage image={Graphics18} alt="Verified candidate" />
+              <HeartbeatMotion>
+                <CarouselBadgeImage image={Graphics18} alt="Verified candidate" />
+              </HeartbeatMotion>
             </div>
             <div className="absolute right-0 top-0 translate-x-[32%] -translate-y-[38%] sm:translate-x-[36%] sm:-translate-y-[44%]">
-              <CarouselBadgeImage image={Graphics19} alt="ROI" />
+              <HeartbeatMotion>
+                <CarouselBadgeImage image={Graphics19} alt="ROI" />
+              </HeartbeatMotion>
             </div>
             <div className="absolute left-0 bottom-0 -translate-x-[34%] translate-y-[34%] sm:-translate-x-[40%] sm:translate-y-[40%]">
-              <CarouselBadgeImage image={Graphics17} alt="Less screening" />
+              <HeartbeatMotion>
+                <CarouselBadgeImage image={Graphics17} alt="Less screening" />
+              </HeartbeatMotion>
             </div>
             <div className="absolute right-0 bottom-0 translate-x-[34%] translate-y-[34%] sm:translate-x-[40%] sm:translate-y-[40%]">
-              <CarouselBadgeImage image={Graphics20} alt="Match accuracy" />
+              <HeartbeatMotion>
+                <CarouselBadgeImage image={Graphics20} alt="Match accuracy" />
+              </HeartbeatMotion>
             </div>
           </div>
         </div>
