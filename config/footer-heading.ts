@@ -29,7 +29,7 @@ export const defaultFooterHeading: FooterHeadingContent = {
 export const footerHeadingByPath: Record<string, FooterHeadingContent> = {
   "candidate": {
     ...defaultFooterHeading,
-    titleLine1: "Your Next Job \nis Waiting",
+    titleLine1: "Your Next Job is Waiting",
     titleLine2: "",
     subtitle: "Are You Verified?",
     ctas: [

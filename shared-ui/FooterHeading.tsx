@@ -10,10 +10,10 @@ import { getFooterHeadingForPath } from "@/config/footer-heading";
 const TextTypeBand = TextType as ComponentType<Record<string, unknown>>;
 
 const bandHeadingType =
-  "text-pretty text-2xl font-extrabold sm:text-2xl md:text-2xl lg:text-[2.5rem]";
+  "text-pretty font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[2.5rem]";
 
 const bandSubHeadingType =
-  "text-pretty text-base font-extrabold sm:text-xl md:text-2xl lg:text-[2.5rem]";
+  "text-pretty font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[2.4rem]";
 
 export function FooterHeading() {
   const pathname = usePathname() ?? "/";
@@ -27,12 +27,11 @@ export function FooterHeading() {
         className="relative z-10 rounded-t-[52px] md:rounded-t-[452px] border-b border-white bg-[linear-gradient(180deg,#FFF_0%,#F0F2F9_100%)] px-4 pb-12 pt-10 text-center shadow-[0_-6px_28px_-10px_rgba(15,23,42,0.05),0_14px_44px_-18px_rgba(15,23,42,0.07)] sm:px-10 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-20"
         aria-labelledby="footer-heading-title"
       >
-        <div className="mx-auto flex w-full max-w-[min(42rem,calc(100vw-2rem))] flex-col items-center sm:max-w-3xl lg:max-w-4xl">
+        <div className="mx-auto flex w-full max-w-4xl flex-col items-center">
         <h2
           id="footer-heading-title"
             className={[
-              "mx-auto max-w-[min(22rem,calc(100vw-2rem))] px-2 font-bold leading-[1.1]",
-              "text-3xl sm:text-4xl md:text-5xl",
+              "mx-auto w-full px-0 font-bold leading-[1.06]",
               bandHeadingType,
             ].join(" ")}
           >
@@ -41,7 +40,7 @@ export function FooterHeading() {
           </h2>
           <div
             className={[
-              "mx-auto mt-3 flex w-full max-w-[min(18rem,calc(100vw-2.5rem))] min-h-[2.2lh] items-center justify-center leading-[1.15] sm:mt-5 sm:max-w-2xl lg:mt-6",
+              "mx-auto mt-3 flex w-full min-h-[2.2lh] items-center justify-center leading-[1.15] sm:mt-5 lg:mt-6",
               bandSubHeadingType,
             ].join(" ")}
           >
@@ -51,7 +50,7 @@ export function FooterHeading() {
               loop={true}
               startOnVisible
               showCursor={false}
-              className="m-0 max-w-none text-center font-bold text-[#4f46e5]"
+              className="m-0 max-w-none text-center font-extrabold text-[#4f46e5]"
             />
           </div>
           <div
