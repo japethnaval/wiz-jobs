@@ -1,18 +1,23 @@
 "use client";
 
-import type { ComponentType } from "react";
-import { HeroImageCollage } from "@/app/(homepage)/components/HeroImageCollage";
-import { FadeInScale, FadeUp } from "@/shared-ui";
+import Image from "next/image";
+
+import {
+  Graphics14,
+  Graphics15,
+  Graphics16,
+  Graphics17,
+  Graphics18,
+  Graphics19,
+  Graphics20,
+  Graphics21,
+} from "@/assets/images";
+import { DeviceScreen, FadeInScale, FadeUp, HeroOrbitBackdrop } from "@/shared-ui";
+import ImageSwiper from "@/shared-ui/Carousel/ImageSwiper";
 import { GradientCtaButton } from "../../../shared-ui/GradientCtaButton";
-import { RotatingText, ShinyText } from "@/shared-ui/ReactBits";
-
-const RotatingTextComponent = RotatingText as ComponentType<Record<string, unknown>>;
-
-const homeHeroSubtexts = [
-  "The first recruitment platform built on truth, not volume.",
-  "Verification-first hiring with real qualification matching.",
-] as const;
-
+import { ShinyText } from "@/shared-ui/ReactBits";
+import { motion } from "motion/react";
+import DiagonalCarouselLoop from "@/shared-ui/Carousel";
 
 function SparkleIcon({ className }: { className?: string }) {
   return (
@@ -57,43 +62,109 @@ export function VerifiedTalanetsSection() {
               />
             </span>
             <span className="block">
-              <ShinyText
-                text="at the Speed of AI"
-                disabled={false}
-                speed={3}
-                className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
-                color="#000000"
-                shineColor="#435FF6"
-                spread={120}
-                yoyo={false}
-                pauseOnHover={false}
-                direction="left"
-                delay={0}
-              />
               <span className="relative inline-block">
-                <SparkleIcon className="absolute -right-5 -top-1 h-4 w-4 text-black sm:h-5 sm:w-5 sm:-right-6 sm:-top-1.5" />
+                <ShinyText
+                  text="at the Speed of AI"
+                  disabled={false}
+                  speed={3}
+                  className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
+                  color="#000000"
+                  shineColor="#435FF6"
+                  spread={120}
+                  yoyo={false}
+                  pauseOnHover={false}
+                  direction="left"
+                  delay={0}
+                />
+                <motion.span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-5 -top-1 inline-flex sm:-right-6 sm:-top-1.5"
+                  animate={{ scale: [1, 1.12, 1], rotate: [0, 8, 0], opacity: [0.85, 1, 0.85] }}
+                  transition={{
+                    duration: 2.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    repeatType: "loop",
+                  }}
+                >
+                  <SparkleIcon className="h-4 w-4 text-black sm:h-5 sm:w-5" />
+                </motion.span>
               </span>
             </span>
           </h1>
-          <h2
-            className="relative z-10 mx-auto mt-4 flex min-h-24 w-full max-w-[650px] items-center justify-center text-pretty font-bold leading-[1.30] text-[#455FF6] text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] sm:mt-8 sm:min-h-28"
-          >
-            <RotatingTextComponent
-              texts={[...homeHeroSubtexts]}
-              auto
-              loop
-              splitBy="lines"
-              rotationInterval={2600}
-              staggerDuration={0.01}
-              staggerFrom="first"
-              mainClassName="mx-auto flex w-full max-w-full justify-center text-center text-[#455FF6]"
-              splitLevelClassName="justify-center"
-              elementLevelClassName="will-change-transform"
-            />
-          </h2>
+          <h3 className="pt-8 relative z-10 text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] font-bold text-[#455FF6] mx-auto max-w-[650px] leading-[1.30]">
+            The first recruitment platform built on truth, not volume.
+          </h3>
         </div>
-        <FadeInScale delay={0.08}>
-          <HeroImageCollage />
+        <FadeInScale delay={0.08} className="w-full">
+          <DeviceScreen sm>
+            <div className="relative w-full">
+              <div
+                className="pointer-events-none absolute inset-0 z-0 flex items-end justify-center overflow-visible"
+                aria-hidden
+              >
+                <Image
+                  src={Graphics21}
+                  alt=""
+                  width={920}
+                  height={400}
+                  className="h-auto w-full max-w-[min(100%,26rem)] -translate-y-[38%] object-contain object-bottom select-none"
+                  sizes="100vw"
+                />
+              </div>
+              <div className="relative z-10 mx-auto w-full max-w-sm">
+                <ImageSwiper
+                  images={[Graphics14, Graphics15, Graphics16]}
+                  alts={[
+                    "Recruitment screening workflow",
+                    "Hiring and collaboration",
+                    "Verified candidate matching",
+                  ]}
+                  slideBadges={[
+                    [
+                      {
+                        image: Graphics17,
+                        alt: "Less screening time",
+                        position: "bottom-right",
+                      },
+                      {
+                        image: Graphics18,
+                        alt: "Verified candidate",
+                        position: "top-left",
+                      },
+                    ],
+                    [
+                      {
+                        image: Graphics19,
+                        alt: "Hiring ROI improvement",
+                        position: "top-right",
+                      },
+                    ],
+                    [
+                      {
+                        image: Graphics20,
+                        alt: "Match accuracy",
+                        position: "bottom-right",
+                      },
+                    ],
+                  ]}
+                  badgeSize={132}
+                  navigation={false}
+                  autoplay
+                  loop
+                  sizes="100vw"
+                  slideFrameClassName="relative aspect-square w-full rounded-3xl"
+                />
+              </div>
+            </div>
+          </DeviceScreen>
+          <DeviceScreen md lg>
+            <HeroOrbitBackdrop>
+              <div className="relative z-10 w-full">
+                <DiagonalCarouselLoop />
+              </div>
+            </HeroOrbitBackdrop>
+          </DeviceScreen>
         </FadeInScale>
       </div>
       <FadeUp
@@ -101,12 +172,12 @@ export function VerifiedTalanetsSection() {
         className="relative z-10 mx-auto mt-8 flex w-full max-w-[min(100%,96rem)] flex-col items-center justify-center gap-3 px-4 sm:mt-12 sm:flex-row sm:gap-3 sm:px-6 lg:px-8"
       >
         <GradientCtaButton
-          href="#early-access"
           className="w-full max-w-[320px] px-6 py-3 sm:w-auto sm:max-w-none sm:px-14"
           text="Start Hiring Smarter"
+          href="/coming-soon"
         />
         <GradientCtaButton
-          href="#get-verified"
+          href="/coming-soon"
           className="w-full max-w-[320px] px-6 py-3 sm:w-auto sm:max-w-none sm:px-14"
           text="Get Verified & Hired"
         />

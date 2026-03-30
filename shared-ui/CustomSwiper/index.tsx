@@ -9,11 +9,11 @@ import styles from "./index.module.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
+import { HeartbeatMotion } from "../Motion";
 
 const bg = "#455FF6";
 const accent = "#4FE3F2";
 
-/** All string fields treat `\n` as a line break when rendered. */
 export type CustomSlide = {
   problemLabel: string;
   problemSubheading: string;
@@ -31,11 +31,8 @@ export type CustomSwiperProps = {
   solutionSectionTitle?: string;
   resultQuestion?: string;
   loop?: boolean;
-  /** When true (default), advances slides automatically. No-op when there is only one slide. */
   autoplay?: boolean;
-  /** Delay between automatic advances in milliseconds (e.g. `2000` = 2 seconds). Swiper expects ms, not seconds. */
   autoplayDelay?: number;
-  /** If true, pauses autoplay while the pointer hovers the carousel (can make short delays feel “stuck”). Default false. */
   autoplayPauseOnHover?: boolean;
 };
 
@@ -136,14 +133,16 @@ function SlideContent({
         >
           {resultQuestion}
         </p>
-        <div
-          className="w-full rounded-full px-6 py-3.5 text-center text-1xl font-bold text-white shadow-sm sm:px-8 sm:text-xl md:py-4 md:text-2xl"
-          style={{
-            background: "linear-gradient(270deg, #455FF6 -11.13%, #FFFFFF 147.23%)",
-          }}
-        >
-          {slide.resultPillText}
-        </div>
+        <HeartbeatMotion className="w-full">
+          <div
+            className={[
+              styles.resultPillGradient,
+              "w-full rounded-full px-6 py-3.5 text-center text-xl font-bold text-white shadow-sm sm:px-8 sm:text-xl md:py-4 md:text-2xl",
+            ].join(" ")}
+          >
+            {slide.resultPillText}
+          </div>
+        </HeartbeatMotion>
         <InlineNav />
       </div>
     </div>
@@ -170,6 +169,7 @@ export function CustomSwiper({
         navigation
         loop={loop && slides.length > 1}
         slidesPerView={1}
+        speed={2000}
         autoplay={
           shouldAutoplay
             ? {

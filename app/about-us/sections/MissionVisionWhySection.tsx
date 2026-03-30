@@ -3,8 +3,8 @@
 import type { ComponentType, RefObject, SVGProps } from "react";
 import { useLayoutEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { FadeUp, StaggerContainer, StaggerItem } from "@/shared-ui";
-import { Icon1, Icon2, Icon3, Icon4 } from "@/assets";
+import { FadeUp, FloatMotion, StaggerContainer, StaggerItem } from "@/shared-ui";
+import { Icon1, Icon2, Icon3, Icon4, Icon5 } from "@/assets";
 
 const problemPoints = [
   {
@@ -39,6 +39,7 @@ function CircleIconSlot({
   className?: string;
 }) {
   return (
+    <FloatMotion>
     <div
       className={[
         "flex h-[148px] w-[148px] shrink-0 items-center justify-center rounded-full bg-[#455FF6] sm:h-[164px] sm:w-[164px]",
@@ -47,43 +48,30 @@ function CircleIconSlot({
     >
       <Icon className="max-h-[55%] max-w-[60%] select-none" aria-hidden />
     </div>
+    </FloatMotion>
   );
 }
 
-/** Row/cluster width: icon + gap + copy */
 const PROBLEM_CLUSTER_W = 164 + 20 + 360;
 
-/**
- * Connector (md+): one SVG, separate paths per leg so spacing/viewBox and scroll-draw can be tuned per level.
- * Narrow viewBox width scales the guide wider in CSS pixels (preserveAspectRatio="none").
- */
 const CONNECTOR_Y = [98.5, 313.5, 528.5, 743.5] as const;
 const CONNECTOR_VIEW_W = 1180;
 const CONNECTOR_VIEW_H = 860;
 const ICON_STAGGER_LEFT = 653;
-/** Space between L2→L3 entry dot and L2 circle (viewBox units ≈ px at scale). */
 const L2_GUIDE_ENTRY_GAP = 20;
 const L2_GUIDE_ENTRY_X = ICON_STAGGER_LEFT - L2_GUIDE_ENTRY_GAP;
 const ICON_LEFT_EDGE = 80;
 const ICON_R = 98.5;
 const ICON2_CX = ICON_STAGGER_LEFT + ICON_R;
 const ICON3_CX = ICON_LEFT_EDGE + ICON_R;
-/** L2→L3 / L3→4 vertical stem x; extend H leg left of ICON3_CX to match DOM circle under `preserveAspectRatio="none"`. */
 const L3_GUIDE_CENTER_X = ICON3_CX - 98;
 const LEVEL1_TEXT_EXIT_X = 533;
 const GUIDE_ABOVE_ICON_GAP = 18;
-/** Space below L3 circle before L3→L4 entry dot (viewBox units ≈ px). */
 const L3_GUIDE_ENTRY_GAP = 20;
-/** L3→L4: vertical leg length before elbow (viewBox units ≈ px). */
 const L3L4_VERTICAL_DROP = 120;
 
-/**
- * Motion legs 2–3: generous dash length in viewBox units (each polyline is shorter than this).
- * L1 uses getTotalLength() — a huge dash vs ~317u path makes offset changes invisible (pattern never aligns).
- */
 const PROBLEM_GUIDE_DASH_LEN = 4000;
 
-/** `d` for L1→L2 until `path.getTotalLength()` runs (same geometry as pathLevel1To2). */
 const L1_PATH_LEN_APPROX = 318;
 
 const problemGuidePathStroke = {
@@ -110,10 +98,6 @@ function WhyProblemsConnectorScaffold({
     offset: ["start end", "end start"],
   });
 
-  /**
-   * L1: plain SVG + React state. Stroke draw must use strokeDasharray ≈ path length (see
-   * path.getTotalLength()); huge dash (4000) on ~318u path breaks dashoffset visibility.
-   */
   const l1PathRef = useRef<SVGPathElement | null>(null);
   const [l1PathLen, setL1PathLen] = useState(0);
   const [l1Progress, setL1Progress] = useState(() => (reduceMotion ? 1 : 0));
@@ -271,7 +255,6 @@ function WhyProblemsConnectorScaffold({
   );
 }
 
-/** Animated vertical stem + dot for mobile item connectors — mirrors the desktop intro guide style. */
 function MobileConnectorStem() {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion() === true;
@@ -287,7 +270,7 @@ function MobileConnectorStem() {
   return (
     <div
       ref={ref}
-      className="mx-auto mt-4 flex flex-col items-center pb-4 min-[1420px]:hidden"
+      className="relative mx-auto mt-4 flex flex-col items-center pb-4 min-[1420px]:hidden"
       aria-hidden
     >
       <motion.div
@@ -305,7 +288,6 @@ function MobileConnectorStem() {
   );
 }
 
-/** Mission → WHY block: two-part center guide (gap over WHY / subtitle), scroll-revealed stems. */
 function MissionVisionWhyIntroTrack() {
   const trackRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion() === true;
@@ -322,10 +304,8 @@ function MissionVisionWhyIntroTrack() {
 
   return (
     <div ref={trackRef} className="relative">
-      {/* Mission & Vision */}
       <FadeUp>
-        <div className="relative z-10 pb-8]">
-          {/* Upper guide: clipped to this block so stem never stacks with lower guide */}
+        <div className="relative z-10 pb-8">
           <div
             className="pointer-events-none absolute left-1/2 top-2 bottom-0 z-1 hidden -translate-x-1/2 flex-col items-center md:flex"
             aria-hidden
@@ -343,21 +323,21 @@ function MissionVisionWhyIntroTrack() {
             />
           </div>
           <div className="relative z-10 grid gap-6 md:grid-cols-2 md:gap-0">
-            <article className="px-6 md:px-8 lg:px-12">
+            <article className="px-6 text-center md:px-8 md:text-left lg:px-12">
               <h2 className="mx-auto max-w-4xl text-balance leading-[1.15] font-bold text-black text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]">
                 Our Mission
               </h2>
-              <p className="relative py-6 md:py-8 font-normal leading-[1.30] text-black text-[clamp(0.875rem,0.65rem+0.8vw,1.125rem)]">
+              <p className="relative py-6 md:py-8 font-bold leading-[1.30] text-black text-[clamp(0.875rem,0.65rem+0.8vw,1.125rem)]">
                 To build the world&apos;s most trusted recruitment platform—where qualifications
                 matter more than keywords, and verification matters more than volume.
               </p>
             </article>
 
-            <article className="px-6 md:px-8 lg:px-12">
+            <article className="px-6 text-center md:px-8 md:text-left lg:px-12">
               <h2 className="mx-auto max-w-4xl text-balance leading-[1.15] font-bold text-black text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]">
                 Our Vision
               </h2>
-              <p className="relative py-6 md:py-8 font-normal leading-[1.30] text-black text-[clamp(0.875rem,0.65rem+0.8vw,1.125rem)]">
+              <p className="relative py-6 md:py-8 font-bold leading-[1.30] text-black text-[clamp(0.875rem,0.65rem+0.8vw,1.125rem)]">
                 A world where hiring is fast, fair, and based on verified truth. Where job seekers
                 are valued for their skills, and employers never waste time on unqualified
                 candidates.
@@ -367,23 +347,26 @@ function MissionVisionWhyIntroTrack() {
         </div>
       </FadeUp>
 
-      {/* WHY header + intro */}
       <FadeUp
         delay={0.06}
         className="relative z-10 flex flex-col items-center gap-8 py-6 text-center md:py-8"
       >
         <h2
           id="why-wizjobs-heading"
-          className="mx-auto max-w-4xl text-balance leading-[1.15] font-bold text-black text-[clamp(1.875rem,1rem+3.2vw,3.25rem)]"
+          className="mx-auto max-w-4xl text-balance leading-[1.15] text-black text-[clamp(2.25rem,1.2rem+4vw,4rem)] font-extrabold "
         >
           WHY
         </h2>
-        <h4 className="font-normal text-black text-[clamp(1.25rem,0.65rem+2.2vw,2rem)] leading-[1.1]">
-          We Built WizJobs
+        <h4 className="flex items-center justify-center gap-2 font-normal leading-[1.1] text-black text-[clamp(1.25rem,0.65rem+2.2vw,2rem)] md:gap-0">
+        <span className="px-0 md:px-2">We Built</span>
+          <Icon5
+            className="h-8 w-auto shrink-0 text-[#455FF6]"
+            aria-hidden
+          />
+          
         </h4>
       </FadeUp>
       
-      {/* Lower guide: stem + dot, ends just above the 50+ years paragraph */}
       <div
         className="pointer-events-none mt-3 hidden flex-col items-center md:flex"
         aria-hidden
@@ -425,7 +408,6 @@ export function MissionVisionWhySection() {
       <div className="mx-auto w-full max-w-[min(100%,1430px)] px-4 sm:px-6 lg:px-8">
         <MissionVisionWhyIntroTrack />
 
-        {/* Problem points: icon always left of copy (20px gap); rows stagger L/R; connector (md+) */}
         <div
           ref={problemGuideTrackRef}
           className="relative mx-auto w-full max-w-[min(100%,1310px)] py-6 md:py-8"
@@ -439,7 +421,6 @@ export function MissionVisionWhySection() {
               const staggerRight = index % 2 === 1;
               return (
                 <StaggerItem key={item.id}>
-                  {/* Mobile: each item fades up individually as it enters viewport */}
                   <FadeUp
                     once={false}
                     amount={0.3}
@@ -454,7 +435,6 @@ export function MissionVisionWhySection() {
                     )}
                   </FadeUp>
 
-                  {/* Desktop: icon + text side by side, staggered L/R */}
                   <div
                     ref={index === 0 ? problemGuideLeg1RowRef : undefined}
                     className={[

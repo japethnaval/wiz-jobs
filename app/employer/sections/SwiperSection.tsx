@@ -33,7 +33,7 @@ const slides = [
 export function SwiperSection() {
   return (
     <section className="bg-[#455FF6] relative isolate overflow-x-clip md:-mx-6 lg:-mx-8 py-12 md:py-16 lg:py-24">
-      <CustomSwiper slides={slides} />
+      <CustomSwiper slides={slides} autoplayDelay={5000}/>
     </section>
   );
 }

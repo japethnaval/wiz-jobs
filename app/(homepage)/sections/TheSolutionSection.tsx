@@ -3,7 +3,8 @@
 import Image, { type StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import { Icon12, Icon15, Icon13, Icon14 } from "@/assets";
-import { FadeUp } from "@/shared-ui";
+import { DeviceScreen, FadeUp, PulseMotion } from "@/shared-ui";
+import MobileSwiper from "@/shared-ui/MobileSwiper";
 
 type Feature = {
   title: string;
@@ -86,10 +87,50 @@ const itemVariants = {
   },
 };
 
+function FeatureCardBody({ item }: { item: Feature }) {
+  return (
+    <>
+      <div className="mb-4">
+        <PulseMotion>
+          <FeatureIcon icon={item.icon} />
+        </PulseMotion>
+      </div>
+      <h3 className="mb-3 whitespace-pre-line text-lg font-bold leading-snug text-black sm:text-xl">
+        {item.title}
+      </h3>
+      <p className="text-pretty whitespace-pre-line text-[15px] leading-relaxed font-semibold text-black sm:text-[0.9375rem]">
+        {item.body}
+      </p>
+      <p className="mt-auto whitespace-pre-line pt-4 text-pretty text-sm font-bold text-[#455ff6] sm:text-base">
+        {item.highlight}
+      </p>
+    </>
+  );
+}
+
+function FeatureGridItem({ item }: { item: Feature }) {
+  return (
+    <motion.li
+      className="flex h-full flex-col items-start text-left"
+      variants={itemVariants}
+    >
+      <FeatureCardBody item={item} />
+    </motion.li>
+  );
+}
+
+function FeatureSlide({ item }: { item: Feature }) {
+  return (
+    <div className="flex h-full flex-col items-start text-left">
+      <FeatureCardBody item={item} />
+    </div>
+  );
+}
+
 export function TheSolutionSection() {
   return (
       <section aria-labelledby="solution-heading">
-        <div className="mx-auto w-full max-w-[min(100%,96rem)] px-4 sm:px-6 lg:px-8 sm:pb-12 py-12 sm:py-12 md:py-12">
+        <div className="mx-auto w-full max-w-[min(100%,96rem)] bg-[#DEE2F7] px-4 py-12 sm:px-6 sm:pb-12 sm:py-12 md:bg-transparent md:py-12 lg:px-8">
           <FadeUp>
             <h2
               id="solution-heading"
@@ -98,34 +139,31 @@ export function TheSolutionSection() {
               The solution?
             </h2>
           </FadeUp>
-          <motion.ul
-            className="mx-auto grid max-w-6xl grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-14 lg:grid-cols-4 lg:gap-y-10 lg:gap-x-14 xl:gap-x-20"
-            variants={listVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.15 }}
-          >
-            {features.map((item) => (
-              <motion.li
-                key={item.title}
-                className="flex h-full flex-col items-start text-left"
-                variants={itemVariants}
-              >
-                <div className="mb-4">
-                  <FeatureIcon icon={item.icon} />
-                </div>
-                <h3 className="mb-3 whitespace-pre-line text-lg font-bold leading-snug text-black sm:text-xl">
-                  {item.title}
-                </h3>
-                <p className="text-pretty whitespace-pre-line text-[15px] leading-relaxed text-black sm:text-[0.9375rem] font-semibold">
-                  {item.body}
-                </p>
-                <p className="mt-auto whitespace-pre-line pt-4 text-pretty text-sm font-bold text-[#455ff6] sm:text-base">
-                  {item.highlight}
-                </p>
-              </motion.li>
-            ))}
-          </motion.ul>
+          <DeviceScreen md lg>
+            <motion.ul
+              className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2 md:gap-x-12 md:gap-y-14 lg:grid-cols-4 lg:gap-y-10 lg:gap-x-14 xl:gap-x-20"
+              variants={listVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.15 }}
+            >
+              {features.map((item) => (
+                <FeatureGridItem key={item.title} item={item} />
+              ))}
+            </motion.ul>
+          </DeviceScreen>
+
+          <DeviceScreen sm>
+            <MobileSwiper
+              autoHeight={false}
+              slideMinHeightClassName="min-h-[min(20rem,60dvh)]"
+              className="[&_.swiper-pagination-bullet]:bg-black/20 [&_.swiper-pagination-bullet-active]:bg-[#455ff6]"
+            >
+              {features.map((item) => (
+                <FeatureSlide key={item.title} item={item} />
+              ))}
+            </MobileSwiper>
+          </DeviceScreen>
         </div>
       </section>
   );

@@ -51,7 +51,7 @@ export function Navigation() {
         {/* DESKTOP ACTIONS */}
         <div className="hidden self-center min-[1240px]:flex items-center justify-end gap-4 xl:gap-5">
           <Link
-            href="#sign-in"
+            href="/coming-soon"
             className="text-[15px] font-extrabold tracking-wide text-white uppercase hover:opacity-85"
           >
             Sign in
@@ -119,7 +119,7 @@ export function Navigation() {
           ))}
 
           <Link
-            href="#sign-in"
+            href="/coming-soon"
             className="block py-3 pt-4 text-[15px] font-extrabold tracking-wide text-white uppercase hover:text-white/85"
             onClick={() => setMenuOpen(false)}
           >

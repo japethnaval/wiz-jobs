@@ -31,3 +31,35 @@
 .root :global(.swiper-button-next::after) {
   display: none;
 }
+
+/* Result pill: subtle shifting gradient (same palette as inline gradient). */
+.resultPillGradient {
+  background: linear-gradient(
+    270deg,
+    #455ff6 0%,
+    #5a6dff 28%,
+    #9eafff 50%,
+    #5a6dff 72%,
+    #455ff6 100%
+  );
+  background-size: 220% 220%;
+  animation: result-pill-gradient-shift 7s ease-in-out infinite;
+}
+
+@keyframes result-pill-gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resultPillGradient {
+    animation: none;
+    background: linear-gradient(270deg, #455ff6 -11.13%, #ffffff 147.23%);
+    background-size: 100% 100%;
+  }
+}

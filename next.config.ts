@@ -7,10 +7,19 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
   images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+      },
+    ],
     unoptimized: true,
   },
   basePath: isProd ? `/${repoName}` : "",
   assetPrefix: isProd ? `/${repoName}/` : undefined,
+  experimental: {
+    optimizePackageImports: ["framer-motion", "motion", "swiper", "gsap", "ogl"],
+  },
   turbopack: {
     rules: {
       "*.svg": {

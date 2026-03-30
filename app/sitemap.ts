@@ -22,5 +22,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/candidate`,
       lastModified: new Date(),
     },
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: new Date(),
+    },
+    {
+      url: `${baseUrl}/terms-and-conditions`,
+      lastModified: new Date(),
+    },
   ];
 }

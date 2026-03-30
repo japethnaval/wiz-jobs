@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 
-import Image from "next/image";
 import { Graphics12 } from "@/assets/images";
 import { motion } from "framer-motion";
+
+import { TornadoImage } from "@/shared-ui/TornadoBadge/TornadoImage";
 
 export type NumberedTornadoStepProps = {
   step: number;
@@ -34,15 +35,9 @@ function NumberedTornadoBadge({
         {String(step).padStart(2, "0")}
       </div>
 
-      {/* Tornado */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 w-[108px] -translate-x-1/2 -translate-y-[54%] opacity-95 sm:w-[128px]">
-        <Image
-          src={Graphics12}
-          alt=""
-          placeholder="blur"
-          sizes="128px"
-          className="h-auto w-full"
-        />
+      {/* Tornado — behind badge; rotation is centered so it reads as spiral / vortex */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 w-[108px] -translate-x-1/2 -translate-y-[54%] opacity-95 sm:w-[128px]">
+        <TornadoImage image={Graphics12} />
       </div>
 
       {/* CONNECTOR */}

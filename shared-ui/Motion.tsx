@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, type HTMLMotionProps, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { motion, useReducedMotion, type HTMLMotionProps, type Variants } from "framer-motion";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 
 type RevealProps = Omit<HTMLMotionProps<"div">, "children"> & {
   children: ReactNode;
@@ -89,16 +89,6 @@ export function FadeInScale({
   );
 }
 
-const staggerVariants: Variants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.06,
-    },
-  },
-};
-
 const staggerItemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: {
@@ -111,15 +101,146 @@ const staggerItemVariants: Variants = {
   },
 };
 
+export const featureCardStaggerItemVariants: Variants = {
+  hidden: { opacity: 0, y: 28, x: -20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    x: 0,
+    transition: {
+      duration: 0.52,
+      ease: easeOut,
+    },
+  },
+};
+
+export const backdropStaggerListVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.14,
+      delayChildren: 0.06,
+    },
+  },
+};
+
+export const backdropStaggerItemVariants: Variants = {
+  hidden: { y: 28, visibility: "hidden" },
+  visible: {
+    y: 0,
+    visibility: "visible",
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 34,
+      mass: 0.9,
+    },
+  },
+};
+
+export type BackdropStaggerContainerProps = Omit<
+  HTMLMotionProps<"div">,
+  "initial" | "whileInView" | "variants" | "viewport"
+> & {
+  children: ReactNode;
+  staggerChildren?: number;
+  delayChildren?: number;
+  once?: boolean;
+  amount?: number;
+};
+
+export function BackdropStaggerContainer({
+  children,
+  className,
+  staggerChildren = 0.14,
+  delayChildren = 0.06,
+  once = true,
+  amount = 0.12,
+  ...rest
+}: BackdropStaggerContainerProps) {
+  const reduceMotion = useReducedMotion();
+
+  const variants = useMemo(() => {
+    if (reduceMotion) {
+      return {
+        hidden: {},
+        visible: { transition: { staggerChildren: 0, delayChildren: 0 } },
+      } satisfies Variants;
+    }
+    return {
+      hidden: {},
+      visible: {
+        transition: { staggerChildren, delayChildren },
+      },
+    } satisfies Variants;
+  }, [reduceMotion, staggerChildren, delayChildren]);
+
+  return (
+    <motion.div
+      className={className}
+      variants={variants}
+      initial={reduceMotion ? "visible" : "hidden"}
+      whileInView={reduceMotion ? undefined : "visible"}
+      viewport={{ once, amount }}
+      {...rest}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function BackdropStaggerItem({
+  children,
+  className,
+  ...rest
+}: Omit<HTMLMotionProps<"div">, "variants"> & { children: ReactNode }) {
+  const reduceMotion = useReducedMotion();
+
+  const variants = useMemo(() => {
+    if (reduceMotion) {
+      return {
+        hidden: { y: 0, visibility: "visible" as const },
+        visible: { y: 0, visibility: "visible" as const },
+      } satisfies Variants;
+    }
+    return backdropStaggerItemVariants;
+  }, [reduceMotion]);
+
+  return (
+    <motion.div className={className} variants={variants} {...rest}>
+      {children}
+    </motion.div>
+  );
+}
+
 export function StaggerContainer({
   children,
   once = true,
   amount = 0.15,
+  staggerChildren = 0.12,
+  delayChildren = 0.06,
   ...rest
-}: RevealProps) {
+}: RevealProps & {
+  staggerChildren?: number;
+  delayChildren?: number;
+}) {
+  const variants = useMemo(
+    () =>
+      ({
+        hidden: {},
+        show: {
+          transition: {
+            staggerChildren,
+            delayChildren,
+          },
+        },
+      }) satisfies Variants,
+    [staggerChildren, delayChildren],
+  );
+
   return (
     <motion.div
-      variants={staggerVariants}
+      variants={variants}
       initial="hidden"
       whileInView="show"
       viewport={{ once, amount }}
@@ -132,12 +253,136 @@ export function StaggerContainer({
 
 export function StaggerItem({
   children,
+  variants,
   ...rest
-}: Omit<HTMLMotionProps<"div">, "children"> & { children: ReactNode }) {
+}: Omit<HTMLMotionProps<"div">, "children"> & {
+  children: ReactNode;
+  variants?: Variants;
+}) {
   return (
-    <motion.div variants={staggerItemVariants} {...rest}>
+    <motion.div variants={variants ?? staggerItemVariants} {...rest}>
       {children}
     </motion.div>
   );
 }
 
+export function FloatMotion({
+  children,
+  duration = 5.5,
+  deferUntilLoad = false,
+}: {
+  children: ReactNode;
+  duration?: number;
+  deferUntilLoad?: boolean;
+}) {
+  const prefersReducedMotion = useReducedMotion();
+  const [loadReady, setLoadReady] = useState(!deferUntilLoad);
+
+  useEffect(() => {
+    if (!deferUntilLoad) return;
+    if (prefersReducedMotion) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setLoadReady(true);
+      return;
+    }
+    const start = () => setLoadReady(true);
+    if (document.readyState === "complete") {
+      requestAnimationFrame(start);
+    } else {
+      window.addEventListener("load", () => requestAnimationFrame(start), { once: true });
+    }
+  }, [deferUntilLoad, prefersReducedMotion]);
+
+  const shouldFloat = loadReady && !prefersReducedMotion;
+
+  return (
+    <motion.div
+      animate={
+        shouldFloat
+          ? { y: [0, -18, 0], rotate: [0, -0.9, 0.9, 0] }
+          : false
+      }
+      transition={
+        shouldFloat
+          ? { duration, repeat: Infinity, ease: "easeInOut" }
+          : undefined
+      }
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function PulseMotion({
+  children,
+  duration = 4.2,
+}: { children: ReactNode, duration?: number }) {
+  return (
+    <motion.div
+      animate={{ rotate: [0, 4, -4, 0] }}
+      transition={{ duration, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function HeartbeatMotion({
+  children,
+  duration = 1.6,
+  intensity = 0.06,
+  className,
+}: {
+  children: ReactNode;
+  duration?: number;
+  intensity?: number;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      className={["origin-center will-change-transform", className]
+        .filter(Boolean)
+        .join(" ")}
+      animate={{
+        scale: [
+          1,
+          1 + intensity,
+          1,
+          1 + intensity * 0.6,
+          1,
+        ],
+      }}
+      transition={{
+        duration,
+        ease: "easeInOut",
+        repeat: Infinity,
+        times: [0, 0.15, 0.3, 0.45, 1],
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export const ScaleHoverMotion = ({
+  children,
+  duration = 0.5,
+  className,
+  ...rest
+}: {
+  children: ReactNode;
+  duration?: number;
+} & Omit<HTMLMotionProps<"div">, "children">) => {
+  return (
+    <motion.div
+      className={["origin-center will-change-transform", className]
+        .filter(Boolean)
+        .join(" ")}
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration }}
+      {...rest}
+    >
+      {children}
+    </motion.div>
+  );
+};

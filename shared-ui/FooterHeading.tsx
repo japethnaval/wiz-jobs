@@ -1,12 +1,18 @@
 "use client";
 
+import type { ComponentType } from "react";
 import { usePathname } from "next/navigation";
 
 import { GradientCtaButton } from "@/shared-ui/GradientCtaButton";
+import { TextType } from "@/shared-ui/ReactBits";
 import { getFooterHeadingForPath } from "@/config/footer-heading";
 
-/** Same responsive scale as the subtitle so title + subtitle feel like one band. */
+const TextTypeBand = TextType as ComponentType<Record<string, unknown>>;
+
 const bandHeadingType =
+  "text-pretty text-2xl font-extrabold sm:text-2xl md:text-2xl lg:text-[2.5rem]";
+
+const bandSubHeadingType =
   "text-pretty text-base font-extrabold sm:text-xl md:text-2xl lg:text-[2.5rem]";
 
 export function FooterHeading() {
@@ -18,7 +24,7 @@ export function FooterHeading() {
     <div className={["relative pt-12 md:pt-16 lg:pt-24"].filter(Boolean).join(" ")}>
       <div className="pointer-events-none absolute inset-0 z-10 bg-[#eceef8]" aria-hidden />
       <section
-        className="relative z-10 rounded-t-[452px] border-b border-white bg-[linear-gradient(180deg,#FFF_0%,#F0F2F9_100%)] px-4 pb-12 pt-10 text-center sm:px-10 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-20"
+        className="relative z-10 rounded-t-[52px] md:rounded-t-[452px] border-b border-white bg-[linear-gradient(180deg,#FFF_0%,#F0F2F9_100%)] px-4 pb-12 pt-10 text-center shadow-[0_-6px_28px_-10px_rgba(15,23,42,0.05),0_14px_44px_-18px_rgba(15,23,42,0.07)] sm:px-10 sm:pb-20 sm:pt-16 lg:pb-24 lg:pt-20"
         aria-labelledby="footer-heading-title"
       >
         <div className="mx-auto flex w-full max-w-[min(42rem,calc(100vw-2rem))] flex-col items-center sm:max-w-3xl lg:max-w-4xl">
@@ -32,14 +38,21 @@ export function FooterHeading() {
             <span className="block">{titleLine1}</span>
             {titleLine2.trim() ? <span className="block">{titleLine2}</span> : null}
           </h2>
-          <p
+          <div
             className={[
-              "mx-auto mt-3 max-w-[min(18rem,calc(100vw-2.5rem))] font-bold text-[#4f46e5] sm:mt-5 sm:max-w-2xl lg:mt-6",
-              bandHeadingType,
+              "mx-auto mt-3 flex w-full max-w-[min(18rem,calc(100vw-2.5rem))] min-h-[2.2lh] items-center justify-center leading-[1.15] sm:mt-5 sm:max-w-2xl lg:mt-6",
+              bandSubHeadingType,
             ].join(" ")}
           >
-            {subtitle}
-          </p>
+            <TextTypeBand
+              as="p"
+              text={subtitle}
+              loop={true}
+              startOnVisible
+              showCursor={false}
+              className="m-0 max-w-none text-center font-bold text-[#4f46e5]"
+            />
+          </div>
           <div
             className={[
               "mx-auto mt-6 flex w-full flex-col items-center gap-3 px-4 sm:mt-10 sm:flex-row sm:items-stretch sm:justify-center sm:gap-4 sm:px-0 md:gap-5",

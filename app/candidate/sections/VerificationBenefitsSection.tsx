@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { Graphics9 } from "@/assets/images";
 import { FadeUp } from "@/shared-ui";
 
@@ -19,7 +20,11 @@ const benefits = [
   },
 ] as const;
 
+const easeReveal = [0.16, 1, 0.3, 1] as const;
+
 export function VerificationBenefitsSection() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section
       aria-labelledby="verification-benefits"
@@ -36,42 +41,76 @@ export function VerificationBenefitsSection() {
         </FadeUp>
 
         <div className="mx-auto mt-16 grid w-full max-w-[815px] gap-8">
-          {benefits.map((benefit, index) => (
-            <FadeUp
-              key={benefit.title}
-              delay={0.06 + index * 0.05}
-              className={[
-                "w-full max-w-[815px] min-h-[92px] content-center",
-                "rounded-[58px]",
-                "bg-[linear-gradient(271.6deg,#455FF6_-49.43%,#FFFFFF_39.97%)]",
-                "px-6 sm:px-8",
-                "py-6 sm:py-8",
-              ].join(" ")}
-            >
-              <div className="flex flex-col items-center gap-[30px] md:flex-row md:items-center">
-                <div className="h-[41px] w-[41px] shrink-0">
-                  <Image
-                    src={Graphics9}
-                    alt=""
-                    aria-hidden
-                    placeholder="blur"
-                    sizes="41px"
-                    className="h-[41px] w-[41px]"
-                  />
-                </div>
+          {benefits.map((benefit, index) => {
+            const staggerDelay = 0.06 + index * 0.05;
+            return (
+              <motion.div
+                key={benefit.title}
+                initial={
+                  reduceMotion
+                    ? { opacity: 0 }
+                    : { opacity: 0, x: -52 }
+                }
+                whileInView={
+                  reduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }
+                }
+                whileHover={reduceMotion ? undefined : { y: -6 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  delay: staggerDelay,
+                  duration: 0.55,
+                  ease: easeReveal,
+                }}
+                className={[
+                  "verification-benefit-card-bg",
+                  "w-full max-w-[815px] min-h-[92px] content-center",
+                  "rounded-[58px]",
+                  "px-6 sm:px-8",
+                  "py-6 sm:py-8",
+                  "shadow-md will-change-transform",
+                  "transition-shadow duration-300 ease-out hover:shadow-xl",
+                ].join(" ")}
+              >
+                <div className="flex flex-col items-center gap-[30px] md:flex-row md:items-center">
+                  <motion.div
+                    className="h-[41px] w-[41px] shrink-0"
+                    initial={{ scale: 1 }}
+                    whileInView={
+                      reduceMotion
+                        ? { scale: 1 }
+                        : { scale: [1, 1.14, 1] }
+                    }
+                    transition={{
+                      duration: 0.55,
+                      delay: staggerDelay + 0.28,
+                      ease: easeReveal,
+                      times: [0, 0.42, 1],
+                    }}
+                    viewport={{ once: true, amount: 0.35 }}
+                  >
+                    <Image
+                      src={Graphics9}
+                      alt=""
+                      aria-hidden
+                      placeholder="blur"
+                      sizes="41px"
+                      className="h-[41px] w-[41px]"
+                    />
+                  </motion.div>
 
-                <div className="flex w-full min-w-0 flex-1 flex-col items-center gap-3 md:flex-row md:items-center md:gap-[0px]">
-                  <h3 className="w-full text-center md:max-w-[270px] md:text-left font-extrabold text-[#455FF6] text-[clamp(1.25rem,1.1rem+0.4vw,1.5rem)] leading-[33px]">
-                    {benefit.title}
-                  </h3>
+                  <div className="flex w-full min-w-0 flex-1 flex-col items-center gap-3 md:flex-row md:items-center md:gap-0">
+                    <h3 className="w-full text-center font-extrabold leading-[33px] text-[#455FF6] text-[clamp(1.25rem,1.1rem+0.4vw,1.5rem)] md:max-w-[270px] md:text-left">
+                      {benefit.title}
+                    </h3>
 
-                  <p className="w-full min-w-0 flex-1 text-center md:text-left text-black font-normal text-[clamp(0.9375rem,0.9rem+0.2vw,1rem)] leading-[23px]">
-                    {benefit.body}
-                  </p>
+                    <p className="w-full min-w-0 flex-1 text-center font-normal leading-[23px] text-black text-[clamp(0.9375rem,0.9rem+0.2vw,1rem)] md:text-left">
+                      {benefit.body}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </FadeUp>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

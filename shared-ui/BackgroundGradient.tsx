@@ -5,10 +5,6 @@ type BackgroundGradientProps = {
   className?: string;
 };
 
-/**
- * Vertical page-level background gradient wrapper.
- * Use around page/layout content to keep a full-viewport gradient backdrop.
- */
 export function BackgroundGradient({ children, className }: BackgroundGradientProps) {
   return (
     <div className={["relative isolate min-h-full", className].filter(Boolean).join(" ")}>

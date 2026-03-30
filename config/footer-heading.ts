@@ -1,7 +1,3 @@
-/**
- * Footer CTA band copy per route. Resolved in FooterHeading via usePathname().
- * Add entries as you add routes; unknown paths use `defaultFooterHeading`.
- */
 export type FooterHeadingCta = {
   text: string;
   href: string;
@@ -21,16 +17,15 @@ export const defaultFooterHeading: FooterHeadingContent = {
   ctas: [
     {
       text: "I'm Hiring Get Early Access",
-      href: "#early-access",
+      href: "/coming-soon",
     },
     {
       text: "I'm Job Searching Get Verified",
-      href: "#get-verified",
+      href: "/coming-soon",
     },
   ],
 };
 
-/** Exact path → content (highest priority). */
 export const footerHeadingByPath: Record<string, FooterHeadingContent> = {
   "candidate": {
     ...defaultFooterHeading,
@@ -38,7 +33,7 @@ export const footerHeadingByPath: Record<string, FooterHeadingContent> = {
     titleLine2: "",
     subtitle: "Are You Verified?",
     ctas: [
-      { text: "Create Your \n Free Profile", href: "#create-profile" },
+      { text: "Create Your Free Profile", href: "/coming-soon" },
     ],
   },
   "employer": {
@@ -47,18 +42,16 @@ export const footerHeadingByPath: Record<string, FooterHeadingContent> = {
     titleLine2: "",
     subtitle: "Get Started Today",
     ctas: [
-      { text: "Book a 15-min demo", href: "#create-profile" },
-      { text: "Start a trial!", href: "#contact" },
+      { text: "Book a 15-min demo", href: "/coming-soon" },
+      { text: "Start a trial!", href: "/coming-soon" },
     ],
   },
 };
 
-/** Longest matching prefix wins (after exact match fails). Skip "/" here; it is handled by default. */
 export const footerHeadingByPathPrefix: {
   prefix: string;
   content: FooterHeadingContent;
 }[] = [
-  // { prefix: "/dashboard", content: { ... } },
 ];
 
 export function getFooterHeadingForPath(pathname: string): FooterHeadingContent {
