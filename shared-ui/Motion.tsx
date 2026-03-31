@@ -396,7 +396,7 @@ export const ScaleHoverMotion = ({
 export function FadeSwap({
   swapKey,
   children,
-  duration = 0.3,
+  duration = 0.8,
   ...rest
 }: Omit<HTMLMotionProps<"div">, "children"> & {
   swapKey: string | number;
