@@ -43,27 +43,27 @@ function FeatureIcon({ icon }: { icon: Feature["icon"] }) {
 
 const features: Feature[] = [
   {
-    title: "Blockchain-Verified \n Credentials",
+    title: "Blockchain-Verified Credentials",
     body: "Every work experience, skill, and certificate is verified through multiple sources, layers and secured on blockchain. No more resume fiction.",
     highlight: "Just verified truth.",
     icon: <Icon12 />,
   },
   {
-    title: "AI-Powered \n Qualification Matching",
+    title: "AI-Powered Qualification Matching",
     body: "Our AI doesn’t just match keywords—it understands context, evaluates true skill levels, and scores candidates on actual job fit.",
-    highlight: "90% accuracy vs. \n the industry’s 30%.",
+    highlight: "90% accuracy vs. the industry’s 30%.",
     icon: <Icon15 />,
   },
   {
-    title: "Complete \n Transparency",
+    title: "Complete Transparency",
     body: "Candidates see their qualification scores. Employers see verification status on every claim. No black boxes.",
     highlight: "No bias. Just data-\ndriven decisions.",
     icon: <Icon13 />,
   },
   {
-    title: "Pay for Results, \n Not Resume Volume",
+    title: "Pay for Results, Not Resume Volume",
     body: "At WizJobs, our pricing is built around what actually matters: verified, qualified candidates who match your requirements. You’re investing in precision, not spam.",
-    highlight: "That’s recruiting \n done right.",
+    highlight: "That’s recruiting done right.",
     icon: <Icon14 />,
   },
 ];
@@ -121,8 +121,10 @@ function FeatureGridItem({ item }: { item: Feature }) {
 
 function FeatureSlide({ item }: { item: Feature }) {
   return (
-    <div className="flex h-full flex-col items-center text-center">
-      <FeatureCardBody item={item} />
+    <div className="flex h-full flex-col items-center">
+      <div className="mx-auto w-full max-w-88 px-4 text-left sm:max-w-104 sm:px-0">
+        <FeatureCardBody item={item} />
+      </div>
     </div>
   );
 }

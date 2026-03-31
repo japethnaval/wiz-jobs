@@ -5,39 +5,39 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
+import type { ReactNode } from "react";
 
 import {
   Graphics14,
   Graphics15,
   Graphics16,
-  Graphics17,
-  Graphics18,
-  Graphics19,
-  Graphics20,
+  Graphics32,
 } from "@/assets/images";
-import { HeartbeatMotion } from "../Motion";
+import { Icon16, Icon17, Icon18, Icon19 } from "@/assets";
 
 function CarouselBadgeImage({
-  image,
-  alt,
+  node,
+  alt = "",
   className,
+  size = 208,
 }: {
-  image: StaticImageData;
-  alt: string;
+  node: ReactNode;
+  alt?: string;
   className?: string;
+  size?: number;
 }) {
   return (
     <div className={clsx("pointer-events-none inline-flex shrink-0", className)}>
       <div className="flex items-center justify-center">
-        <Image
-          src={image}
-          alt={alt}
-          width={168}
-          height={168}
-          className="rounded-full object-cover"
-          sizes="168px"
-          placeholder="blur"
-        />
+          <span
+            className="block"
+            style={{ width: size, height: size, minWidth: size, minHeight: size }}
+            aria-hidden={alt === "" ? true : undefined}
+          >
+            <span className="block h-full w-full [&_svg]:h-full [&_svg]:w-full">
+              {node}
+            </span>
+          </span>
       </div>
     </div>
   );
@@ -61,9 +61,14 @@ const cards: Card[] = [
     id: 3,
     image: Graphics16,
   },
+  {
+    id: 4,
+    image: Graphics32,
+  },
 ];
 
-const LOOP_RANGE = 2;
+/** Keep the same visual stack as the original 3-card carousel: active + 1 neighbor on each side. */
+const LOOP_RANGE = 1;
 
 const CARD_ACTIVE = 400;
 const CARD_INACTIVE = 280;
@@ -91,16 +96,16 @@ export default function DiagonalCarouselLoop() {
         >
           <div className="relative h-72 w-72 sm:h-80 sm:w-80 md:h-88 md:w-88">
             <div className="absolute left-0 top-0 -translate-x-[32%] -translate-y-[38%] sm:-translate-x-[36%] sm:-translate-y-[44%]">
-                <CarouselBadgeImage image={Graphics18} alt="Verified candidate" />
+                <CarouselBadgeImage node={<Icon16 />} alt="Verified candidate" />
             </div>
             <div className="absolute right-0 top-0 translate-x-[32%] -translate-y-[38%] sm:translate-x-[36%] sm:-translate-y-[44%]">
-                <CarouselBadgeImage image={Graphics19} alt="ROI" />
+                <CarouselBadgeImage node={<Icon17 />} alt="ROI" />
             </div>
             <div className="absolute left-0 bottom-0 -translate-x-[34%] translate-y-[34%] sm:-translate-x-[40%] sm:translate-y-[40%]">
-                <CarouselBadgeImage image={Graphics17} alt="Less screening" />
+                  <CarouselBadgeImage node={<Icon18 />} alt="Less screening" />
             </div>
             <div className="absolute right-0 bottom-0 translate-x-[34%] translate-y-[34%] sm:translate-x-[40%] sm:translate-y-[40%]">
-                <CarouselBadgeImage image={Graphics20} alt="Match accuracy" />
+                <CarouselBadgeImage node={<Icon19 />} alt="Match accuracy" />
             </div>
           </div>
         </div>
@@ -111,32 +116,39 @@ export default function DiagonalCarouselLoop() {
           let offset = offsetRaw;
           if (offset > cards.length / 2) offset -= cards.length;
           if (offset < -cards.length / 2) offset += cards.length;
+          if (cards.length % 2 === 0 && offset === cards.length / 2) offset = -cards.length / 2;
+          if (cards.length % 2 === 0 && offset === -cards.length / 2) offset = -cards.length / 2;
 
-          if (Math.abs(offset) > LOOP_RANGE) return null;
+          const isBackCard = cards.length > 3 && Math.abs(offset) > LOOP_RANGE;
+          if (!isBackCard && Math.abs(offset) > LOOP_RANGE) return null;
 
           const card = cards[index];
           const isActive = offset === 0;
 
           const xStep = 280;
           const yStep = 80;
-          const x = offset * xStep;
-          const y = offset * yStep;
+          const x = isBackCard ? 0 : offset * xStep;
+          const y = isBackCard ? 0 : offset * yStep;
 
           const cardSize = isActive ? CARD_ACTIVE : CARD_INACTIVE;
 
           return (
             <motion.div
               key={card.id + "-" + i}
-              className="absolute cursor-pointer overflow-visible rounded-3xl"
-              onClick={() => setActive(active + offset)}
+              className={clsx(
+                "absolute overflow-visible rounded-3xl",
+                !isBackCard && "cursor-pointer",
+                isBackCard && "pointer-events-none",
+              )}
+              onClick={!isBackCard ? () => setActive(active + offset) : undefined}
               animate={{
                 x,
                 y,
-                scale: isActive ? 1.12 : 0.85,
+                scale: isBackCard ? 0.72 : isActive ? 1.12 : 0.85,
                 rotate: 0,
-                zIndex: isActive ? 30 : 20 - Math.abs(offset),
-                opacity: 1,
-                filter: isActive ? "blur(0px)" : "blur(1px)",
+                zIndex: isBackCard ? 8 : isActive ? 30 : 20 - Math.abs(offset),
+                opacity: isBackCard ? 0.22 : 1,
+                filter: isBackCard ? "blur(2px)" : isActive ? "blur(0px)" : "blur(1px)",
               }}
               transition={{
                 type: "spring",

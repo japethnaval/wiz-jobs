@@ -32,3 +32,4 @@ export { default as Graphics28 } from "./Graphics_28.png";
 export { default as Graphics29 } from "./Graphics_29.png";
 export { default as Graphics30 } from "./Graphics_30.png";
 export { default as Graphics31 } from "./Graphics_31.png";
+export { default as Graphics32 } from "./Graphics_32.jpg";

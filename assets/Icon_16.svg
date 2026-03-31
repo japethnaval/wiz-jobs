@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 238.704 95.643">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_2579" data-name="Path 2579" d="M1620.659,77.423l-4.382,8.39-9.333,1.575a1.944,1.944,0,0,0-1.065,3.277l6.625,6.76-1.386,9.363a1.944,1.944,0,0,0,2.788,2.026l8.476-4.212,8.476,4.212a1.944,1.944,0,0,0,2.788-2.026l-1.386-9.363,6.625-6.76a1.944,1.944,0,0,0-1.065-3.277l-9.333-1.575-4.382-8.39a1.944,1.944,0,0,0-3.446,0" transform="translate(-1605.321 -76.379)" fill="#455ff6"/>
+    </clipPath>
+  </defs>
+  <g id="Group_8638" data-name="Group 8638" transform="translate(-27 0)">
+    <rect id="Rectangle_2603" data-name="Rectangle 2603" width="238.704" height="79.323" rx="39.661" transform="translate(27 16.321)" fill="#fff" opacity="0.716"/>
+    <text id="Match_Accuracy" data-name="Match
+Accuracy" transform="translate(148.842 48.994)" font-size="16" font-family="AreaNormal-Medium, Area Normal" font-weight="500"><tspan x="0" y="0">Match</tspan><tspan x="0" y="19">Accuracy</tspan></text>
+    <text id="_90_" data-name="90%" transform="translate(95.824 70.451)" fill="#455ff6" font-size="34" font-family="AreaNormal-Black, Area Normal" font-weight="800"><tspan x="-37.485" y="0">90%</tspan></text>
+    <g id="Group_7449" data-name="Group 7449" transform="translate(223.842 0)">
+      <g id="Group_7225" data-name="Group 7225" clip-path="url(#clip-path)">
+        <rect id="Rectangle_2478" data-name="Rectangle 2478" width="35.203" height="33.132" transform="translate(-0.542 0)" fill="#455ff6"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -14,3 +14,4 @@ export * from "./MobileSwiper";
 export * from "./Carousel";
 export * from "./InsightBadge";
 export * from "./HeroOrbitBackdrop";
+export * from "./FloatingOverlay";

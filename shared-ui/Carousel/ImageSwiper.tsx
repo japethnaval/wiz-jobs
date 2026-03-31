@@ -1,15 +1,22 @@
 "use client";
 
 import clsx from "clsx";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
+import type { ReactNode } from "react";
+import { useState } from "react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { HeartbeatMotion } from "../Motion";
+import {
+  FloatingOverlayLayer,
+  FloatingOverlayProvider,
+  getBadgePositionStyles,
+} from "../FloatingOverlay";
 
 export type ImageSwiperBadgePosition =
   | "top-left"
@@ -19,56 +26,64 @@ export type ImageSwiperBadgePosition =
   | "center";
 
 export type ImageSwiperBadge = {
-  image: StaticImageData;
-  alt: string;
+  /** Decorative by default; pass text only if the badge needs to be announced. */
+  alt?: string;
   position: ImageSwiperBadgePosition;
+  node: ReactNode;
 };
 
 const BADGE_POSITION_CLASSES: Record<ImageSwiperBadgePosition, string> = {
   "top-left":
-    "left-2 top-2 z-20 -translate-x-0 -translate-y-0 sm:left-3 sm:top-3",
+    "left-2 top-2 z-50 -translate-x-0 -translate-y-0 sm:left-3 sm:top-3",
   "top-right":
-    "right-2 top-2 z-20 translate-x-0 -translate-y-0 sm:right-3 sm:top-3",
+    "right-2 top-2 z-50 translate-x-0 -translate-y-0 sm:right-3 sm:top-3",
   "bottom-left":
-    "left-2 bottom-2 z-20 -translate-x-0 translate-y-0 sm:left-3 sm:bottom-3",
+    "left-2 bottom-2 z-50 -translate-x-0 translate-y-0 sm:left-3 sm:bottom-3",
   "bottom-right":
-    "right-2 bottom-2 z-20 translate-x-0 translate-y-0 sm:right-3 sm:bottom-3",
+    "right-2 bottom-2 z-50 translate-x-0 translate-y-0 sm:right-3 sm:bottom-3",
   center:
-    "left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-[58%]",
+    "left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-[58%]",
+};
+
+/** Extra nudge so badges sit slightly off the image edges. */
+const BADGE_EDGE_NUDGE_CLASSES: Record<ImageSwiperBadgePosition, string> = {
+  "top-left": "-translate-x-3 -translate-y-3",
+  "top-right": "translate-x-3 -translate-y-3",
+  "bottom-left": "-translate-x-3 translate-y-3",
+  "bottom-right": "translate-x-3 translate-y-3",
+  center: "",
 };
 
 function SwiperBadgeImage({
-  image,
-  alt,
+  node,
+  alt = "",
   size,
   className,
 }: {
-  image: StaticImageData;
-  alt: string;
+  node: ReactNode;
+  alt?: string;
   size: number;
   className?: string;
 }) {
-  const blur =
-    typeof image === "object" && image !== null && "blurDataURL" in image;
   return (
     <div className={clsx("pointer-events-none inline-flex shrink-0", className)}>
       <div className="flex items-center justify-center">
-        <Image
-          src={image}
-          alt={alt}
-          width={size}
-          height={size}
-          className="rounded-full object-cover"
-          sizes={`${size}px`}
-          placeholder={blur ? "blur" : "empty"}
-        />
+        <span
+          className="block"
+          style={{ width: size, height: size, minWidth: size, minHeight: size }}
+          aria-hidden={alt === "" ? true : undefined}
+        >
+          <span className="block h-full w-full [&_svg]:h-full [&_svg]:w-full">
+            {node}
+          </span>
+        </span>
       </div>
     </div>
   );
 }
 
 type Props = {
-  images: (string | StaticImageData)[];
+  images: (string | import("next/image").StaticImageData)[];
   alts?: string[];
   className?: string;
   slideFrameClassName?: string;
@@ -78,6 +93,8 @@ type Props = {
   loop?: boolean;
   slideBadges?: (ImageSwiperBadge[] | undefined)[];
   badgeSize?: number;
+  /** When true, render badges in a layer outside Swiper DOM (avoids transform/overflow clipping). */
+  badgesOutside?: boolean;
 };
 
 export default function ImageSwiper({
@@ -90,10 +107,13 @@ export default function ImageSwiper({
   autoplay = true,
   loop: loopProp,
   slideBadges,
-  badgeSize = 140,
+  badgeSize = 208,
+  badgesOutside = false,
 }: Props) {
   const loopEnabled =
     images.length > 1 && (loopProp !== undefined ? loopProp : true);
+
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const modules = [Pagination];
   if (navigation) modules.push(Navigation);
@@ -106,9 +126,10 @@ export default function ImageSwiper({
     "[&_.swiper-pagination]:bottom-auto! [&_.swiper-pagination]:top-auto!",
   ].join(" ");
 
-  return (
-    <div className="w-full">
-      <Swiper
+  const activeBadges = slideBadges?.[activeIndex];
+
+  const swiperEl = (
+    <Swiper
         modules={modules}
         spaceBetween={16}
         slidesPerView={1}
@@ -120,7 +141,14 @@ export default function ImageSwiper({
             : false
         }
         loop={loopEnabled}
-        className={clsx(paginationOutsideClassName, className ?? "rounded-xl")}
+        onSwiper={(swiper: SwiperType) => setActiveIndex(swiper.realIndex ?? 0)}
+        onSlideChange={(swiper: SwiperType) => setActiveIndex(swiper.realIndex ?? 0)}
+        className={clsx(
+          paginationOutsideClassName,
+          slideBadges &&
+            "overflow-visible [&_.swiper-wrapper]:overflow-visible [&_.swiper-slide]:overflow-visible",
+          className ?? "rounded-xl",
+        )}
       >
         {images.map((src, index) => {
           const blur =
@@ -143,7 +171,7 @@ export default function ImageSwiper({
 
           return (
             <SwiperSlide key={index}>
-              {slideBadges ? (
+              {slideBadges && !badgesOutside ? (
                 <div className="relative w-full overflow-visible">
                   <div className={clsx(frameClasses, "overflow-hidden")}>
                     {imageInner}
@@ -154,14 +182,15 @@ export default function ImageSwiper({
                       className={clsx(
                         "absolute",
                         BADGE_POSITION_CLASSES[badge.position],
+                        BADGE_EDGE_NUDGE_CLASSES[badge.position],
                       )}
                     >
                       <HeartbeatMotion>
-                        <SwiperBadgeImage
-                          image={badge.image}
-                          alt={badge.alt}
-                          size={badgeSize}
-                        />
+                      <SwiperBadgeImage
+                        node={badge.node}
+                        alt={badge.alt}
+                        size={badgeSize}
+                      />
                       </HeartbeatMotion>
                     </div>
                   ))}
@@ -173,6 +202,33 @@ export default function ImageSwiper({
           );
         })}
       </Swiper>
-    </div>
+  );
+
+  if (!slideBadges || !badgesOutside) {
+    return <div className="w-full">{swiperEl}</div>;
+  }
+
+  return (
+    <FloatingOverlayProvider>
+      <div className="w-full">{swiperEl}</div>
+      <FloatingOverlayLayer>
+        {(rect) =>
+          activeBadges?.map((badge, idx) => (
+            <div
+              key={idx}
+              style={getBadgePositionStyles(badge.position, rect)}
+            >
+              <HeartbeatMotion>
+                <SwiperBadgeImage
+                  node={badge.node}
+                  alt={badge.alt}
+                  size={badgeSize}
+                />
+              </HeartbeatMotion>
+            </div>
+          )) ?? null
+        }
+      </FloatingOverlayLayer>
+    </FloatingOverlayProvider>
   );
 }

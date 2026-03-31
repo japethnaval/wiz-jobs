@@ -6,12 +6,10 @@ import {
   Graphics14,
   Graphics15,
   Graphics16,
-  Graphics17,
-  Graphics18,
-  Graphics19,
-  Graphics20,
   Graphics21,
+  Graphics32,
 } from "@/assets/images";
+import { Icon11, Icon16, Icon17, Icon18, Icon19 } from "@/assets";
 import { DeviceScreen, FadeInScale, FadeUp, HeroOrbitBackdrop } from "@/shared-ui";
 import ImageSwiper from "@/shared-ui/Carousel/ImageSwiper";
 import { GradientCtaButton } from "../../../shared-ui/GradientCtaButton";
@@ -114,7 +112,7 @@ export function VerifiedTalanetsSection() {
               </div>
               <div className="relative z-10 mx-auto w-full max-w-sm">
                 <ImageSwiper
-                  images={[Graphics14, Graphics15, Graphics16]}
+                  images={[Graphics14, Graphics15, Graphics16, Graphics32]}
                   alts={[
                     "Recruitment screening workflow",
                     "Hiring and collaboration",
@@ -123,72 +121,31 @@ export function VerifiedTalanetsSection() {
                   slideBadges={[
                     [
                       {
-                        image: Graphics17,
-                        alt: "Less screening time",
+                        node: <Icon16 />,
                         position: "bottom-right",
-                      },
-                      {
-                        image: Graphics18,
-                        alt: "Verified candidate",
-                        position: "top-left",
-                      },
-                      {
-                        image: Graphics19,
-                        alt: "Hiring ROI improvement",
-                        position: "top-right",
-                      },
-                      {
-                        image: Graphics20,
-                        alt: "Match accuracy",
-                        position: "bottom-left",
                       },
                     ],
                     [
                       {
-                        image: Graphics17,
-                        alt: "Less screening time",
-                        position: "bottom-right",
-                      },
-                      {
-                        image: Graphics18,
-                        alt: "Verified candidate",
+                        node: <Icon17 />,
                         position: "top-left",
-                      },
-                      {
-                        image: Graphics19,
-                        alt: "Hiring ROI improvement",
-                        position: "top-right",
-                      },
-                      {
-                        image: Graphics20,
-                        alt: "Match accuracy",
-                        position: "bottom-left",
                       },
                     ],
                     [
                       {
-                        image: Graphics17,
-                        alt: "Less screening time",
-                        position: "bottom-right",
-                      },
-                      {
-                        image: Graphics18,
-                        alt: "Verified candidate",
-                        position: "top-left",
-                      },
-                      {
-                        image: Graphics19,
-                        alt: "Hiring ROI improvement",
+                        node: <Icon18 />,
                         position: "top-right",
                       },
+                    ],
+                    [
                       {
-                        image: Graphics20,
-                        alt: "Match accuracy",
+                        node: <Icon19 />,
                         position: "bottom-left",
                       },
                     ],
                   ]}
-                  badgeSize={132}
+                  badgeSize={168}
+                  badgesOutside
                   navigation={false}
                   autoplay
                   loop
