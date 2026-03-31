@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 import {
   Graphics13,
@@ -39,7 +40,7 @@ function HeroCornerBadge({
   size: number;
 }) {
   return (
-    <HeartbeatMotion className={`pointer-events-none absolute ${className}`}>
+    <HeartbeatMotion className={`pointer-events-none ${className}`}>
       <div aria-hidden={alt === "" ? true : undefined}>
         <div
           className=""
@@ -55,6 +56,7 @@ function HeroCornerBadge({
 }
 
 export function HeroImage() {
+  const reduceMotion = useReducedMotion();
   const badges: Array<{
     node: ReactNode;
     alt?: string;
@@ -83,15 +85,34 @@ export function HeroImage() {
                     className="mx-auto block h-auto w-full object-cover object-center"
                   />
                 </div>
-                {badges.map((badge) => (
-                  <HeroCornerBadge
-                    key={badge.position}
-                    size={badge.size}
-                    node={badge.node}
-                    alt={badge.alt}
-                    className={`z-20 ${badgePositionClass(badge.position)}`}
-                  />
-                ))}
+                {badges.map((badge, idx) => {
+                  const fromX =
+                    badge.position === "top-left" || badge.position === "bottom-left"
+                      ? -10
+                      : 10;
+                  const delay = reduceMotion ? 0 : idx * 0.9;
+
+                  return (
+                    <motion.div
+                      key={badge.position}
+                      className={`absolute z-20 ${badgePositionClass(badge.position)}`}
+                      initial={reduceMotion ? false : { opacity: 0, x: fromX }}
+                      animate={reduceMotion ? undefined : { opacity: 1, x: 0 }}
+                      transition={
+                        reduceMotion
+                          ? undefined
+                          : { duration: 0.38, delay, ease: [0.16, 1, 0.3, 1] }
+                      }
+                    >
+                      <HeroCornerBadge
+                        size={badge.size}
+                        node={badge.node}
+                        alt={badge.alt}
+                        className=""
+                      />
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
         </FloatMotion>
