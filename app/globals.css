@@ -95,3 +95,40 @@ body {
     background-clip: unset;
   }
 }
+
+@layer components {
+  .slider-thin {
+    @apply h-[3px] w-full cursor-pointer appearance-none bg-transparent accent-[#455ff6];
+  }
+
+  .slider-thin::-webkit-slider-runnable-track {
+    height: 3px;
+    border-radius: 9999px;
+    background-color: rgba(229, 231, 235, 0.6); /* neutral-200/60 */
+  }
+
+  .slider-thin::-moz-range-track {
+    height: 3px;
+    border-radius: 9999px;
+    background-color: rgba(229, 231, 235, 0.6);
+  }
+
+  .slider-thin::-webkit-slider-thumb {
+    appearance: none;
+    height: 12px;
+    width: 48px;
+    border-radius: 9999px;
+    background-color: #455ff6;
+    margin-top: -4.5px;
+    cursor: pointer;
+  }
+
+  .slider-thin::-moz-range-thumb {
+    height: 12px;
+    width: 48px;
+    border-radius: 9999px;
+    background-color: #455ff6;
+    border: none;
+    cursor: pointer;
+  }
+}

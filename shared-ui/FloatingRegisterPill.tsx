@@ -74,7 +74,7 @@ export function FloatingRegisterPill({
               <span className="mt-0.5 whitespace-pre-line text-[18px] font-extrabold leading-[1.02] text-[#111827] transition-colors group-hover:text-white">
                 {"Register Now!"}
               </span>
-              <StarGlyph className="text-[22px] leading-none text-[#455FF6]" />
+              <StarGlyph className="text-[22px] leading-none text-[#49FBDF]" />
             </Link>
           </motion.div>
         </motion.div>

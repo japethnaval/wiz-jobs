@@ -11,7 +11,7 @@ import {
   Graphics32,
 } from "@/assets/images";
 import { Icon20, Icon21, Icon22, Icon23  } from "@/assets";
-import { DeviceScreen, FadeInScale, FadeUp, HeroOrbitBackdrop } from "@/shared-ui";
+import { DeviceScreen, FadeInScale, FadeSwap, FadeUp, HeroOrbitBackdrop } from "@/shared-ui";
 import ImageSwiper from "@/shared-ui/Carousel/ImageSwiper";
 import { GradientCtaButton } from "../../../shared-ui/GradientCtaButton";
 import { ShinyText } from "@/shared-ui/ReactBits";
@@ -95,20 +95,27 @@ export function VerifiedTalanetsSection() {
                 />
               </div>
               <div className="relative z-10 mx-auto w-full max-w-sm">
-                {activeBadge ? (
-                  <div
-                    className={[
-                      "pointer-events-none absolute z-20",
-                      badgePositionClass(activeBadge.position),
-                    ].join(" ")}
-                    style={{ width: activeBadge.size, height: activeBadge.size }}
-                    aria-hidden
-                  >
+                <FadeSwap
+                  swapKey={activeSlideIndex}
+                  className={[
+                    "pointer-events-none absolute z-20",
+                    activeBadge ? badgePositionClass(activeBadge.position) : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  style={
+                    activeBadge
+                      ? { width: activeBadge.size, height: activeBadge.size }
+                      : undefined
+                  }
+                  aria-hidden
+                >
+                  {activeBadge ? (
                     <div className="h-full w-full [&_svg]:h-full [&_svg]:w-full">
                       {activeBadge.node}
                     </div>
-                  </div>
-                ) : null}
+                  ) : null}
+                </FadeSwap>
                 <ImageSwiper
                   images={[Graphics14, Graphics15, Graphics16, Graphics32]}
                   alts={[

@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion, type HTMLMotionProps, type Variants } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  type HTMLMotionProps,
+  type Variants,
+} from "framer-motion";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 
 type RevealProps = Omit<HTMLMotionProps<"div">, "children"> & {
@@ -386,3 +392,37 @@ export const ScaleHoverMotion = ({
     </motion.div>
   );
 };
+
+export function FadeSwap({
+  swapKey,
+  children,
+  duration = 0.3,
+  ...rest
+}: Omit<HTMLMotionProps<"div">, "children"> & {
+  swapKey: string | number;
+  children: ReactNode | null;
+  duration?: number;
+}) {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return children ? <div {...rest}>{children}</div> : null;
+  }
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      {children ? (
+        <motion.div
+          key={swapKey}
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration, ease: easeOut }}
+          {...rest}
+        >
+          {children}
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
+}

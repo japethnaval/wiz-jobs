@@ -3,7 +3,7 @@
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
-import { Icon5 } from "@/assets";
+import { Icon24 } from "@/assets";
 import { FadeInScale, FadeUp } from "@/shared-ui";
 import { ShinyText } from "@/shared-ui/ReactBits";
 
@@ -147,7 +147,7 @@ function TableHorizontalScrollBar({
         step={1}
         value={scrollLeft}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="h-2 w-full cursor-pointer appearance-none rounded-full bg-neutral-200/60 accent-[#455ff6] [&::-moz-range-thumb]:h-2 [&::-moz-range-thumb]:w-12 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#455ff6] [&::-webkit-slider-runnable-track]:h-1.5 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-neutral-200/60 [&::-webkit-slider-thumb]:-mt-1 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-12 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#455ff6]"
+        className="slider-thin"
       />
     </div>
   );
@@ -156,10 +156,10 @@ function TableHorizontalScrollBar({
 function WMark({ shineDisabled }: { shineDisabled: boolean }) {
   return (
     <div
-      className="relative mx-auto h-14 w-17 overflow-hidden sm:h-16 md:w-19"
+      className="relative mx-auto flex h-14 w-17 items-center justify-center overflow-hidden sm:h-16 md:w-19"
       aria-hidden
     >
-      <Icon5 className="absolute left-0 top-1/2 z-0 h-[4.5rem] w-auto min-w-[11rem] -translate-y-1/2 text-[#455ff6] sm:h-[5rem]" />
+      <Icon24 className="h-full w-auto max-w-full text-[#455ff6]" />
       {!shineDisabled && (
         <motion.div
           className="pointer-events-none absolute top-0 bottom-0 left-0 z-10 w-[42%] max-w-[5rem] bg-[linear-gradient(90deg,transparent_0%,rgba(73,251,223,0.85)_45%,rgba(255,255,255,0.55)_52%,rgba(73,251,223,0.75)_58%,transparent_100%)] mix-blend-screen"
