@@ -1,50 +1,69 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
+import type { ReactNode } from "react";
 
 import {
   Graphics13,
   Graphics22,
-  Graphics23,
-  Graphics24,
-  Graphics25,
-  Graphics26,
 } from "@/assets/images";
+import { Icon16, Icon17, Icon18, Icon19 } from "@/assets";
 import { DeviceScreen, FloatMotion, HeartbeatMotion } from "@/shared-ui";
 
-const MOBILE_BADGE_PX = 108;
+const MOBILE_BADGE_PX = 128;
+
+type BadgePosition = "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center";
+
+function badgePositionClass(position: BadgePosition) {
+  switch (position) {
+    case "top-left":
+      return "left-0 top-[0%] -translate-x-2 -translate-y-14";
+    case "top-right":
+      return "right-0 top-[0%] translate-x-2 -translate-y-14";
+    case "bottom-left":
+      return "left-10 bottom-0 -translate-x-10 translate-y-12";
+    case "bottom-right":
+      return "right-0 bottom-0 -translate-x-10 translate-y-12";
+  }
+}
 
 function HeroCornerBadge({
-  image,
-  alt,
+  node,
+  alt = "",
   className,
 }: {
-  image: StaticImageData;
-  alt: string;
+  node: ReactNode;
+  alt?: string;
   className: string;
 }) {
-  const blur =
-    typeof image === "object" && image !== null && "blurDataURL" in image;
   return (
     <HeartbeatMotion className={`pointer-events-none absolute ${className}`}>
-      <div
-        aria-hidden={alt === "" ? true : undefined}
-      >
-        <Image
-          src={image}
-          alt={alt}
-          width={MOBILE_BADGE_PX}
-          height={MOBILE_BADGE_PX}
-          className="rounded-full object-cover shadow-md"
-          sizes={`${MOBILE_BADGE_PX}px`}
-          placeholder={blur ? "blur" : "empty"}
-        />
+      <div aria-hidden={alt === "" ? true : undefined}>
+        <div
+          className=""
+          style={{ width: MOBILE_BADGE_PX, height: MOBILE_BADGE_PX }}
+        >
+          <div className="h-[168px] w-[128px] p-3 [&_svg]:h-[128px] [&_svg]:w-[128px]">
+            {node}
+          </div>
+        </div>
       </div>
     </HeartbeatMotion>
   );
 }
 
 export function HeroImage() {
+  const badges: Array<{
+    node: ReactNode;
+    alt?: string;
+    position: BadgePosition;
+  }> = [
+    { node: <Icon16 />, position: "top-left" },
+    { node: <Icon17 />, position: "top-right" },
+    { node: <Icon18 />, position: "bottom-left" },
+    { node: <Icon19 />, position: "bottom-right" },
+  ];
+
   return (
     <>
       <DeviceScreen sm>
@@ -61,26 +80,14 @@ export function HeroImage() {
                     className="mx-auto block h-auto w-full object-cover object-center"
                   />
                 </div>
+                {badges.map((badge) => (
                   <HeroCornerBadge
-                  image={Graphics23}
-                  alt="Graphics 23"
-                  className="left-0 top-5 z-20 -translate-x-2 -translate-y-2"
-                />
-                <HeroCornerBadge
-                  image={Graphics24}
-                  alt="Graphics 24"
-                  className="right-0 top-15 z-20 translate-x-2 -translate-y-1"
-                />
-                <HeroCornerBadge
-                  image={Graphics25}
-                  alt="Graphics 25"
-                  className="left-0 bottom-0 z-20 -translate-x-3 translate-y-[-50%]"
-                />
-                <HeroCornerBadge
-                  image={Graphics26}
-                  alt="Graphics 26"
-                  className="right-0 bottom-0 z-20 translate-x-3 translate-y-3"
-              />
+                    key={badge.position}
+                    node={badge.node}
+                    alt={badge.alt}
+                    className={`z-20 ${badgePositionClass(badge.position)}`}
+                  />
+                ))}
               </div>
             </div>
         </FloatMotion>

@@ -34,6 +34,7 @@ export default function MobileSwiper({
         modules={[Pagination, Autoplay]}
         spaceBetween={16}
         slidesPerView={1}
+        speed={1000}
         autoHeight={autoHeight}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}

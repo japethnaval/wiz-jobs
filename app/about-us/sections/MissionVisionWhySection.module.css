@@ -1,0 +1,33 @@
+/* Same motion as CustomSwiper result pill; lighter palette centered on brand blue. */
+.circleIconGradient {
+  background: linear-gradient(
+    270deg,
+    #455ff6 0%,
+    #6578ff 22%,
+    #8c9dff 42%,
+    #b8c4ff 50%,
+    #8c9dff 58%,
+    #6578ff 78%,
+    #455ff6 100%
+  );
+  background-size: 220% 220%;
+  animation: mission-icon-gradient-shift 7s ease-in-out infinite;
+}
+
+@keyframes mission-icon-gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circleIconGradient {
+    animation: none;
+    background: #455ff6;
+    background-size: 100% 100%;
+  }
+}

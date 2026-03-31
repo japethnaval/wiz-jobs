@@ -29,7 +29,7 @@ export function AboutHeroSection() {
             delay={0}
           />
         </h1>
-        <h3 className="mb-8 relative z-10 mx-auto max-w-[650px] pt-8 text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] font-bold leading-[1.30] text-[#455FF6]">
+        <h3 className="mb-8 relative z-10 mx-auto max-w-[650px] pt-8 text-[clamp(1rem,0.65rem+2.6vw,2.5rem)] font-bold leading-[1.30] text-[#455FF6]">
           We’re building the world’s most trusted recruitment platform.
         </h3>
         <h4 className="relative pb-8  max-w-[460px] font-normal leading-[1.30] text-black text-[clamp(0.875rem,0.65rem+0.8vw,1.125rem)]">

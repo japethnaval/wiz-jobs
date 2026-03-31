@@ -129,7 +129,7 @@ export function EmployerJobSeekerSection() {
       <div className="mx-auto w-full max-w-[80%] px-4 sm:px-6">
         <h2
           id="employer-job-seeker-heading"
-          className="mx-auto max-w-4xl text-pretty text-center text-[clamp(1.5rem,0.85rem+2.8vw,3.5rem)] font-bold leading-[1.1] text-black sm:mb-16"
+          className="mx-auto max-w-4xl text-pretty text-center text-[clamp(1rem,0.85rem+2.8vw,3.5rem)] font-bold leading-[1.1] text-black sm:mb-16"
         >
           Stop Hiring the Wrong People Start Hiring Verified Talent.
         </h2>

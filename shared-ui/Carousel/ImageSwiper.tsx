@@ -95,6 +95,8 @@ type Props = {
   badgeSize?: number;
   /** When true, render badges in a layer outside Swiper DOM (avoids transform/overflow clipping). */
   badgesOutside?: boolean;
+  /** Notifies parent when active slide index changes (realIndex). */
+  onActiveIndexChange?: (index: number) => void;
 };
 
 export default function ImageSwiper({
@@ -109,11 +111,16 @@ export default function ImageSwiper({
   slideBadges,
   badgeSize = 208,
   badgesOutside = false,
+  onActiveIndexChange,
 }: Props) {
   const loopEnabled =
     images.length > 1 && (loopProp !== undefined ? loopProp : true);
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const setIndex = (idx: number) => {
+    setActiveIndex(idx);
+    onActiveIndexChange?.(idx);
+  };
 
   const modules = [Pagination];
   if (navigation) modules.push(Navigation);
@@ -141,8 +148,8 @@ export default function ImageSwiper({
             : false
         }
         loop={loopEnabled}
-        onSwiper={(swiper: SwiperType) => setActiveIndex(swiper.realIndex ?? 0)}
-        onSlideChange={(swiper: SwiperType) => setActiveIndex(swiper.realIndex ?? 0)}
+        onSwiper={(swiper: SwiperType) => setIndex(swiper.realIndex ?? 0)}
+        onSlideChange={(swiper: SwiperType) => setIndex(swiper.realIndex ?? 0)}
         className={clsx(
           paginationOutsideClassName,
           slideBadges &&

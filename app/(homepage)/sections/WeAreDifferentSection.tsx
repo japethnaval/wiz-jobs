@@ -147,7 +147,7 @@ function TableHorizontalScrollBar({
         step={1}
         value={scrollLeft}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="h-3 w-full cursor-pointer appearance-none rounded-full bg-black/10 accent-[#455ff6] [&::-moz-range-thumb]:h-3 [&::-moz-range-thumb]:w-14 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#455ff6] [&::-webkit-slider-runnable-track]:h-2 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-black/10 [&::-webkit-slider-thumb]:-mt-1 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-14 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#455ff6]"
+        className="h-2 w-full cursor-pointer appearance-none rounded-full bg-neutral-200/60 accent-[#455ff6] [&::-moz-range-thumb]:h-2 [&::-moz-range-thumb]:w-12 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-[#455ff6] [&::-webkit-slider-runnable-track]:h-1.5 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-neutral-200/60 [&::-webkit-slider-thumb]:-mt-1 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-12 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#455ff6]"
       />
     </div>
   );

@@ -31,7 +31,7 @@ const valueCards = [
 type ValueCard = (typeof valueCards)[number];
 
 const cardShellClass =
-  "h-full min-h-[392px] rounded-[54px] border border-white bg-white/25 px-8 pb-12 pt-8 backdrop-blur-[30px] md:px-12 md:pb-16 md:pt-12 lg:px-14 lg:pb-20 lg:pt-14";
+  "h-full min-h-[292px] rounded-[54px] border border-white bg-white/25 px-8 pb-12 pt-8 backdrop-blur-[30px] md:px-12 md:pb-16 md:pt-12 lg:px-14 lg:pb-20 lg:pt-14";
 
 function ValueCardContent({ card }: { card: ValueCard }) {
   return (
@@ -55,7 +55,7 @@ function ValueCardContent({ card }: { card: ValueCard }) {
 
 function ValueCardItem({ card }: { card: ValueCard }) {
   return (
-    <BackdropStaggerItem className="h-full min-h-[392px] p-1 sm:p-1.5">
+    <BackdropStaggerItem className="h-full min-h-[292px] p-1 sm:p-1.5">
       <ValueCardContent card={card} />
     </BackdropStaggerItem>
   );
@@ -63,7 +63,7 @@ function ValueCardItem({ card }: { card: ValueCard }) {
 
 function ValueCardSlide({ card }: { card: ValueCard }) {
   return (
-    <div className="box-border flex min-h-[392px] w-full flex-col p-1 sm:p-1.5">
+    <div className="box-border flex min-h-[292px] w-full flex-col p-1 sm:p-1.5">
       <ValueCardContent card={card} />
     </div>
   );
@@ -73,7 +73,7 @@ export function ValuesSection() {
   return (
     <section
       aria-labelledby="our-values"
-      className="relative isolate overflow-x-clip overflow-y-visible py-12 md:py-16 lg:py-24"
+      className="relative isolate overflow-x-clip bg-cover overflow-y-visible bg-center bg-no-repeat py-12 md:py-16 lg:py-24"
       style={{
         backgroundImage: `linear-gradient(90deg, rgba(0,0,0,0.40) 0%, rgba(0,0,0,0.18) 55%, rgba(0,0,0,0.40) 100%), url(${Background1.src})`,
       }}

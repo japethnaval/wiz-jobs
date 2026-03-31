@@ -49,7 +49,7 @@ export function CandidateHeroSection() {
             />
           </span>
         </h1>
-        <h3 className="relative z-10 mx-auto max-w-[780px] pt-8 text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] font-bold leading-[1.30] text-[#455FF6]">
+        <h3 className="relative z-10 mx-auto max-w-[780px] pt-8 text-[clamp(1rem,0.65rem+2.6vw,2.5rem)] font-bold leading-[1.30] text-[#455FF6]">
           Stop sending resumes into black holes. Get verified, get scored, get matched to jobs where
           you’re actually qualified.
         </h3>
@@ -58,7 +58,7 @@ export function CandidateHeroSection() {
         </FadeInScale>
         <GradientCtaButton
           href="/coming-soon"
-          text="Create Your Verified Profile - It’s Free"
+          text="Create Your Verified Profile"
         />
       </div>
     </section>

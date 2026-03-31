@@ -6,6 +6,8 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { FadeUp, FloatMotion, StaggerContainer, StaggerItem } from "@/shared-ui";
 import { Icon1, Icon2, Icon3, Icon4, Icon5 } from "@/assets";
 
+import styles from "./MissionVisionWhySection.module.css";
+
 const problemPoints = [
   {
     id: "employers-screening",
@@ -42,7 +44,8 @@ function CircleIconSlot({
     <FloatMotion>
     <div
       className={[
-        "flex h-[148px] w-[148px] shrink-0 items-center justify-center rounded-full bg-[#455FF6] sm:h-[164px] sm:w-[164px]",
+        styles.circleIconGradient,
+        "flex h-[148px] w-[148px] shrink-0 items-center justify-center rounded-full sm:h-[164px] sm:w-[164px]",
         className ?? "",
       ].join(" ")}
     >
@@ -358,13 +361,12 @@ function MissionVisionWhyIntroTrack() {
           WHY
         </h2>
         <h4 className="flex items-center justify-center gap-2 font-normal leading-[1.1] text-black text-[clamp(1.25rem,0.65rem+2.2vw,2rem)] md:gap-0">
-        <span className="px-0 md:px-2">We Built</span>
+        <span className="px-0 md:px-2">We Built</span><br/>
+        </h4>
           <Icon5
             className="h-8 w-auto shrink-0 text-[#455FF6]"
             aria-hidden
           />
-          
-        </h4>
       </FadeUp>
       
       <div

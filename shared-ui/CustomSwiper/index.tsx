@@ -128,7 +128,7 @@ function SlideContent({
 
       <div className="mx-auto mt-10 flex w-full max-w-sm shrink-0 flex-col items-center gap-4 whitespace-pre-line sm:mt-12 sm:max-w-md">
         <p
-          className="font-bold w-full text-center text-[clamp(1.5rem,0.65rem+2.6vw,42px)]"
+          className="font-bold w-full text-center text-[clamp(1rem,0.65rem+2.6vw,42px)]"
           style={{ color: accent }}
         >
           {resultQuestion}
@@ -169,7 +169,7 @@ export function CustomSwiper({
         navigation
         loop={loop && slides.length > 1}
         slidesPerView={1}
-        speed={2000}
+        speed={400}
         autoplay={
           shouldAutoplay
             ? {

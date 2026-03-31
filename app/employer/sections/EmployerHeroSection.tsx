@@ -18,22 +18,7 @@ export function EmployerHeroSection() {
         >
           <span className="block">
             <ShinyText
-              text="Hire Verified Talent"
-              disabled={false}
-              speed={3}
-              className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
-              color="#000000"
-              shineColor="#435FF6"
-              spread={120}
-              yoyo={false}
-              pauseOnHover={false}
-              direction="left"
-              delay={0}
-            />
-          </span>
-          <span className="block">
-            <ShinyText
-              text="in Hours, Not Weeks"
+              text="Hire Verified Talent in Hours, Not Weeks"
               disabled={false}
               speed={3}
               className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
@@ -47,7 +32,7 @@ export function EmployerHeroSection() {
             />
           </span>
         </h1>
-        <h3 className="relative z-10 mx-auto max-w-[650px] pt-8 text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] font-bold leading-[1.30] text-[#455FF6]">
+        <h3 className="relative z-10 mx-auto max-w-[650px] pt-6 md:pt-8 text-[clamp(1rem,0.65rem+2.6vw,2.5rem)] font-bold leading-[1.30] text-[#455FF6]">
           Stop wasting time on unqualified candidates. Get AI-matched, blockchain-verified talent.
         </h3>
         <FadeInScale delay={0.08}>

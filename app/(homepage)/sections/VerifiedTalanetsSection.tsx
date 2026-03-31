@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 import {
   Graphics14,
@@ -9,7 +10,7 @@ import {
   Graphics21,
   Graphics32,
 } from "@/assets/images";
-import { Icon11, Icon16, Icon17, Icon18, Icon19 } from "@/assets";
+import { Icon16, Icon17, Icon18, Icon19 } from "@/assets";
 import { DeviceScreen, FadeInScale, FadeUp, HeroOrbitBackdrop } from "@/shared-ui";
 import ImageSwiper from "@/shared-ui/Carousel/ImageSwiper";
 import { GradientCtaButton } from "../../../shared-ui/GradientCtaButton";
@@ -33,20 +34,48 @@ function SparkleIcon({ className }: { className?: string }) {
 }
 
 export function VerifiedTalanetsSection() {
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const badgeSize = 178;
+
+  const badgePositionClass = (
+    position: "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center",
+  ) => {
+    switch (position) {
+      case "top-left":
+        return "left-0 top-[-10%] -translate-x-3 -translate-y-3";
+      case "top-right":
+        return "right-0 top-[-10%] translate-x-3 -translate-y-3";
+      case "bottom-left":
+        return "left-0 bottom-0 -translate-x-3 translate-y-3";
+      case "bottom-right":
+        return "right-0 bottom-0 translate-x-3 translate-y-3";
+      case "center":
+        return "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2";
+    }
+  };
+
+  const activeBadge =
+    [
+      { node: <Icon16 />, position: "top-right" as const },
+      { node: <Icon17 />, position: "bottom-left" as const },
+      { node: <Icon18 />, position: "top-left" as const },
+      { node: <Icon19 />, position: "top-right" as const },
+    ][activeSlideIndex] ?? null;
+
   return (
     <section
       className="relative isolate -mx-4 overflow-x-clip overflow-y-visible md:-mx-6 lg:-mx-8"
       aria-labelledby="hero-heading"
     >
       <div className="relative z-10 mx-auto flex w-full max-w-[min(100%,96rem)] flex-col items-center px-4 sm:px-6 lg:px-8">
-        <div className="mb-8 max-w-4xl text-center sm:mb-12 lg:mb-16">
+        <div className="max-w-4xl text-center mb-6 sm:mb-0">
           <h1
             id="hero-heading"
             className="text-balance font-bold leading-[1.1] text-black text-[clamp(2.75rem,1.25rem+5.5vw,5.0625rem)]"
           >
             <span className="block">
               <ShinyText
-                text="Verified Talents"
+                text="Verified Talents at the Speed of AI"
                 disabled={false}
                 speed={3}
                 className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
@@ -59,38 +88,8 @@ export function VerifiedTalanetsSection() {
                 delay={0}
               />
             </span>
-            <span className="block">
-              <span className="relative inline-block">
-                <ShinyText
-                  text="at the Speed of AI"
-                  disabled={false}
-                  speed={3}
-                  className="mx-0! inline-block! cursor-default! rounded-none! p-0!"
-                  color="#000000"
-                  shineColor="#435FF6"
-                  spread={120}
-                  yoyo={false}
-                  pauseOnHover={false}
-                  direction="left"
-                  delay={0}
-                />
-                <motion.span
-                  aria-hidden
-                  className="pointer-events-none absolute -right-5 -top-1 inline-flex sm:-right-6 sm:-top-1.5"
-                  animate={{ scale: [1, 1.12, 1], rotate: [0, 8, 0], opacity: [0.85, 1, 0.85] }}
-                  transition={{
-                    duration: 2.8,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    repeatType: "loop",
-                  }}
-                >
-                  <SparkleIcon className="h-4 w-4 text-black sm:h-5 sm:w-5" />
-                </motion.span>
-              </span>
-            </span>
           </h1>
-          <h3 className="pt-8 relative z-10 text-[clamp(1.5rem,0.65rem+2.6vw,2.5rem)] font-bold text-[#455FF6] mx-auto max-w-[650px] leading-[1.30]">
+          <h3 className="pt-6 md:pt-8 relative z-10 text-[clamp(1rem,0.65rem+2.6vw,2.5rem)] font-bold text-[#455FF6] mx-auto max-w-[650px] leading-[1.30]">
             The first recruitment platform built on truth, not volume.
           </h3>
         </div>
@@ -111,6 +110,20 @@ export function VerifiedTalanetsSection() {
                 />
               </div>
               <div className="relative z-10 mx-auto w-full max-w-sm">
+                {activeBadge ? (
+                  <div
+                    className={[
+                      "pointer-events-none absolute z-20",
+                      badgePositionClass(activeBadge.position),
+                    ].join(" ")}
+                    style={{ width: badgeSize, height: badgeSize }}
+                    aria-hidden
+                  >
+                    <div className="h-full w-full [&_svg]:h-full [&_svg]:w-full">
+                      {activeBadge.node}
+                    </div>
+                  </div>
+                ) : null}
                 <ImageSwiper
                   images={[Graphics14, Graphics15, Graphics16, Graphics32]}
                   alts={[
@@ -118,35 +131,9 @@ export function VerifiedTalanetsSection() {
                     "Hiring and collaboration",
                     "Verified candidate matching",
                   ]}
-                  slideBadges={[
-                    [
-                      {
-                        node: <Icon16 />,
-                        position: "bottom-right",
-                      },
-                    ],
-                    [
-                      {
-                        node: <Icon17 />,
-                        position: "top-left",
-                      },
-                    ],
-                    [
-                      {
-                        node: <Icon18 />,
-                        position: "top-right",
-                      },
-                    ],
-                    [
-                      {
-                        node: <Icon19 />,
-                        position: "bottom-left",
-                      },
-                    ],
-                  ]}
-                  badgeSize={168}
-                  badgesOutside
                   navigation={false}
+                  badgeSize={badgeSize}
+                  onActiveIndexChange={setActiveSlideIndex}
                   autoplay
                   loop
                   sizes="100vw"

@@ -74,7 +74,7 @@ export function FloatingOverlayLayer({
   if (!mounted || !ctx?.rect) return null;
 
   return createPortal(
-    <div className="fixed inset-0 pointer-events-none z-9999">
+    <div className="fixed inset-0 pointer-events-none z-[999]">
       {children(ctx.rect)}
     </div>,
     document.body,
