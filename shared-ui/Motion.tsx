@@ -406,7 +406,8 @@ export function FadeSwap({
   const reduceMotion = useReducedMotion();
 
   if (reduceMotion) {
-    return children ? <div {...rest}>{children}</div> : null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return children ? <div {...rest as any}>{children}</div> : null;
   }
 
   return (
