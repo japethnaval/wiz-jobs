@@ -11,7 +11,7 @@ import {
   Graphics32,
 } from "@/assets/images";
 import { Icon20, Icon21, Icon22, Icon23  } from "@/assets";
-import { DeviceScreen, FadeInScale, FadeSwap, FadeUp, HeroOrbitBackdrop } from "@/shared-ui";
+import { DeviceScreen, FadeInScale, FadeSwap, FadeUp, HeartbeatMotion, HeroOrbitBackdrop } from "@/shared-ui";
 import ImageSwiper from "@/shared-ui/Carousel/ImageSwiper";
 import { GradientCtaButton } from "../../../shared-ui/GradientCtaButton";
 import { ShinyText } from "@/shared-ui/ReactBits";
@@ -111,9 +111,9 @@ export function VerifiedTalanetsSection() {
                   aria-hidden
                 >
                   {activeBadge ? (
-                    <div className="h-full w-full [&_svg]:h-full [&_svg]:w-full">
+                    <HeartbeatMotion className="h-full w-full [&_svg]:h-full [&_svg]:w-full">
                       {activeBadge.node}
-                    </div>
+                    </HeartbeatMotion>
                   ) : null}
                 </FadeSwap>
                 <ImageSwiper
