@@ -415,9 +415,9 @@ export function FadeSwap({
       {children ? (
         <motion.div
           key={swapKey}
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
           transition={{ duration, ease: easeOut }}
           {...rest}
         >
