@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
   assetPrefix: isProd ? `/${repoName}/` : undefined,
   experimental: {
     optimizePackageImports: ["framer-motion", "motion", "swiper", "gsap", "ogl"],
+    cpus: 4,
   },
   turbopack: {
     rules: {

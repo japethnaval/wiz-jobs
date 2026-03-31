@@ -10,20 +10,20 @@ import {
 import { Icon16, Icon17, Icon18, Icon19 } from "@/assets";
 import { DeviceScreen, FloatMotion, HeartbeatMotion } from "@/shared-ui";
 
-const MOBILE_BADGE_PX = 128;
+const MOBILE_BADGE_PX = 178;
 
 type BadgePosition = "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center";
 
 function badgePositionClass(position: BadgePosition) {
   switch (position) {
     case "top-left":
-      return "left-0 top-[0%] -translate-x-2 -translate-y-14";
+      return "left-0 top-[14%] -translate-x-2 -translate-y-14";
     case "top-right":
-      return "right-0 top-[0%] translate-x-2 -translate-y-14";
+      return "right-0 top-[14%] translate-x-2 -translate-y-14";
     case "bottom-left":
-      return "left-10 bottom-0 -translate-x-10 translate-y-12";
+      return "left-10 bottom-[-28%] -translate-x-10 translate-y-12";
     case "bottom-right":
-      return "right-0 bottom-0 -translate-x-10 translate-y-12";
+      return "right-[-10%] bottom-[-28%] -translate-x-10 translate-y-12";
   }
 }
 
@@ -31,19 +31,21 @@ function HeroCornerBadge({
   node,
   alt = "",
   className,
+  size = MOBILE_BADGE_PX,
 }: {
   node: ReactNode;
   alt?: string;
   className: string;
+  size: number;
 }) {
   return (
     <HeartbeatMotion className={`pointer-events-none absolute ${className}`}>
       <div aria-hidden={alt === "" ? true : undefined}>
         <div
           className=""
-          style={{ width: MOBILE_BADGE_PX, height: MOBILE_BADGE_PX }}
+          style={{ width: size, height: size }}
         >
-          <div className="h-[168px] w-[128px] p-3 [&_svg]:h-[128px] [&_svg]:w-[128px]">
+          <div className={`p-3 [&_svg]:h-[${size}px] [&_svg]:w-[${size}px]`}>
             {node}
           </div>
         </div>
@@ -57,11 +59,12 @@ export function HeroImage() {
     node: ReactNode;
     alt?: string;
     position: BadgePosition;
+    size: number;
   }> = [
-    { node: <Icon16 />, position: "top-left" },
-    { node: <Icon17 />, position: "top-right" },
-    { node: <Icon18 />, position: "bottom-left" },
-    { node: <Icon19 />, position: "bottom-right" },
+    { node: <Icon16 />, position: "top-left", size: 148 },
+    { node: <Icon17 />, position: "top-right", size: MOBILE_BADGE_PX },
+    { node: <Icon18 />, position: "bottom-left", size: MOBILE_BADGE_PX },
+    { node: <Icon19 />, position: "bottom-right", size: MOBILE_BADGE_PX },
   ];
 
   return (
@@ -83,6 +86,7 @@ export function HeroImage() {
                 {badges.map((badge) => (
                   <HeroCornerBadge
                     key={badge.position}
+                    size={badge.size}
                     node={badge.node}
                     alt={badge.alt}
                     className={`z-20 ${badgePositionClass(badge.position)}`}

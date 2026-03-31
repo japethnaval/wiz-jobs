@@ -10,28 +10,13 @@ import {
   Graphics21,
   Graphics32,
 } from "@/assets/images";
-import { Icon16, Icon17, Icon18, Icon19 } from "@/assets";
+import { Icon20, Icon21, Icon22, Icon23  } from "@/assets";
 import { DeviceScreen, FadeInScale, FadeUp, HeroOrbitBackdrop } from "@/shared-ui";
 import ImageSwiper from "@/shared-ui/Carousel/ImageSwiper";
 import { GradientCtaButton } from "../../../shared-ui/GradientCtaButton";
 import { ShinyText } from "@/shared-ui/ReactBits";
-import { motion } from "motion/react";
 import DiagonalCarouselLoop from "@/shared-ui/Carousel";
 
-function SparkleIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      width={20}
-      height={20}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden
-    >
-      <path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" />
-    </svg>
-  );
-}
 
 export function VerifiedTalanetsSection() {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -42,9 +27,9 @@ export function VerifiedTalanetsSection() {
   ) => {
     switch (position) {
       case "top-left":
-        return "left-0 top-[-10%] -translate-x-3 -translate-y-3";
+        return "left-0 top-[-12%] -translate-x-3 -translate-y-3";
       case "top-right":
-        return "right-0 top-[-10%] translate-x-3 -translate-y-3";
+        return "right-0 top-[-8%] translate-x-3 -translate-y-3";
       case "bottom-left":
         return "left-0 bottom-0 -translate-x-3 translate-y-3";
       case "bottom-right":
@@ -56,10 +41,10 @@ export function VerifiedTalanetsSection() {
 
   const activeBadge =
     [
-      { node: <Icon16 />, position: "top-right" as const },
-      { node: <Icon17 />, position: "bottom-left" as const },
-      { node: <Icon18 />, position: "top-left" as const },
-      { node: <Icon19 />, position: "top-right" as const },
+      { node: <Icon22 />, position: "top-right" as const, size: 158 },
+      { node: <Icon20 />, position: "bottom-left" as const, size: badgeSize },
+      { node: <Icon21 />, position: "top-left" as const, size: badgeSize },
+      { node: <Icon23 />, position: "bottom-right" as const, size: badgeSize },
     ][activeSlideIndex] ?? null;
 
   return (
@@ -116,7 +101,7 @@ export function VerifiedTalanetsSection() {
                       "pointer-events-none absolute z-20",
                       badgePositionClass(activeBadge.position),
                     ].join(" ")}
-                    style={{ width: badgeSize, height: badgeSize }}
+                    style={{ width: activeBadge.size, height: activeBadge.size }}
                     aria-hidden
                   >
                     <div className="h-full w-full [&_svg]:h-full [&_svg]:w-full">
