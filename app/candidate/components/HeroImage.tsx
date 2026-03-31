@@ -1,53 +1,42 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 
 import {
   Graphics3,
   Graphics27,
-  Graphics28,
-  Graphics29,
-  Graphics30,
-  Graphics31,
 } from "@/assets/images";
 import { DeviceScreen, FloatMotion, HeartbeatMotion } from "@/shared-ui";
+import { ReactNode } from "react";
+import { Icon25, Icon26, Icon27, Icon28 } from "@/assets";
 
-const BADGE_SIZE_DEFAULT = 72;
+const CANDIDATE_HERO_ALT =
+  "A candidate profile preview with verification and scoring indicators.";
 
-function HeroCornerBadge({
-  image,
-  alt,
+function HeroBadge({
+  node,
+  size,
   className,
-  size = BADGE_SIZE_DEFAULT,
+  alt = "",
 }: {
-  image: StaticImageData;
-  alt: string;
+  node: ReactNode;
+  size: number;
   className: string;
-  size?: number;
+  alt?: string;
 }) {
-  const blur =
-    typeof image === "object" && image !== null && "blurDataURL" in image;
   return (
     <HeartbeatMotion className={`pointer-events-none absolute ${className}`}>
-      <div
-        aria-hidden={alt === "" ? true : undefined}
-      >
-        <Image
-          src={image}
-          alt={alt}
-          width={size}
-          height={size}
-          className="object-cover"
-          sizes={`${size}px`}
-          placeholder={blur ? "blur" : "empty"}
-        />
+      <div aria-hidden={alt === "" ? true : undefined}>
+        <div
+          className="h-full w-full [&_svg]:h-full [&_svg]:w-full"
+          style={{ width: size, height: size }}
+        >
+          {node}
+        </div>
       </div>
     </HeartbeatMotion>
   );
 }
-
-const CANDIDATE_HERO_ALT =
-  "A candidate profile preview with verification and scoring indicators.";
 
 export function HeroImage() {
   return (
@@ -66,29 +55,25 @@ export function HeroImage() {
                   className="mx-auto block h-auto w-full object-cover object-center"
                 />
               </div>
-              <HeroCornerBadge
-                image={Graphics28}
-                size={80}
-                alt="Graphics 28"
-                className="left-0 top-5 z-20 -translate-x-[-50%] -translate-y-[-50%]"
-              />
-              <HeroCornerBadge
-                image={Graphics29}
-                size={80}
-                alt="Graphics 29"
-                className="right-0 top-15 z-20 translate-x-2 -translate-y-1"
-              />
-              <HeroCornerBadge
-                image={Graphics31}
-                size={80}
-                alt="Graphics 31"
-                className="left-0 bottom-0 z-20 translate-x-[0%] translate-y-[-190%]"
-              />
-              <HeroCornerBadge
-                image={Graphics30}
+              <HeroBadge
+                node={<Icon27 />}
                 size={160}
-                alt="Graphics 30"
-                className="right-0 bottom-0 z-20 translate-x-[50%] translate-y-[-50%]"
+                className="left-0 top-[-5%] z-20 -translate-x-[5%] translate-y-[0%]"
+              />
+              <HeroBadge
+                node={<Icon26 />}
+                size={80}
+                className="right-2 top-60 z-20 translate-x-2 -translate-y-1"
+              />
+              <HeroBadge
+                node={<Icon25 />}
+                size={80}
+                className="left-5 bottom-0 z-20 translate-x-[0%] translate-y-[-190%]"
+              />
+              <HeroBadge
+                node={<Icon28 />}
+                size={80}
+                className="right-0 top-0 z-20"
               />
             </div>
           </div>

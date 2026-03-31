@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 114.759 72.949">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_2389" data-name="Rectangle 2389" width="30.2" height="29.922" fill="#455ff6"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="-104.392" y1="13.423" x2="-104.355" y2="13.423" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#0093a2"/>
+      <stop offset="1" stop-color="#49fbdf"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-106.185" y1="16.595" x2="-106.148" y2="16.595" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="-107.98" y1="9.76" x2="-107.943" y2="9.76" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="-109.778" y1="7.766" x2="-109.741" y2="7.766" xlink:href="#linear-gradient"/>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_2446" data-name="Rectangle 2446" width="77.677" height="40.443" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_8598" data-name="Group 8598" transform="translate(-4969.104 -502.141)" opacity="0.763">
+    <g id="Group_7307" data-name="Group 7307" transform="translate(5048.404 522.89)">
+      <g id="Group_7109" data-name="Group 7109" transform="translate(0 0)" clip-path="url(#clip-path)">
+        <path id="Path_2522" data-name="Path 2522" d="M17.092,25.322l-1.581,4.245c-.04.112-.314.4-.418.346a1.2,1.2,0,0,1-.4-.422l-1.415-3.827a14.673,14.673,0,0,0-8.387-8.6L0,15.138a27.158,27.158,0,0,1,4.672-1.923,15.111,15.111,0,0,0,8.652-8.764A21.21,21.21,0,0,1,15.188,0l1.846,4.721a15.129,15.129,0,0,0,9.285,8.773,27.557,27.557,0,0,1,3.886,1.55,29.87,29.87,0,0,1-4.914,2.03,14.547,14.547,0,0,0-8.2,8.247" transform="translate(0 0)" fill="#455ff6"/>
+      </g>
+    </g>
+    <g id="Group_7310" data-name="Group 7310" transform="translate(4969.104 502.141)">
+      <rect id="Rectangle_2434" data-name="Rectangle 2434" width="114.012" height="72.203" rx="5" transform="translate(0.373 0.373)" fill="#7892ff"/>
+      <path id="Path_2562" data-name="Path 2562" d="M2837.58,1070.541a5.116,5.116,0,0,1,5.117,5.116v61.223a5.116,5.116,0,0,1-5.117,5.117H2734.548a5.117,5.117,0,0,1-5.117-5.117v-61.223a5.117,5.117,0,0,1,5.117-5.116Zm0-.747H2734.548a5.869,5.869,0,0,0-5.863,5.863v61.223a5.869,5.869,0,0,0,5.863,5.863H2837.58a5.87,5.87,0,0,0,5.864-5.863v-61.223a5.87,5.87,0,0,0-5.864-5.863" transform="translate(-2728.685 -1069.794)" fill="#fff"/>
+    </g>
+    <rect id="Rectangle_2998" data-name="Rectangle 2998" width="21.028" height="2.7" transform="translate(4987.513 511.281)" fill="#bbcbff"/>
+    <rect id="Rectangle_2999" data-name="Rectangle 2999" width="10.089" height="28.348" transform="translate(4998.027 537.335)" fill="url(#linear-gradient)"/>
+    <rect id="Rectangle_3000" data-name="Rectangle 3000" width="10.089" height="28.348" transform="translate(4998.027 537.335)" fill="none"/>
+    <rect id="Rectangle_3001" data-name="Rectangle 3001" width="10.089" height="22.582" transform="translate(5016.126 543.101)" fill="url(#linear-gradient-2)"/>
+    <rect id="Rectangle_3002" data-name="Rectangle 3002" width="10.089" height="22.582" transform="translate(5016.126 543.101)" fill="none"/>
+    <rect id="Rectangle_3003" data-name="Rectangle 3003" width="10.089" height="40.2" transform="translate(5034.227 525.483)" fill="url(#linear-gradient-3)"/>
+    <rect id="Rectangle_3004" data-name="Rectangle 3004" width="10.089" height="40.2" transform="translate(5034.227 525.483)" fill="none"/>
+    <rect id="Rectangle_3005" data-name="Rectangle 3005" width="10.089" height="52.052" transform="translate(5052.327 513.631)" fill="url(#linear-gradient-4)"/>
+    <rect id="Rectangle_3006" data-name="Rectangle 3006" width="10.089" height="52.052" transform="translate(5052.327 513.631)" fill="none"/>
+    <g id="Group_7192" data-name="Group 7192" transform="translate(4984.737 525.507)">
+      <g id="Group_7191" data-name="Group 7191" clip-path="url(#clip-path-2)">
+        <path id="Path_2563" data-name="Path 2563" d="M2848.011,1172.481h-77.677v-40.444h.533v39.91h77.144Z" transform="translate(-2770.333 -1132.038)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>
