@@ -32,7 +32,7 @@ export function EmployerHeroSection() {
             />
           </span>
         </h1>
-        <h3 className="relative z-10 mx-auto max-w-[650px] pt-6 md:pt-8 text-[clamp(1rem,0.65rem+2.6vw,2.5rem)] font-bold leading-[1.30] text-[#455FF6]">
+        <h3 className="relative z-10 mx-auto max-w-[650px] pt-6 md:pt-8 text-[clamp(0.875rem,0.525rem+2.6vw,2.375rem)] font-bold leading-[1.30] text-[#455FF6]">
           Stop wasting time on unqualified candidates. Get AI-matched, blockchain-verified talent.
         </h3>
         <FadeInScale delay={0.08}>

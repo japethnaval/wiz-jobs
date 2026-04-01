@@ -17,7 +17,6 @@ const heroSlideAlts = [
 ] as const;
 
 export function HeroImage() {
-  const [secondHovered, setSecondHovered] = useState(false);
 
   return (
     <>
@@ -25,9 +24,7 @@ export function HeroImage() {
         <FloatMotion deferUntilLoad>
           <div className="mx-auto flex w-full max-w-[min(100%,960px)] flex-col items-center gap-[34px] pt-8 min-[960px]:flex-row min-[960px]:items-stretch">
             <div
-              className={`${colShell} ${
-                secondHovered ? "min-[960px]:basis-[42%]" : "min-[960px]:basis-[58%]"
-              }`}
+              className={`${colShell} min-[960px]:basis-[58%]`}
             >
               <Image
                 src={Graphics1}
@@ -40,11 +37,7 @@ export function HeroImage() {
             </div>
 
             <div
-              className={`${colShell} ${
-                secondHovered ? "min-[960px]:basis-[58%]" : "min-[960px]:basis-[42%]"
-              }`}
-              onMouseEnter={() => setSecondHovered(true)}
-              onMouseLeave={() => setSecondHovered(false)}
+              className={`${colShell} min-[960px]:basis-[42%]`}
             >
               <Image
                 src={Graphics2}
@@ -65,6 +58,8 @@ export function HeroImage() {
             images={[Graphics1, Graphics2]}
             alts={[...heroSlideAlts]}
             navigation={false}
+            paginationInactiveColor="#b0bff7"
+            paginationActiveColor="#e1e4ed"
             autoplay
             loop
             sizes="(max-width: 767px) min(100vw, 475px), 50vw"

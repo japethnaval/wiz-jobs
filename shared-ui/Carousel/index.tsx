@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
-import type { ReactNode } from "react";
 
 import {
   Graphics14,
@@ -13,15 +12,16 @@ import {
   Graphics16,
   Graphics32,
 } from "@/assets/images";
-import { Icon16, Icon17, Icon18, Icon19 } from "@/assets";
+import { Graphics33, Graphics34, Graphics35, Graphics36 } from "@/assets/images";
+
 
 function CarouselBadgeImage({
-  node,
+  src,
   alt = "",
   className,
   size = 208,
 }: {
-  node: ReactNode;
+  src: StaticImageData;
   alt?: string;
   className?: string;
   size?: number;
@@ -29,15 +29,20 @@ function CarouselBadgeImage({
   return (
     <div className={clsx("pointer-events-none inline-flex shrink-0", className)}>
       <div className="flex items-center justify-center">
-          <span
-            className="block"
-            style={{ width: size, height: size, minWidth: size, minHeight: size }}
-            aria-hidden={alt === "" ? true : undefined}
-          >
-            <span className="block h-full w-full [&_svg]:h-full [&_svg]:w-full">
-              {node}
-            </span>
-          </span>
+        <span
+          className="relative block overflow-hidden"
+          style={{ width: size, height: size, minWidth: size, minHeight: size }}
+        >
+          <Image
+            src={src}
+            alt={alt}
+            width={size}
+            height={size}
+            className="h-full w-full object-contain"
+            placeholder="blur"
+            sizes={`${size}px`}
+          />
+        </span>
       </div>
     </div>
   );
@@ -96,16 +101,16 @@ export default function DiagonalCarouselLoop() {
         >
           <div className="relative h-72 w-72 sm:h-80 sm:w-80 md:h-88 md:w-88">
             <div className="absolute left-0 top-0 -translate-x-[32%] -translate-y-[38%] sm:-translate-x-[36%] sm:-translate-y-[44%]">
-                <CarouselBadgeImage node={<Icon16 />} alt="Verified candidate" />
+                <CarouselBadgeImage src={Graphics36} alt="Verified candidate" />
             </div>
             <div className="absolute right-0 top-0 translate-x-[32%] -translate-y-[38%] sm:translate-x-[36%] sm:-translate-y-[44%]">
-                <CarouselBadgeImage node={<Icon17 />} alt="ROI" />
+                <CarouselBadgeImage src={Graphics33} alt="ROI" />
             </div>
             <div className="absolute left-0 bottom-0 -translate-x-[34%] translate-y-[34%] sm:-translate-x-[40%] sm:translate-y-[40%]">
-                  <CarouselBadgeImage node={<Icon18 />} alt="Less screening" />
+                  <CarouselBadgeImage src={Graphics35} alt="Less screening" />
             </div>
             <div className="absolute right-0 bottom-0 translate-x-[34%] translate-y-[34%] sm:translate-x-[40%] sm:translate-y-[40%]">
-                <CarouselBadgeImage node={<Icon19 />} alt="Match accuracy" />
+                <CarouselBadgeImage src={Graphics34} alt="Match accuracy" />
             </div>
           </div>
         </div>

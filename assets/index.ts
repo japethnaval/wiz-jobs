@@ -13,15 +13,15 @@ export { default as Icon12 } from "./Icon_12.svg";
 export { default as Icon13 } from "./Icon_13.svg";
 export { default as Icon14 } from "./Icon_14.svg";
 export { default as Icon15 } from "./Icon_15.svg";
-export { default as Icon16 } from "./Icon_16.svg";
-export { default as Icon17 } from "./Icon_17.svg";
-export { default as Icon18 } from "./Icon_18.svg";
-export { default as Icon19 } from "./Icon_19.svg";
+// export { default as Icon16 } from "./Icon_16.svg";
+// export { default as Icon17 } from "./Icon_17.svg";
+// export { default as Icon18 } from "./Icon_18.svg";
+// export { default as Icon19 } from "./Icon_19.svg";
 //
-export { default as Icon20 } from "./Icon_20.svg";
-export { default as Icon21 } from "./Icon_21.svg";
-export { default as Icon22 } from "./Icon_22.svg";
-export { default as Icon23 } from "./Icon_23.svg";
+// export { default as Icon20 } from "./Icon_20.svg";
+// export { default as Icon21 } from "./Icon_21.svg";
+// export { default as Icon22 } from "./Icon_22.svg";
+// export { default as Icon23 } from "./Icon_23.svg";
 
 export { default as Icon24 } from "./Icon_24.svg";
 export { default as Icon25 } from "./Icon_25.svg";

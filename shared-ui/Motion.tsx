@@ -31,6 +31,25 @@ function buildRevealTransition(delay = 0, duration = 0.6) {
   };
 }
 
+export function FradeRight({
+  children,
+  delay = 0,
+  duration = 0.6,
+  ...rest
+}: RevealProps) {
+  return (
+    <motion.div
+    initial={{ opacity: 0, x: 50 }}
+    animate={{ opacity: 1, x: 0 }}
+    // transition={{ duration: 0.4, ease: "easeOut" }}
+      transition={buildRevealTransition(delay, duration)}
+      {...rest}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 export function FadeIn({
   children,
   delay = 0,

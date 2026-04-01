@@ -5,6 +5,8 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { FadeUp, FloatMotion, StaggerContainer, StaggerItem } from "@/shared-ui";
 import { Icon1, Icon2, Icon3, Icon4, Icon5 } from "@/assets";
+import { Graphics41 } from "@/assets/images";
+import Image from "next/image";
 
 import styles from "./MissionVisionWhySection.module.css";
 
@@ -354,21 +356,13 @@ function MissionVisionWhyIntroTrack() {
         delay={0.06}
         className="relative z-10 flex flex-col items-center gap-8 py-6 text-center md:py-8"
       >
-        <h2
-          id="why-wizjobs-heading"
-          className="mx-auto max-w-4xl text-balance leading-[1.15] text-black text-[clamp(2.25rem,1.2rem+4vw,4rem)] font-extrabold "
-        >
-          WHY
-        </h2>
+       <div className="flex flex-col items-center gap-4">
         <h4 className="flex items-center justify-center gap-2 font-normal leading-[1.1] text-black text-[clamp(1.25rem,0.65rem+2.2vw,2rem)] md:gap-0">
-        <span className="px-0 md:px-2">We Built</span><br/>
-        </h4>
-          <Icon5
-            className="h-8 w-auto shrink-0 text-[#455FF6]"
-            aria-hidden
-          />
+          <span className="px-0 md:px-2 font-extrabold">Why We Built</span>          
+          </h4>
+        <Image src={Graphics41} alt="Why We Built" width={128} height={128} className="shrink-0" />
+       </div>
       </FadeUp>
-      
       <div
         className="pointer-events-none mt-3 hidden flex-col items-center md:flex"
         aria-hidden

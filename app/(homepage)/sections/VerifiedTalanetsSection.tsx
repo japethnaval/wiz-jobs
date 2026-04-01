@@ -1,17 +1,16 @@
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
-
 import {
   Graphics14,
   Graphics15,
   Graphics16,
-  Graphics21,
   Graphics32,
+  Graphics37,
+  Graphics38,
+  Graphics39,
+  Graphics40,
 } from "@/assets/images";
-import { Icon20, Icon21, Icon22, Icon23  } from "@/assets";
-import { DeviceScreen, FadeInScale, FadeSwap, FadeUp, HeartbeatMotion, HeroOrbitBackdrop } from "@/shared-ui";
+import { DeviceScreen, FadeInScale, FadeUp, HeroOrbitBackdrop } from "@/shared-ui";
 import ImageSwiper from "@/shared-ui/Carousel/ImageSwiper";
 import { GradientCtaButton } from "../../../shared-ui/GradientCtaButton";
 import { ShinyText } from "@/shared-ui/ReactBits";
@@ -19,33 +18,7 @@ import DiagonalCarouselLoop from "@/shared-ui/Carousel";
 
 
 export function VerifiedTalanetsSection() {
-  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  const badgeSize = 178;
-
-  const badgePositionClass = (
-    position: "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center",
-  ) => {
-    switch (position) {
-      case "top-left":
-        return "left-0 top-[-12%] -translate-x-3 -translate-y-3";
-      case "top-right":
-        return "right-0 top-[-8%] translate-x-3 -translate-y-3";
-      case "bottom-left":
-        return "left-0 bottom-0 -translate-x-3 translate-y-3";
-      case "bottom-right":
-        return "right-0 bottom-0 translate-x-3 translate-y-3";
-      case "center":
-        return "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2";
-    }
-  };
-
-  const activeBadge =
-    [
-      { node: <Icon22 />, position: "top-right" as const, size: 158 },
-      { node: <Icon20 />, position: "bottom-left" as const, size: badgeSize },
-      { node: <Icon21 />, position: "top-left" as const, size: badgeSize },
-      { node: <Icon23 />, position: "bottom-right" as const, size: badgeSize },
-    ][activeSlideIndex] ?? null;
+  const badgeSize = 128;
 
   return (
     <section
@@ -74,65 +47,41 @@ export function VerifiedTalanetsSection() {
               />
             </span>
           </h1>
-          <h3 className="pt-6 md:pt-8 relative z-10 text-[clamp(1rem,0.65rem+2.6vw,2.5rem)] font-bold text-[#455FF6] mx-auto max-w-[650px] leading-[1.30]">
+          <h3 className="pt-6 md:pt-8 relative z-10 text-[clamp(0.875rem,0.525rem+2.6vw,2.375rem)] font-bold text-[#455FF6] mx-auto max-w-[650px] leading-[1.30]">
             The first recruitment platform built on truth, not volume.
           </h3>
         </div>
         <FadeInScale delay={0.08} className="w-full">
           <DeviceScreen sm>
-            <div className="relative w-full">
-              <div
-                className="pointer-events-none absolute inset-0 z-0 flex items-end justify-center overflow-visible"
-                aria-hidden
-              >
-                <Image
-                  src={Graphics21}
-                  alt=""
-                  width={920}
-                  height={400}
-                  className="h-auto w-full max-w-[min(100%,26rem)] -translate-y-[38%] object-contain object-bottom select-none"
-                  sizes="100vw"
-                />
-              </div>
-              <div className="relative z-10 mx-auto w-full max-w-sm">
-                <FadeSwap
-                  swapKey={activeSlideIndex}
-                  className={[
-                    "pointer-events-none absolute z-20",
-                    activeBadge ? badgePositionClass(activeBadge.position) : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                  style={
-                    activeBadge
-                      ? { width: activeBadge.size, height: activeBadge.size }
-                      : undefined
-                  }
-                  aria-hidden
-                >
-                  {activeBadge ? (
-                    <HeartbeatMotion className="h-full w-full [&_svg]:h-full [&_svg]:w-full">
-                      {activeBadge.node}
-                    </HeartbeatMotion>
-                  ) : null}
-                </FadeSwap>
-                <ImageSwiper
-                  images={[Graphics14, Graphics15, Graphics16, Graphics32]}
-                  alts={[
-                    "Recruitment screening workflow",
-                    "Hiring and collaboration",
-                    "Verified candidate matching",
-                  ]}
-                  navigation={false}
-                  badgeSize={badgeSize}
-                  onActiveIndexChange={setActiveSlideIndex}
-                  autoplay
-                  loop
-                  sizes="100vw"
-                  slideFrameClassName="relative aspect-square w-full rounded-3xl"
-                />
-              </div>
-            </div>
+            <HeroOrbitBackdrop
+              orbitPreset="mobile"
+              sizes="100vw"
+              contentClassName="mx-auto w-full max-w-sm"
+            >
+              <ImageSwiper
+                images={[Graphics14, Graphics15, Graphics16, Graphics32]}
+                alts={[
+                  "Recruitment screening workflow",
+                  "Hiring and collaboration",
+                  "Verified candidate matching",
+                  "Verified candidate matching 2",
+                ]}
+                navigation={false}
+                badgeSize={badgeSize}
+                paginationActiveColor="#4ceee9"
+                paginationInactiveColor="#e1e4ed"
+                autoplay
+                loop
+                sizes="100vw"
+                slideFrameClassName="relative aspect-square w-full rounded-3xl"
+                slideBadges={[
+                  [{ src: Graphics40, position: "first-badge" }],
+                  [{ src: Graphics37, position: "second-badge" }],
+                  [{ src: Graphics38, position: "fourth-badge" }],
+                  [{ src: Graphics39, position: "third-badge" }],
+                ]}
+              />
+            </HeroOrbitBackdrop>
           </DeviceScreen>
           <DeviceScreen md lg>
             <HeroOrbitBackdrop>
