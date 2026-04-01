@@ -51,7 +51,7 @@ export function FloatingRegisterPill({
       <DeviceScreen sm>
         <motion.div
           className={[
-            "fixed right-1 top-1/3 z-50 -translate-y-1/2 ",
+            "fixed right-1 top-1/2 z-50 -translate-y-1/2 ",
             className,
           ]
             .filter(Boolean)
