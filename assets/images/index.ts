@@ -43,3 +43,4 @@ export { default as Graphics38 } from "./Graphics_38.webp";
 export { default as Graphics39 } from "./Graphics_39.webp";
 export { default as Graphics40 } from "./Graphics_40.webp";
 export { default as Graphics41 } from "./Graphics_41.webp";
+export { default as FabIcon } from "./FabIcon.png";
