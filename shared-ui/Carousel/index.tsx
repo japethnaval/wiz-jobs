@@ -165,7 +165,7 @@ export default function DiagonalCarouselLoop() {
                 height: cardSize,
               }}
             >
-              <div className="relative h-full w-full overflow-hidden rounded-3xl bg-transparent shadow-2xl">
+              <div className="relative h-full w-full overflow-hidden">
                 <Image
                   src={card.image}
                   alt=""

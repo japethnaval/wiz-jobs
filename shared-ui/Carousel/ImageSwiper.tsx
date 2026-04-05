@@ -32,9 +32,9 @@ const BADGE_POSITION_CLASSES: Record<ImageSwiperBadgePosition, string> = {
   "second-badge":
     "left-9 top-30 z-50 -translate-x-0 -translate-y-0 sm:left-9 sm:top-3",
   "fourth-badge":
-    "right-8 top-25 z-50 -translate-x-0 -translate-y-0 sm:right-3 sm:top-3",
+    "right-8 top-35 z-50 -translate-x-0 -translate-y-0 sm:right-3 sm:top-3",
   "third-badge":
-    "left-10 bottom-35 z-50 -translate-x-0 -translate-y-0 sm:left-10 sm:bottom-3",
+    "left-10 bottom-20 z-50 -translate-x-0 -translate-y-0 sm:left-10 sm:bottom-3",
 };
 
 function SwiperBadgeImage({
