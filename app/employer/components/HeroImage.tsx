@@ -4,8 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
 import {
-  Graphics13a,
-  Graphics22,
+  Graphics13,
   Graphics34,
   Graphics35,
   Graphics36,
@@ -140,7 +139,7 @@ export function HeroImage() {
             <div className="mx-auto w-full max-w-[min(100%,960px)] min-w-0 py-6">
               <div className="relative w-full overflow-hidden rounded-4xl sm:rounded-[2.25rem]">
                 <Image
-                  src={Graphics22}
+                  src={Graphics13}
                   alt="A professional handshake representing trusted hiring outcomes."
                   priority
                   placeholder="blur"
@@ -182,7 +181,7 @@ export function HeroImage() {
             <div className="relative w-full overflow-visible">
               <div className="overflow-hidden rounded-4xl sm:rounded-[2.25rem]">
                 <Image
-                  src={Graphics13a}
+                  src={Graphics13}
                   alt="A professional handshake representing trusted hiring outcomes."
                   priority
                   placeholder="blur"

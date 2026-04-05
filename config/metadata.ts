@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const SITE_NAME = "WizJobs";
-const SITE_URL = "https://wizjobs.co";
+const SITE_URL = "https://wiz-jobs.com";
 const DEFAULT_OG_IMAGE = "/og.webp";
 
 export function createPageMetadata({

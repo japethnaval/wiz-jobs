@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://wizjobs.co/sitemap.xml",
+    sitemap: "https://wiz-jobs.com/sitemap.xml",
   };
 }
