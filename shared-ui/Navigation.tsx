@@ -62,7 +62,7 @@ export function Navigation() {
               href="/employer"
               className="inline-flex min-h-11 min-w-30 items-center justify-center rounded-full border border-white px-5 text-[15px] font-extrabold italic text-white hover:bg-white/10"
             >
-              Recruiter
+              Employer
             </Link>
 
             <Link
@@ -132,7 +132,7 @@ export function Navigation() {
               className="inline-flex min-h-11 min-w-0 flex-1 items-center justify-center rounded-full border border-white px-3 text-[15px] font-medium italic text-white hover:bg-white/10 sm:px-5"
               onClick={() => setMenuOpen(false)}
             >
-              Recruiter
+              Employer
             </Link>
 
             <Link

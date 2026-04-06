@@ -28,3 +28,4 @@ export { default as Icon25 } from "./Icon_25.svg";
 export { default as Icon26 } from "./Icon_26.svg";
 export { default as Icon27 } from "./Icon_27.svg";
 export { default as Icon28 } from "./Icon_28.svg";
+export { default as Icon29 } from "./Icon_29.svg";
