@@ -118,7 +118,7 @@ export function Footer() {
                     : {})}
                 >
                   {AssetIcon ? (
-                    <AssetIcon className="size-5" aria-hidden />
+                    <AssetIcon className="size-7" aria-hidden />
                   ) : (
                     <svg
                       className="size-5"
